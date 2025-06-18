@@ -1,0 +1,3 @@
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/CMakeFiles/main.dir
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/CMakeFiles/edit_cache.dir
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/CMakeFiles/rebuild_cache.dir
