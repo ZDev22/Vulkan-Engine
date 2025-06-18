@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 cmake_minimum_required(VERSION 3.4...3.28 FATAL_ERROR)
 
 project(GLFW VERSION 3.4.0 LANGUAGES C)
@@ -10,11 +9,6 @@ endif()
 if (POLICY CMP0077)
     cmake_policy(SET CMP0077 NEW)
 endif()
-=======
-cmake_minimum_required(VERSION 3.16...3.28 FATAL_ERROR)
-
-project(GLFW VERSION 3.5.0 LANGUAGES C HOMEPAGE_URL "https://www.glfw.org/")
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -86,7 +80,6 @@ endif()
 # This is here because it also applies to tests and examples
 #--------------------------------------------------------------------
 if (MSVC AND NOT USE_MSVC_RUNTIME_LIBRARY_DLL)
-<<<<<<< HEAD
     if (CMAKE_VERSION VERSION_LESS 3.15)
         foreach (flag CMAKE_C_FLAGS
                       CMAKE_C_FLAGS_DEBUG
@@ -105,9 +98,6 @@ if (MSVC AND NOT USE_MSVC_RUNTIME_LIBRARY_DLL)
     else()
         set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
     endif()
-=======
-    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 endif()
 
 #--------------------------------------------------------------------
