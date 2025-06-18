@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 Wayland - www.glfw.org
-=======
 // GLFW 3.5 Wayland - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2014 Jonas Ådahl <jadahl@gmail.com>
 //
@@ -37,10 +33,7 @@
 #include <string.h>
 #include <errno.h>
 #include <math.h>
-<<<<<<< HEAD
-=======
 #include <assert.h>
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 #include "wayland-client-protocol.h"
 
@@ -266,10 +259,6 @@ void _glfwSetGammaRampWayland(_GLFWmonitor* monitor, const GLFWgammaramp* ramp)
 
 GLFWAPI struct wl_output* glfwGetWaylandMonitor(GLFWmonitor* handle)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_WAYLAND)
@@ -278,12 +267,9 @@ GLFWAPI struct wl_output* glfwGetWaylandMonitor(GLFWmonitor* handle)
         return NULL;
     }
 
-<<<<<<< HEAD
-=======
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     return monitor->wl.output;
 }
 

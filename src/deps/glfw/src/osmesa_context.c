@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 OSMesa - www.glfw.org
-=======
 // GLFW 3.5 OSMesa - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2016 Google Inc.
 // Copyright (c) 2016-2017 Camilla Löwy <elmindreda@glfw.org>
@@ -300,20 +296,12 @@ GLFWAPI int glfwGetOSMesaColorBuffer(GLFWwindow* handle, int* width,
 {
     void* mesaBuffer;
     GLint mesaWidth, mesaHeight, mesaFormat;
-<<<<<<< HEAD
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-    assert(window != NULL);
-
-    _GLFW_REQUIRE_INIT_OR_RETURN(GLFW_FALSE);
-
-=======
 
     _GLFW_REQUIRE_INIT_OR_RETURN(GLFW_FALSE);
 
     _GLFWwindow* window = (_GLFWwindow*) handle;
     assert(window != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (window->context.source != GLFW_OSMESA_CONTEXT_API)
     {
         _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);
@@ -348,20 +336,12 @@ GLFWAPI int glfwGetOSMesaDepthBuffer(GLFWwindow* handle,
 {
     void* mesaBuffer;
     GLint mesaWidth, mesaHeight, mesaBytes;
-<<<<<<< HEAD
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-    assert(window != NULL);
-
-    _GLFW_REQUIRE_INIT_OR_RETURN(GLFW_FALSE);
-
-=======
 
     _GLFW_REQUIRE_INIT_OR_RETURN(GLFW_FALSE);
 
     _GLFWwindow* window = (_GLFWwindow*) handle;
     assert(window != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (window->context.source != GLFW_OSMESA_CONTEXT_API)
     {
         _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);
@@ -391,17 +371,11 @@ GLFWAPI int glfwGetOSMesaDepthBuffer(GLFWwindow* handle,
 
 GLFWAPI OSMesaContext glfwGetOSMesaContext(GLFWwindow* handle)
 {
-<<<<<<< HEAD
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
-
-=======
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
     _GLFWwindow* window = (_GLFWwindow*) handle;
     assert(window != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (window->context.source != GLFW_OSMESA_CONTEXT_API)
     {
         _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);

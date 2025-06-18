@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 X11 - www.glfw.org
-=======
 // GLFW 3.5 X11 - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
 // Copyright (c) 2006-2019 Camilla Löwy <elmindreda@glfw.org>
@@ -37,10 +33,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-<<<<<<< HEAD
-=======
 #include <assert.h>
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 
 // Check whether the display mode should be included in enumeration
@@ -619,10 +612,6 @@ void _glfwSetGammaRampX11(_GLFWmonitor* monitor, const GLFWgammaramp* ramp)
 
 GLFWAPI RRCrtc glfwGetX11Adapter(GLFWmonitor* handle)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _GLFW_REQUIRE_INIT_OR_RETURN(None);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_X11)
@@ -631,21 +620,14 @@ GLFWAPI RRCrtc glfwGetX11Adapter(GLFWmonitor* handle)
         return None;
     }
 
-<<<<<<< HEAD
-=======
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     return monitor->x11.crtc;
 }
 
 GLFWAPI RROutput glfwGetX11Monitor(GLFWmonitor* handle)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _GLFW_REQUIRE_INIT_OR_RETURN(None);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_X11)
@@ -654,12 +636,9 @@ GLFWAPI RROutput glfwGetX11Monitor(GLFWmonitor* handle)
         return None;
     }
 
-<<<<<<< HEAD
-=======
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     return monitor->x11.output;
 }
 

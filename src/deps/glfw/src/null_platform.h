@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 - www.glfw.org
-=======
 // GLFW 3.5 - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2016 Google Inc.
 // Copyright (c) 2016-2017 Camilla Löwy <elmindreda@glfw.org>
@@ -160,8 +156,6 @@
 #define GLFW_NULL_SC_MENU           120
 #define GLFW_NULL_SC_LAST           GLFW_NULL_SC_MENU
 
-<<<<<<< HEAD
-=======
 typedef VkFlags VkHeadlessSurfaceCreateFlagsEXT;
 
 typedef struct VkHeadlessSurfaceCreateInfoEXT
@@ -173,7 +167,6 @@ typedef struct VkHeadlessSurfaceCreateInfoEXT
 
 typedef VkResult (APIENTRY *PFN_vkCreateHeadlessSurfaceEXT)(VkInstance,const VkHeadlessSurfaceCreateInfoEXT*,const VkAllocationCallbacks*,VkSurfaceKHR*);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 // Null-specific per-window data
 //
 typedef struct _GLFWwindowNull

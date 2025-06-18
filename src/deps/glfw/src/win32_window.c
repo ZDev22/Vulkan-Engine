@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 Win32 - www.glfw.org
-=======
 // GLFW 3.5 Win32 - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
 // Copyright (c) 2006-2019 Camilla Löwy <elmindreda@glfw.org>
@@ -36,10 +32,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <string.h>
-<<<<<<< HEAD
-=======
 #include <assert.h>
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 #include <windowsx.h>
 #include <shellapi.h>
 
@@ -2584,10 +2577,6 @@ VkResult _glfwCreateWindowSurfaceWin32(VkInstance instance,
 
 GLFWAPI HWND glfwGetWin32Window(GLFWwindow* handle)
 {
-<<<<<<< HEAD
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_WIN32)
@@ -2597,12 +2586,9 @@ GLFWAPI HWND glfwGetWin32Window(GLFWwindow* handle)
         return NULL;
     }
 
-<<<<<<< HEAD
-=======
     _GLFWwindow* window = (_GLFWwindow*) handle;
     assert(window != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     return window->win32.handle;
 }
 

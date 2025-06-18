@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 - www.glfw.org
-=======
 // GLFW 3.5 - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
 // Copyright (c) 2006-2019 Camilla Löwy <elmindreda@glfw.org>
@@ -329,12 +325,6 @@ GLFWAPI GLFWmonitor* glfwGetPrimaryMonitor(void)
 
 GLFWAPI void glfwGetMonitorPos(GLFWmonitor* handle, int* xpos, int* ypos)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-    assert(monitor != NULL);
-
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (xpos)
         *xpos = 0;
     if (ypos)
@@ -342,12 +332,9 @@ GLFWAPI void glfwGetMonitorPos(GLFWmonitor* handle, int* xpos, int* ypos)
 
     _GLFW_REQUIRE_INIT();
 
-<<<<<<< HEAD
-=======
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _glfw.platform.getMonitorPos(monitor, xpos, ypos);
 }
 
@@ -355,12 +342,6 @@ GLFWAPI void glfwGetMonitorWorkarea(GLFWmonitor* handle,
                                     int* xpos, int* ypos,
                                     int* width, int* height)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-    assert(monitor != NULL);
-
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (xpos)
         *xpos = 0;
     if (ypos)
@@ -372,23 +353,14 @@ GLFWAPI void glfwGetMonitorWorkarea(GLFWmonitor* handle,
 
     _GLFW_REQUIRE_INIT();
 
-<<<<<<< HEAD
-=======
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _glfw.platform.getMonitorWorkarea(monitor, xpos, ypos, width, height);
 }
 
 GLFWAPI void glfwGetMonitorPhysicalSize(GLFWmonitor* handle, int* widthMM, int* heightMM)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-    assert(monitor != NULL);
-
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (widthMM)
         *widthMM = 0;
     if (heightMM)
@@ -396,12 +368,9 @@ GLFWAPI void glfwGetMonitorPhysicalSize(GLFWmonitor* handle, int* widthMM, int* 
 
     _GLFW_REQUIRE_INIT();
 
-<<<<<<< HEAD
-=======
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (widthMM)
         *widthMM = monitor->widthMM;
     if (heightMM)
@@ -411,76 +380,46 @@ GLFWAPI void glfwGetMonitorPhysicalSize(GLFWmonitor* handle, int* widthMM, int* 
 GLFWAPI void glfwGetMonitorContentScale(GLFWmonitor* handle,
                                         float* xscale, float* yscale)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-    assert(monitor != NULL);
-
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (xscale)
         *xscale = 0.f;
     if (yscale)
         *yscale = 0.f;
 
     _GLFW_REQUIRE_INIT();
-<<<<<<< HEAD
-=======
 
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _glfw.platform.getMonitorContentScale(monitor, xscale, yscale);
 }
 
 GLFWAPI const char* glfwGetMonitorName(GLFWmonitor* handle)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-    assert(monitor != NULL);
-
-    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
-=======
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     return monitor->name;
 }
 
 GLFWAPI void glfwSetMonitorUserPointer(GLFWmonitor* handle, void* pointer)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-    assert(monitor != NULL);
-
-    _GLFW_REQUIRE_INIT();
-=======
     _GLFW_REQUIRE_INIT();
 
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     monitor->userPointer = pointer;
 }
 
 GLFWAPI void* glfwGetMonitorUserPointer(GLFWmonitor* handle)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-    assert(monitor != NULL);
-
-    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
-=======
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     return monitor->userPointer;
 }
 
@@ -493,23 +432,15 @@ GLFWAPI GLFWmonitorfun glfwSetMonitorCallback(GLFWmonitorfun cbfun)
 
 GLFWAPI const GLFWvidmode* glfwGetVideoModes(GLFWmonitor* handle, int* count)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-    assert(monitor != NULL);
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     assert(count != NULL);
 
     *count = 0;
 
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
-<<<<<<< HEAD
-=======
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (!refreshVideoModes(monitor))
         return NULL;
 
@@ -519,19 +450,11 @@ GLFWAPI const GLFWvidmode* glfwGetVideoModes(GLFWmonitor* handle, int* count)
 
 GLFWAPI const GLFWvidmode* glfwGetVideoMode(GLFWmonitor* handle)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-    assert(monitor != NULL);
-
-    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
-
-=======
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (!_glfw.platform.getVideoMode(monitor, &monitor->currentMode))
         return NULL;
 
@@ -544,20 +467,13 @@ GLFWAPI void glfwSetGamma(GLFWmonitor* handle, float gamma)
     unsigned short* values;
     GLFWgammaramp ramp;
     const GLFWgammaramp* original;
-<<<<<<< HEAD
-    assert(handle != NULL);
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     assert(gamma > 0.f);
     assert(gamma <= FLT_MAX);
 
     _GLFW_REQUIRE_INIT();
 
-<<<<<<< HEAD
-=======
     assert(handle != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (gamma != gamma || gamma <= 0.f || gamma > FLT_MAX)
     {
         _glfwInputError(GLFW_INVALID_VALUE, "Invalid gamma value %f", gamma);
@@ -595,19 +511,11 @@ GLFWAPI void glfwSetGamma(GLFWmonitor* handle, float gamma)
 
 GLFWAPI const GLFWgammaramp* glfwGetGammaRamp(GLFWmonitor* handle)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-    assert(monitor != NULL);
-
-    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
-
-=======
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _glfwFreeGammaArrays(&monitor->currentRamp);
     if (!_glfw.platform.getGammaRamp(monitor, &monitor->currentRamp))
         return NULL;
@@ -617,11 +525,6 @@ GLFWAPI const GLFWgammaramp* glfwGetGammaRamp(GLFWmonitor* handle)
 
 GLFWAPI void glfwSetGammaRamp(GLFWmonitor* handle, const GLFWgammaramp* ramp)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-    assert(monitor != NULL);
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     assert(ramp != NULL);
     assert(ramp->size > 0);
     assert(ramp->red != NULL);
@@ -630,12 +533,9 @@ GLFWAPI void glfwSetGammaRamp(GLFWmonitor* handle, const GLFWgammaramp* ramp)
 
     _GLFW_REQUIRE_INIT();
 
-<<<<<<< HEAD
-=======
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (ramp->size <= 0)
     {
         _glfwInputError(GLFW_INVALID_VALUE,

@@ -1,9 +1,5 @@
 /*************************************************************************
-<<<<<<< HEAD
- * GLFW 3.4 - www.glfw.org
-=======
  * GLFW 3.5 - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
  * A library for OpenGL, window and input
  *------------------------------------------------------------------------
  * Copyright (c) 2002-2006 Marcus Geelnard
@@ -295,11 +291,7 @@ extern "C" {
  *  features are added to the API but it remains backward-compatible.
  *  @ingroup init
  */
-<<<<<<< HEAD
-#define GLFW_VERSION_MINOR          4
-=======
 #define GLFW_VERSION_MINOR          5
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 /*! @brief The revision number of the GLFW header.
  *
  *  The revision number of the GLFW header.  This is incremented when a bug fix
@@ -1157,20 +1149,12 @@ extern "C" {
 #define GLFW_OPENGL_CORE_PROFILE    0x00032001
 #define GLFW_OPENGL_COMPAT_PROFILE  0x00032002
 
-<<<<<<< HEAD
-#define GLFW_CURSOR                 0x00033001
-#define GLFW_STICKY_KEYS            0x00033002
-#define GLFW_STICKY_MOUSE_BUTTONS   0x00033003
-#define GLFW_LOCK_KEY_MODS          0x00033004
-#define GLFW_RAW_MOUSE_MOTION       0x00033005
-=======
 #define GLFW_CURSOR                  0x00033001
 #define GLFW_STICKY_KEYS             0x00033002
 #define GLFW_STICKY_MOUSE_BUTTONS    0x00033003
 #define GLFW_LOCK_KEY_MODS           0x00033004
 #define GLFW_RAW_MOUSE_MOTION        0x00033005
 #define GLFW_UNLIMITED_MOUSE_BUTTONS 0x00033006
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 #define GLFW_CURSOR_NORMAL          0x00034001
 #define GLFW_CURSOR_HIDDEN          0x00034002
@@ -3199,13 +3183,8 @@ GLFWAPI void glfwWindowHintString(int hint, const char* value);
  *
  *  [bundle-guide]: https://developer.apple.com/library/mac/documentation/CoreFoundation/Conceptual/CFBundles/
  *
-<<<<<<< HEAD
- *  @remark @macos On OS X 10.10 and later the window frame will not be rendered
- *  at full resolution on Retina displays unless the
-=======
  *  @remark @macos The window frame will not be rendered at full resolution on
  *  Retina displays unless the
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
  *  [GLFW_SCALE_FRAMEBUFFER](@ref GLFW_SCALE_FRAMEBUFFER_hint)
  *  hint is `GLFW_TRUE` and the `NSHighResolutionCapable` key is enabled in the
  *  application bundle's `Info.plist`.  For more information, see
@@ -4698,13 +4677,8 @@ GLFWAPI int glfwGetInputMode(GLFWwindow* window, int mode);
  *
  *  This function sets an input mode option for the specified window.  The mode
  *  must be one of @ref GLFW_CURSOR, @ref GLFW_STICKY_KEYS,
-<<<<<<< HEAD
- *  @ref GLFW_STICKY_MOUSE_BUTTONS, @ref GLFW_LOCK_KEY_MODS or
- *  @ref GLFW_RAW_MOUSE_MOTION.
-=======
  *  @ref GLFW_STICKY_MOUSE_BUTTONS, @ref GLFW_LOCK_KEY_MODS
  *  @ref GLFW_RAW_MOUSE_MOTION, or @ref GLFW_UNLIMITED_MOUSE_BUTTONS.
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
  *
  *  If the mode is `GLFW_CURSOR`, the value must be one of the following cursor
  *  modes:
@@ -4744,14 +4718,11 @@ GLFWAPI int glfwGetInputMode(GLFWwindow* window, int mode);
  *  attempting to set this will emit @ref GLFW_FEATURE_UNAVAILABLE.  Call @ref
  *  glfwRawMouseMotionSupported to check for support.
  *
-<<<<<<< HEAD
-=======
  *  If the mode is `GLFW_UNLIMITED_MOUSE_BUTTONS`, the value must be either
  *  `GLFW_TRUE` to disable the mouse button limit when calling the mouse button
  *  callback, or `GLFW_FALSE` to limit the mouse buttons sent to the callback
  *  to the mouse button token values up to `GLFW_MOUSE_BUTTON_LAST`.
  *
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
  *  @param[in] window The window whose input mode to set.
  *  @param[in] mode One of `GLFW_CURSOR`, `GLFW_STICKY_KEYS`,
  *  `GLFW_STICKY_MOUSE_BUTTONS`, `GLFW_LOCK_KEY_MODS` or
@@ -4946,16 +4917,11 @@ GLFWAPI int glfwGetKey(GLFWwindow* window, int key);
  *  returns `GLFW_PRESS` the first time you call it for a mouse button that was
  *  pressed, even if that mouse button has already been released.
  *
-<<<<<<< HEAD
- *  @param[in] window The desired window.
- *  @param[in] button The desired [mouse button](@ref buttons).
-=======
  *  The @ref GLFW_UNLIMITED_MOUSE_BUTTONS input mode does not effect the
  *  limit on buttons which can be polled with this function.
  *
  *  @param[in] window The desired window.
  *  @param[in] button The desired [mouse button token](@ref buttons).
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
  *  @return One of `GLFW_PRESS` or `GLFW_RELEASE`.
  *
  *  @errors Possible errors include @ref GLFW_NOT_INITIALIZED and @ref
@@ -5331,12 +5297,6 @@ GLFWAPI GLFWcharmodsfun glfwSetCharModsCallback(GLFWwindow* window, GLFWcharmods
  *  is called when a mouse button is pressed or released.
  *
  *  When a window loses input focus, it will generate synthetic mouse button
-<<<<<<< HEAD
- *  release events for all pressed mouse buttons.  You can tell these events
- *  from user-generated events by the fact that the synthetic ones are generated
- *  after the focus loss event has been processed, i.e. after the
- *  [window focus callback](@ref glfwSetWindowFocusCallback) has been called.
-=======
  *  release events for all pressed mouse buttons with associated button tokens.
  *  You can tell these events from user-generated events by the fact that the
  *  synthetic ones are generated after the focus loss event has been processed,
@@ -5346,7 +5306,6 @@ GLFWAPI GLFWcharmodsfun glfwSetCharModsCallback(GLFWwindow* window, GLFWcharmods
  *  The reported `button` value can be higher than `GLFW_MOUSE_BUTTON_LAST` if
  *  the button does not have an associated [button token](@ref buttons) and the
  *  @ref GLFW_UNLIMITED_MOUSE_BUTTONS input mode is set.
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
  *
  *  @param[in] window The window whose callback to set.
  *  @param[in] callback The new callback, or `NULL` to remove the currently set

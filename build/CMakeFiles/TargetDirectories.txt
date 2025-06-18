@@ -1,0 +1,9 @@
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/CMakeFiles/main.dir
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/CMakeFiles/edit_cache.dir
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/CMakeFiles/rebuild_cache.dir
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/src/deps/glfw/CMakeFiles/edit_cache.dir
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/src/deps/glfw/CMakeFiles/rebuild_cache.dir
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/src/deps/glfw/src/CMakeFiles/glfw.dir
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/src/deps/glfw/src/CMakeFiles/update_mappings.dir
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/src/deps/glfw/src/CMakeFiles/edit_cache.dir
+/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/src/deps/glfw/src/CMakeFiles/rebuild_cache.dir

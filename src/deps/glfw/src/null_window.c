@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 - www.glfw.org
-=======
 // GLFW 3.5 - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2016 Google Inc.
 // Copyright (c) 2016-2019 Camilla Löwy <elmindreda@glfw.org>
@@ -32,10 +28,7 @@
 #include "internal.h"
 
 #include <stdlib.h>
-<<<<<<< HEAD
-=======
 #include <string.h>
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 static void applySizeLimits(_GLFWwindow* window, int* width, int* height)
 {
@@ -560,23 +553,15 @@ const char* _glfwGetClipboardStringNull(void)
 
 EGLenum _glfwGetEGLPlatformNull(EGLint** attribs)
 {
-<<<<<<< HEAD
-    return 0;
-=======
     if (_glfw.egl.EXT_platform_base && _glfw.egl.MESA_platform_surfaceless)
         return EGL_PLATFORM_SURFACELESS_MESA;
     else
         return 0;
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 }
 
 EGLNativeDisplayType _glfwGetEGLNativeDisplayNull(void)
 {
-<<<<<<< HEAD
-    return 0;
-=======
     return EGL_DEFAULT_DISPLAY;
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 }
 
 EGLNativeWindowType _glfwGetEGLNativeWindowNull(_GLFWwindow* window)
@@ -718,25 +703,18 @@ int _glfwGetKeyScancodeNull(int key)
 
 void _glfwGetRequiredInstanceExtensionsNull(char** extensions)
 {
-<<<<<<< HEAD
-=======
     if (!_glfw.vk.KHR_surface || !_glfw.vk.EXT_headless_surface)
         return;
 
     extensions[0] = "VK_KHR_surface";
     extensions[1] = "VK_EXT_headless_surface";
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 }
 
 GLFWbool _glfwGetPhysicalDevicePresentationSupportNull(VkInstance instance,
                                                        VkPhysicalDevice device,
                                                        uint32_t queuefamily)
 {
-<<<<<<< HEAD
-    return GLFW_FALSE;
-=======
     return GLFW_TRUE;
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 }
 
 VkResult _glfwCreateWindowSurfaceNull(VkInstance instance,
@@ -744,10 +722,6 @@ VkResult _glfwCreateWindowSurfaceNull(VkInstance instance,
                                       const VkAllocationCallbacks* allocator,
                                       VkSurfaceKHR* surface)
 {
-<<<<<<< HEAD
-    // This seems like the most appropriate error to return here
-    return VK_ERROR_EXTENSION_NOT_PRESENT;
-=======
     PFN_vkCreateHeadlessSurfaceEXT vkCreateHeadlessSurfaceEXT =
         (PFN_vkCreateHeadlessSurfaceEXT)
         vkGetInstanceProcAddr(instance, "vkCreateHeadlessSurfaceEXT");
@@ -771,6 +745,5 @@ VkResult _glfwCreateWindowSurfaceNull(VkInstance instance,
     }
 
     return err;
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 }
 

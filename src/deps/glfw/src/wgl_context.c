@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 WGL - www.glfw.org
-=======
 // GLFW 3.5 WGL - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
 // Copyright (c) 2006-2019 Camilla Löwy <elmindreda@glfw.org>
@@ -779,10 +775,6 @@ GLFWbool _glfwCreateContextWGL(_GLFWwindow* window,
 
 GLFWAPI HGLRC glfwGetWGLContext(GLFWwindow* handle)
 {
-<<<<<<< HEAD
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_WIN32)
@@ -792,12 +784,9 @@ GLFWAPI HGLRC glfwGetWGLContext(GLFWwindow* handle)
         return NULL;
     }
 
-<<<<<<< HEAD
-=======
     _GLFWwindow* window = (_GLFWwindow*) handle;
     assert(window != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (window->context.source != GLFW_NATIVE_CONTEXT_API)
     {
         _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);

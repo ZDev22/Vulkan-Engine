@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 - www.glfw.org
-=======
 // GLFW 3.5 - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
 // Copyright (c) 2006-2019 Camilla Löwy <elmindreda@glfw.org>
@@ -52,11 +48,8 @@
 #define GLFW_INCLUDE_NONE
 #include "../include/GLFW/glfw3.h"
 
-<<<<<<< HEAD
-=======
 #include <stdbool.h>
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 #define _GLFW_INSERT_FIRST      0
 #define _GLFW_INSERT_LAST       1
 
@@ -159,12 +152,9 @@ typedef const GLubyte* (APIENTRY * PFNGLGETSTRINGIPROC)(GLenum,GLuint);
 #define EGL_NO_DISPLAY ((EGLDisplay) 0)
 #define EGL_NO_CONTEXT ((EGLContext) 0)
 #define EGL_DEFAULT_DISPLAY ((EGLNativeDisplayType) 0)
-<<<<<<< HEAD
-=======
 #define EGL_PBUFFER_BIT 0x0001
 #define EGL_WIDTH 0x3057
 #define EGL_HEIGHT 0x3056
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 #define EGL_CONTEXT_OPENGL_FORWARD_COMPATIBLE_BIT_KHR 0x00000002
 #define EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT_KHR 0x00000001
@@ -196,10 +186,7 @@ typedef const GLubyte* (APIENTRY * PFNGLGETSTRINGIPROC)(GLenum,GLuint);
 #define EGL_PLATFORM_ANGLE_TYPE_VULKAN_ANGLE 0x3450
 #define EGL_PLATFORM_ANGLE_TYPE_METAL_ANGLE 0x3489
 #define EGL_PLATFORM_ANGLE_NATIVE_PLATFORM_TYPE_ANGLE 0x348f
-<<<<<<< HEAD
-=======
 #define EGL_PLATFORM_SURFACELESS_MESA 0x31dd
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 typedef int EGLint;
 typedef unsigned int EGLBoolean;
@@ -224,10 +211,7 @@ typedef EGLContext (APIENTRY * PFN_eglCreateContext)(EGLDisplay,EGLConfig,EGLCon
 typedef EGLBoolean (APIENTRY * PFN_eglDestroySurface)(EGLDisplay,EGLSurface);
 typedef EGLBoolean (APIENTRY * PFN_eglDestroyContext)(EGLDisplay,EGLContext);
 typedef EGLSurface (APIENTRY * PFN_eglCreateWindowSurface)(EGLDisplay,EGLConfig,EGLNativeWindowType,const EGLint*);
-<<<<<<< HEAD
-=======
 typedef EGLSurface (APIENTRY * PFN_eglCreatePbufferSurface)(EGLDisplay,EGLContext,const EGLint*);
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 typedef EGLBoolean (APIENTRY * PFN_eglMakeCurrent)(EGLDisplay,EGLSurface,EGLSurface,EGLContext);
 typedef EGLBoolean (APIENTRY * PFN_eglSwapBuffers)(EGLDisplay,EGLSurface);
 typedef EGLBoolean (APIENTRY * PFN_eglSwapInterval)(EGLDisplay,EGLint);
@@ -244,10 +228,7 @@ typedef GLFWglproc (APIENTRY * PFN_eglGetProcAddress)(const char*);
 #define eglDestroySurface _glfw.egl.DestroySurface
 #define eglDestroyContext _glfw.egl.DestroyContext
 #define eglCreateWindowSurface _glfw.egl.CreateWindowSurface
-<<<<<<< HEAD
-=======
 #define eglCreatePbufferSurface _glfw.egl.CreatePbufferSurface
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 #define eglMakeCurrent _glfw.egl.MakeCurrent
 #define eglSwapBuffers _glfw.egl.SwapBuffers
 #define eglSwapInterval _glfw.egl.SwapInterval
@@ -304,10 +285,7 @@ typedef enum VkStructureType
     VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR = 1000009000,
     VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK = 1000123000,
     VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT = 1000217000,
-<<<<<<< HEAD
-=======
     VK_STRUCTURE_TYPE_HEADLESS_SURFACE_CREATE_INFO_EXT = 1000256000,
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     VK_STRUCTURE_TYPE_MAX_ENUM = 0x7FFFFFFF
 } VkStructureType;
 
@@ -575,10 +553,7 @@ struct _GLFWwindow
     GLFWbool            stickyKeys;
     GLFWbool            stickyMouseButtons;
     GLFWbool            lockKeyMods;
-<<<<<<< HEAD
-=======
     GLFWbool            disableMouseButtonLimit;
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     int                 cursorMode;
     char                mouseButtons[GLFW_MOUSE_BUTTON_LAST + 1];
     char                keys[GLFW_KEY_LAST + 1];
@@ -846,10 +821,7 @@ struct _GLFWlibrary
         GLFWbool        ANGLE_platform_angle_d3d;
         GLFWbool        ANGLE_platform_angle_vulkan;
         GLFWbool        ANGLE_platform_angle_metal;
-<<<<<<< HEAD
-=======
         GLFWbool        MESA_platform_surfaceless;
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
         void*           handle;
 
@@ -864,10 +836,7 @@ struct _GLFWlibrary
         PFN_eglDestroySurface       DestroySurface;
         PFN_eglDestroyContext       DestroyContext;
         PFN_eglCreateWindowSurface  CreateWindowSurface;
-<<<<<<< HEAD
-=======
         PFN_eglCreatePbufferSurface CreatePbufferSurface;
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
         PFN_eglMakeCurrent          MakeCurrent;
         PFN_eglSwapBuffers          SwapBuffers;
         PFN_eglSwapInterval         SwapInterval;
@@ -903,10 +872,7 @@ struct _GLFWlibrary
         GLFWbool        KHR_xlib_surface;
         GLFWbool        KHR_xcb_surface;
         GLFWbool        KHR_wayland_surface;
-<<<<<<< HEAD
-=======
         GLFWbool        EXT_headless_surface;
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     } vk;
 
     struct {

@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 Wayland - www.glfw.org
-=======
 // GLFW 3.5 Wayland - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2014 Jonas Ådahl <jadahl@gmail.com>
 //
@@ -141,8 +137,6 @@ static void registryHandleGlobal(void* userData,
                 wl_registry_bind(registry, name, &wl_seat_interface,
                                  _glfw_min(4, version));
             _glfwAddSeatListenerWayland(_glfw.wl.seat);
-<<<<<<< HEAD
-=======
 
             if (wl_seat_get_version(_glfw.wl.seat) >=
                 WL_KEYBOARD_REPEAT_INFO_SINCE_VERSION)
@@ -150,7 +144,6 @@ static void registryHandleGlobal(void* userData,
                 _glfw.wl.keyRepeatTimerfd =
                     timerfd_create(CLOCK_MONOTONIC, TFD_CLOEXEC | TFD_NONBLOCK);
             }
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
         }
     }
     else if (strcmp(interface, "wl_data_device_manager") == 0)
@@ -718,13 +711,10 @@ int _glfwInitWayland(void)
         _glfwPlatformGetModuleSymbol(_glfw.wl.xkb.handle, "xkb_compose_state_get_status");
     _glfw.wl.xkb.compose_state_get_one_sym = (PFN_xkb_compose_state_get_one_sym)
         _glfwPlatformGetModuleSymbol(_glfw.wl.xkb.handle, "xkb_compose_state_get_one_sym");
-<<<<<<< HEAD
-=======
     _glfw.wl.xkb.keysym_to_utf32 = (PFN_xkb_keysym_to_utf32)
         _glfwPlatformGetModuleSymbol(_glfw.wl.xkb.handle, "xkb_keysym_to_utf32");
     _glfw.wl.xkb.keysym_to_utf8 = (PFN_xkb_keysym_to_utf8)
         _glfwPlatformGetModuleSymbol(_glfw.wl.xkb.handle, "xkb_keysym_to_utf8");
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
     if (!_glfw.wl.xkb.context_new ||
         !_glfw.wl.xkb.context_unref ||
@@ -874,15 +864,6 @@ int _glfwInitWayland(void)
         }
     }
 
-<<<<<<< HEAD
-    if (wl_seat_get_version(_glfw.wl.seat) >= WL_KEYBOARD_REPEAT_INFO_SINCE_VERSION)
-    {
-        _glfw.wl.keyRepeatTimerfd =
-            timerfd_create(CLOCK_MONOTONIC, TFD_CLOEXEC | TFD_NONBLOCK);
-    }
-
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (!_glfw.wl.wmBase)
     {
         _glfwInputError(GLFW_PLATFORM_ERROR,

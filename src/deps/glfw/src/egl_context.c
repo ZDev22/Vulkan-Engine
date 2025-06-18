@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 EGL - www.glfw.org
-=======
 // GLFW 3.5 EGL - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
 // Copyright (c) 2006-2019 Camilla Löwy <elmindreda@glfw.org>
@@ -96,11 +92,7 @@ static GLFWbool chooseEGLConfig(const _GLFWctxconfig* ctxconfig,
     EGLConfig* nativeConfigs;
     _GLFWfbconfig* usableConfigs;
     const _GLFWfbconfig* closest;
-<<<<<<< HEAD
-    int i, nativeCount, usableCount, apiBit;
-=======
     int i, nativeCount, usableCount, apiBit, surfaceTypeBit;
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     GLFWbool wrongApiAvailable = GLFW_FALSE;
 
     if (ctxconfig->client == GLFW_OPENGL_ES_API)
@@ -113,14 +105,11 @@ static GLFWbool chooseEGLConfig(const _GLFWctxconfig* ctxconfig,
     else
         apiBit = EGL_OPENGL_BIT;
 
-<<<<<<< HEAD
-=======
     if (_glfw.egl.platform == EGL_PLATFORM_SURFACELESS_MESA)
         surfaceTypeBit = EGL_PBUFFER_BIT;
     else
         surfaceTypeBit = EGL_WINDOW_BIT;
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (fbconfig->stereo)
     {
         _glfwInputError(GLFW_FORMAT_UNAVAILABLE, "EGL: Stereo rendering not supported");
@@ -149,12 +138,7 @@ static GLFWbool chooseEGLConfig(const _GLFWctxconfig* ctxconfig,
         if (getEGLConfigAttrib(n, EGL_COLOR_BUFFER_TYPE) != EGL_RGB_BUFFER)
             continue;
 
-<<<<<<< HEAD
-        // Only consider window EGLConfigs
-        if (!(getEGLConfigAttrib(n, EGL_SURFACE_TYPE) & EGL_WINDOW_BIT))
-=======
         if (!(getEGLConfigAttrib(n, EGL_SURFACE_TYPE) & surfaceTypeBit))
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
             continue;
 
 #if defined(_GLFW_X11)
@@ -440,11 +424,8 @@ GLFWbool _glfwInitEGL(void)
         _glfwPlatformGetModuleSymbol(_glfw.egl.handle, "eglDestroyContext");
     _glfw.egl.CreateWindowSurface = (PFN_eglCreateWindowSurface)
         _glfwPlatformGetModuleSymbol(_glfw.egl.handle, "eglCreateWindowSurface");
-<<<<<<< HEAD
-=======
     _glfw.egl.CreatePbufferSurface = (PFN_eglCreatePbufferSurface)
         _glfwPlatformGetModuleSymbol(_glfw.egl.handle, "eglCreatePbufferSurface");
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _glfw.egl.MakeCurrent = (PFN_eglMakeCurrent)
         _glfwPlatformGetModuleSymbol(_glfw.egl.handle, "eglMakeCurrent");
     _glfw.egl.SwapBuffers = (PFN_eglSwapBuffers)
@@ -467,10 +448,7 @@ GLFWbool _glfwInitEGL(void)
         !_glfw.egl.DestroySurface ||
         !_glfw.egl.DestroyContext ||
         !_glfw.egl.CreateWindowSurface ||
-<<<<<<< HEAD
-=======
         !_glfw.egl.CreatePbufferSurface ||
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
         !_glfw.egl.MakeCurrent ||
         !_glfw.egl.SwapBuffers ||
         !_glfw.egl.SwapInterval ||
@@ -506,11 +484,8 @@ GLFWbool _glfwInitEGL(void)
             _glfwStringInExtensionString("EGL_ANGLE_platform_angle_vulkan", extensions);
         _glfw.egl.ANGLE_platform_angle_metal =
             _glfwStringInExtensionString("EGL_ANGLE_platform_angle_metal", extensions);
-<<<<<<< HEAD
-=======
         _glfw.egl.MESA_platform_surfaceless =
             _glfwStringInExtensionString("EGL_MESA_platform_surfaceless", extensions);
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     }
 
     if (_glfw.egl.EXT_platform_base)
@@ -742,17 +717,6 @@ GLFWbool _glfwCreateContextEGL(_GLFWwindow* window,
             SET_ATTRIB(EGL_PRESENT_OPAQUE_EXT, !fbconfig->transparent);
     }
 
-<<<<<<< HEAD
-    SET_ATTRIB(EGL_NONE, EGL_NONE);
-
-    native = _glfw.platform.getEGLNativeWindow(window);
-    // HACK: ANGLE does not implement eglCreatePlatformWindowSurfaceEXT
-    //       despite reporting EGL_EXT_platform_base
-    if (_glfw.egl.platform && _glfw.egl.platform != EGL_PLATFORM_ANGLE_ANGLE)
-    {
-        window->context.egl.surface =
-            eglCreatePlatformWindowSurfaceEXT(_glfw.egl.display, config, native, attribs);
-=======
     if (_glfw.egl.platform == EGL_PLATFORM_SURFACELESS_MESA)
     {
         int width, height;
@@ -778,16 +742,11 @@ GLFWbool _glfwCreateContextEGL(_GLFWwindow* window,
         // HACK: Use a pbuffer surface as the default framebuffer
         window->context.egl.surface =
             eglCreatePbufferSurface(_glfw.egl.display, config, attribs);
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     }
     else
     {
         window->context.egl.surface =
-<<<<<<< HEAD
-            eglCreateWindowSurface(_glfw.egl.display, config, native, attribs);
-=======
             eglCreatePlatformWindowSurfaceEXT(_glfw.egl.display, config, native, attribs);
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     }
 
     if (window->context.egl.surface == EGL_NO_SURFACE)
@@ -949,15 +908,6 @@ GLFWAPI EGLDisplay glfwGetEGLDisplay(void)
 
 GLFWAPI EGLContext glfwGetEGLContext(GLFWwindow* handle)
 {
-<<<<<<< HEAD
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-    _GLFW_REQUIRE_INIT_OR_RETURN(EGL_NO_CONTEXT);
-
-    if (window->context.source != GLFW_EGL_CONTEXT_API)
-    {
-        _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);
-        return EGL_NO_CONTEXT;
-=======
     _GLFW_REQUIRE_INIT_OR_RETURN(EGL_NO_CONTEXT);
 
     _GLFWwindow* window = (_GLFWwindow*) handle;
@@ -971,7 +921,6 @@ GLFWAPI EGLContext glfwGetEGLContext(GLFWwindow* handle)
             _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);
             return EGL_NO_CONTEXT;
         }
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     }
 
     return window->context.egl.handle;
@@ -979,15 +928,6 @@ GLFWAPI EGLContext glfwGetEGLContext(GLFWwindow* handle)
 
 GLFWAPI EGLSurface glfwGetEGLSurface(GLFWwindow* handle)
 {
-<<<<<<< HEAD
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-    _GLFW_REQUIRE_INIT_OR_RETURN(EGL_NO_SURFACE);
-
-    if (window->context.source != GLFW_EGL_CONTEXT_API)
-    {
-        _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);
-        return EGL_NO_SURFACE;
-=======
     _GLFW_REQUIRE_INIT_OR_RETURN(EGL_NO_SURFACE);
 
     _GLFWwindow* window = (_GLFWwindow*) handle;
@@ -1001,7 +941,6 @@ GLFWAPI EGLSurface glfwGetEGLSurface(GLFWwindow* handle)
             _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);
             return EGL_NO_CONTEXT;
         }
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     }
 
     return window->context.egl.surface;

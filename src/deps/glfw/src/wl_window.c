@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 Wayland - www.glfw.org
-=======
 // GLFW 3.5 Wayland - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2014 Jonas Ådahl <jadahl@gmail.com>
 //
@@ -1196,13 +1192,8 @@ static void inputText(_GLFWwindow* window, uint32_t scancode)
     if (xkb_state_key_get_syms(_glfw.wl.xkb.state, keycode, &keysyms) == 1)
     {
         const xkb_keysym_t keysym = composeSymbol(keysyms[0]);
-<<<<<<< HEAD
-        const uint32_t codepoint = _glfwKeySym2Unicode(keysym);
-        if (codepoint != GLFW_INVALID_CODEPOINT)
-=======
         const uint32_t codepoint = xkb_keysym_to_utf32(keysym);
         if (codepoint != 0)
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
         {
             const int mods = _glfw.wl.xkb.modifiers;
             const int plain = !(mods & (GLFW_MOD_CONTROL | GLFW_MOD_ALT));
@@ -1983,21 +1974,6 @@ static void dataDeviceHandleEnter(void* userData,
         _glfw.wl.dragFocus = NULL;
     }
 
-<<<<<<< HEAD
-    for (unsigned int i = 0; i < _glfw.wl.offerCount; i++)
-    {
-        if (_glfw.wl.offers[i].offer == offer)
-        {
-            _GLFWwindow* window = NULL;
-
-            if (surface)
-            {
-                if (wl_proxy_get_tag((struct wl_proxy*) surface) == &_glfw.wl.tag)
-                    window = wl_surface_get_user_data(surface);
-            }
-
-            if (surface == window->wl.surface && _glfw.wl.offers[i].text_uri_list)
-=======
     unsigned int i;
 
     for (i = 0; i < _glfw.wl.offerCount; i++)
@@ -2015,27 +1991,10 @@ static void dataDeviceHandleEnter(void* userData,
         if (window->wl.surface == surface)
         {
             if (_glfw.wl.offers[i].text_uri_list)
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
             {
                 _glfw.wl.dragOffer = offer;
                 _glfw.wl.dragFocus = window;
                 _glfw.wl.dragSerial = serial;
-<<<<<<< HEAD
-            }
-
-            _glfw.wl.offers[i] = _glfw.wl.offers[_glfw.wl.offerCount - 1];
-            _glfw.wl.offerCount--;
-            break;
-        }
-    }
-
-    if (wl_proxy_get_tag((struct wl_proxy*) surface) != &_glfw.wl.tag)
-        return;
-
-    if (_glfw.wl.dragOffer)
-        wl_data_offer_accept(offer, serial, "text/uri-list");
-    else
-=======
 
                 wl_data_offer_accept(offer, serial, "text/uri-list");
             }
@@ -2043,17 +2002,13 @@ static void dataDeviceHandleEnter(void* userData,
     }
 
     if (!_glfw.wl.dragOffer)
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     {
         wl_data_offer_accept(offer, serial, NULL);
         wl_data_offer_destroy(offer);
     }
-<<<<<<< HEAD
-=======
 
     _glfw.wl.offers[i] = _glfw.wl.offers[_glfw.wl.offerCount - 1];
     _glfw.wl.offerCount--;
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 }
 
 static void dataDeviceHandleLeave(void* userData,
@@ -2087,17 +2042,6 @@ static void dataDeviceHandleDrop(void* userData,
         int count;
         char** paths = _glfwParseUriList(string, &count);
         if (paths)
-<<<<<<< HEAD
-            _glfwInputDrop(_glfw.wl.dragFocus, count, (const char**) paths);
-
-        for (int i = 0; i < count; i++)
-            _glfw_free(paths[i]);
-
-        _glfw_free(paths);
-    }
-
-    _glfw_free(string);
-=======
         {
             _glfwInputDrop(_glfw.wl.dragFocus, count, (const char**) paths);
 
@@ -2109,7 +2053,6 @@ static void dataDeviceHandleDrop(void* userData,
 
         _glfw_free(string);
     }
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 }
 
 static void dataDeviceHandleSelection(void* userData,
@@ -2242,15 +2185,12 @@ void _glfwDestroyWindowWayland(_GLFWwindow* window)
     if (window == _glfw.wl.keyboardFocus)
         _glfw.wl.keyboardFocus = NULL;
 
-<<<<<<< HEAD
-=======
     if (window->wl.fractionalScale)
         wp_fractional_scale_v1_destroy(window->wl.fractionalScale);
 
     if (window->wl.scalingViewport)
         wp_viewport_destroy(window->wl.scalingViewport);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (window->wl.activationToken)
         xdg_activation_token_v1_destroy(window->wl.activationToken);
 
@@ -2781,25 +2721,6 @@ const char* _glfwGetScancodeNameWayland(int scancode)
         return NULL;
     }
 
-<<<<<<< HEAD
-    const uint32_t codepoint = _glfwKeySym2Unicode(keysyms[0]);
-    if (codepoint == GLFW_INVALID_CODEPOINT)
-    {
-        _glfwInputError(GLFW_PLATFORM_ERROR,
-                        "Wayland: Failed to retrieve codepoint for key name");
-        return NULL;
-    }
-
-    const size_t count = _glfwEncodeUTF8(_glfw.wl.keynames[key],  codepoint);
-    if (count == 0)
-    {
-        _glfwInputError(GLFW_PLATFORM_ERROR,
-                        "Wayland: Failed to encode codepoint for key name");
-        return NULL;
-    }
-
-    _glfw.wl.keynames[key][count] = '\0';
-=======
     // WORKAROUND: xkb_keysym_to_utf8() requires the third parameter (size of the output buffer)
     // to be at least 7 (6 bytes + a null terminator), because it was written when UTF-8
     // sequences could be up to 6 bytes long. The _glfw.wl.keynames buffers are only 5 bytes
@@ -2817,7 +2738,6 @@ const char* _glfwGetScancodeNameWayland(int scancode)
     }
     memcpy(_glfw.wl.keynames[key], temp_buffer, bytes_written);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     return _glfw.wl.keynames[key];
 }
 
@@ -3379,10 +3299,6 @@ GLFWAPI struct wl_display* glfwGetWaylandDisplay(void)
 
 GLFWAPI struct wl_surface* glfwGetWaylandWindow(GLFWwindow* handle)
 {
-<<<<<<< HEAD
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_WAYLAND)
@@ -3392,12 +3308,9 @@ GLFWAPI struct wl_surface* glfwGetWaylandWindow(GLFWwindow* handle)
         return NULL;
     }
 
-<<<<<<< HEAD
-=======
     _GLFWwindow* window = (_GLFWwindow*) handle;
     assert(window != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     return window->wl.surface;
 }
 

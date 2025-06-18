@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 macOS - www.glfw.org
-=======
 // GLFW 3.5 macOS - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
 // Copyright (c) 2006-2019 Camilla Löwy <elmindreda@glfw.org>
@@ -36,10 +32,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <math.h>
-<<<<<<< HEAD
-=======
 #include <assert.h>
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 #include <IOKit/graphics/IOGraphicsLib.h>
 #include <ApplicationServices/ApplicationServices.h>
@@ -144,11 +137,7 @@ static GLFWbool modeIsGood(CGDisplayModeRef mode)
     if (flags & kDisplayModeStretchedFlag)
         return GLFW_FALSE;
 
-<<<<<<< HEAD
-#if MAC_OS_X_VERSION_MAX_ALLOWED <= 101100
-=======
 #if MAC_OS_X_VERSION_MAX_ALLOWED == 101100
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     CFStringRef format = CGDisplayModeCopyPixelEncoding(mode);
     if (CFStringCompare(format, CFSTR(IO16BitDirectPixels), 0) &&
         CFStringCompare(format, CFSTR(IO32BitDirectPixels), 0))
@@ -175,11 +164,7 @@ static GLFWvidmode vidmodeFromCGDisplayMode(CGDisplayModeRef mode,
     if (result.refreshRate == 0)
         result.refreshRate = (int) round(fallbackRefreshRate);
 
-<<<<<<< HEAD
-#if MAC_OS_X_VERSION_MAX_ALLOWED <= 101100
-=======
 #if MAC_OS_X_VERSION_MAX_ALLOWED == 101100
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     CFStringRef format = CGDisplayModeCopyPixelEncoding(mode);
     if (CFStringCompare(format, CFSTR(IO16BitDirectPixels), 0) == 0)
     {
@@ -195,11 +180,7 @@ static GLFWvidmode vidmodeFromCGDisplayMode(CGDisplayModeRef mode,
         result.blueBits = 8;
     }
 
-<<<<<<< HEAD
-#if MAC_OS_X_VERSION_MAX_ALLOWED <= 101100
-=======
 #if MAC_OS_X_VERSION_MAX_ALLOWED == 101100
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     CFRelease(format);
 #endif /* MAC_OS_X_VERSION_MAX_ALLOWED */
     return result;
@@ -647,10 +628,6 @@ void _glfwSetGammaRampCocoa(_GLFWmonitor* monitor, const GLFWgammaramp* ramp)
 
 GLFWAPI CGDirectDisplayID glfwGetCocoaMonitor(GLFWmonitor* handle)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _GLFW_REQUIRE_INIT_OR_RETURN(kCGNullDirectDisplay);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_COCOA)
@@ -659,12 +636,9 @@ GLFWAPI CGDirectDisplayID glfwGetCocoaMonitor(GLFWmonitor* handle)
         return kCGNullDirectDisplay;
     }
 
-<<<<<<< HEAD
-=======
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     return monitor->ns.displayID;
 }
 

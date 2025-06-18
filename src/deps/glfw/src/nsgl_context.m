@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 macOS - www.glfw.org
-=======
 // GLFW 3.5 macOS - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2009-2019 Camilla Löwy <elmindreda@glfw.org>
 //
@@ -34,10 +30,7 @@
 
 #include <unistd.h>
 #include <math.h>
-<<<<<<< HEAD
-=======
 #include <assert.h>
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 static void makeContextCurrentNSGL(_GLFWwindow* window)
 {
@@ -190,18 +183,6 @@ GLFWbool _glfwCreateContextNSGL(_GLFWwindow* window,
         return GLFW_FALSE;
     }
 
-<<<<<<< HEAD
-    // Context robustness modes (GL_KHR_robustness) are not yet supported by
-    // macOS but are not a hard constraint, so ignore and continue
-
-    // Context release behaviors (GL_KHR_context_flush_control) are not yet
-    // supported by macOS but are not a hard constraint, so ignore and continue
-
-    // Debug contexts (GL_KHR_debug) are not yet supported by macOS but are not
-    // a hard constraint, so ignore and continue
-
-    // No-error contexts (GL_KHR_no_error) are not yet supported by macOS but
-=======
     // Context robustness modes (GL_KHR_robustness) are not supported by
     // macOS but are not a hard constraint, so ignore and continue
 
@@ -212,7 +193,6 @@ GLFWbool _glfwCreateContextNSGL(_GLFWwindow* window,
     // a hard constraint, so ignore and continue
 
     // No-error contexts (GL_KHR_no_error) are not supported by macOS but
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     // are not a hard constraint, so ignore and continue
 
 #define ADD_ATTRIB(a) \
@@ -238,21 +218,11 @@ GLFWbool _glfwCreateContextNSGL(_GLFWwindow* window,
         ADD_ATTRIB(kCGLPFASupportsAutomaticGraphicsSwitching);
     }
 
-<<<<<<< HEAD
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= 101000
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (ctxconfig->major >= 4)
     {
         SET_ATTRIB(NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion4_1Core);
     }
-<<<<<<< HEAD
-    else
-#endif /*MAC_OS_X_VERSION_MAX_ALLOWED*/
-    if (ctxconfig->major >= 3)
-=======
     else if (ctxconfig->major >= 3)
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     {
         SET_ATTRIB(NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core);
     }
@@ -389,10 +359,6 @@ GLFWbool _glfwCreateContextNSGL(_GLFWwindow* window,
 
 GLFWAPI id glfwGetNSGLContext(GLFWwindow* handle)
 {
-<<<<<<< HEAD
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _GLFW_REQUIRE_INIT_OR_RETURN(nil);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_COCOA)
@@ -402,12 +368,9 @@ GLFWAPI id glfwGetNSGLContext(GLFWwindow* handle)
         return nil;
     }
 
-<<<<<<< HEAD
-=======
     _GLFWwindow* window = (_GLFWwindow*) handle;
     assert(window != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (window->context.source != GLFW_NATIVE_CONTEXT_API)
     {
         _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);

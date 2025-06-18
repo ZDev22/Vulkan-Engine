@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 - www.glfw.org
-=======
 // GLFW 3.5 - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
 // Copyright (c) 2006-2016 Camilla Löwy <elmindreda@glfw.org>
@@ -619,19 +615,11 @@ GLFWbool _glfwStringInExtensionString(const char* string, const char* extensions
 
 GLFWAPI void glfwMakeContextCurrent(GLFWwindow* handle)
 {
-<<<<<<< HEAD
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-    _GLFWwindow* previous;
-
-    _GLFW_REQUIRE_INIT();
-
-=======
     _GLFW_REQUIRE_INIT();
 
     _GLFWwindow* window = (_GLFWwindow*) handle;
     _GLFWwindow* previous;
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     previous = _glfwPlatformGetTls(&_glfw.contextSlot);
 
     if (window && window->context.client == GLFW_NO_API)
@@ -659,19 +647,11 @@ GLFWAPI GLFWwindow* glfwGetCurrentContext(void)
 
 GLFWAPI void glfwSwapBuffers(GLFWwindow* handle)
 {
-<<<<<<< HEAD
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-    assert(window != NULL);
-
-    _GLFW_REQUIRE_INIT();
-
-=======
     _GLFW_REQUIRE_INIT();
 
     _GLFWwindow* window = (_GLFWwindow*) handle;
     assert(window != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     if (window->context.client == GLFW_NO_API)
     {
         _glfwInputError(GLFW_NO_WINDOW_CONTEXT,

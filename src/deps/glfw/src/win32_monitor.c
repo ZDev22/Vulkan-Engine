@@ -1,9 +1,5 @@
 //========================================================================
-<<<<<<< HEAD
-// GLFW 3.4 Win32 - www.glfw.org
-=======
 // GLFW 3.5 Win32 - www.glfw.org
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
 // Copyright (c) 2006-2019 Camilla Löwy <elmindreda@glfw.org>
@@ -37,10 +33,7 @@
 #include <string.h>
 #include <limits.h>
 #include <wchar.h>
-<<<<<<< HEAD
-=======
 #include <assert.h>
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 
 // Callback for EnumDisplayMonitors in createMonitor
@@ -547,10 +540,6 @@ void _glfwSetGammaRampWin32(_GLFWmonitor* monitor, const GLFWgammaramp* ramp)
 
 GLFWAPI const char* glfwGetWin32Adapter(GLFWmonitor* handle)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_WIN32)
@@ -559,21 +548,14 @@ GLFWAPI const char* glfwGetWin32Adapter(GLFWmonitor* handle)
         return NULL;
     }
 
-<<<<<<< HEAD
-=======
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     return monitor->win32.publicAdapterName;
 }
 
 GLFWAPI const char* glfwGetWin32Monitor(GLFWmonitor* handle)
 {
-<<<<<<< HEAD
-    _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_WIN32)
@@ -582,12 +564,9 @@ GLFWAPI const char* glfwGetWin32Monitor(GLFWmonitor* handle)
         return NULL;
     }
 
-<<<<<<< HEAD
-=======
     _GLFWmonitor* monitor = (_GLFWmonitor*) handle;
     assert(monitor != NULL);
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     return monitor->win32.publicDisplayName;
 }
 

@@ -7,9 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Define paths to local dependencies in src/deps
 set(GLFW_DIR ${CMAKE_SOURCE_DIR}/src/deps/glfw)
 set(GLM_DIR ${CMAKE_SOURCE_DIR}/src/deps/glm)
-set(VULKAN_DIR ${CMAKE_SOURCE_DIR}/src/deps/vulkan)
-set(VULKAN_LOADER_DIR ${VULKAN_DIR}/loader)
-set(VULKAN_HEADERS_DIR ${VULKAN_DIR}/headers)
+set(VULKAN_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/deps/vulkan/include)
 
 # Add GLFW as a subdirectory (build from source)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
@@ -20,17 +18,6 @@ add_subdirectory(${GLFW_DIR})
 
 # GLM is header-only
 set(GLM_INCLUDE_DIR ${GLM_DIR})
-
-# Vulkan Headers (for include paths)
-set(Vulkan_INCLUDE_DIRS ${VULKAN_HEADERS_DIR}/include)
-
-# Add Vulkan Loader as a subdirectory
-set(BUILD_WSI_XCB_SUPPORT OFF CACHE BOOL "" FORCE)  # Disable XCB if not needed
-set(BUILD_WSI_XLIB_SUPPORT OFF CACHE BOOL "" FORCE)  # Disable Xlib if not needed
-set(BUILD_WSI_WAYLAND_SUPPORT OFF CACHE BOOL "" FORCE)  # Disable Wayland if not needed
-set(BUILD_WSI_WIN32_SUPPORT ${WIN32} CACHE BOOL "" FORCE)  # Enable Win32 support on Windows
-add_subdirectory(${VULKAN_HEADERS_DIR})
-add_subdirectory(${VULKAN_LOADER_DIR})
 
 # Collect source files (only from src/, excluding deps)
 file(GLOB_RECURSE CPP_SOURCES "src/*.cpp")
@@ -56,21 +43,23 @@ add_executable(main ${SOURCES})
 
 # Include directories
 target_include_directories(main PRIVATE
-    ${Vulkan_INCLUDE_DIRS}
+    ${VULKAN_INCLUDE_DIR}
     ${GLM_INCLUDE_DIR}
     ${GLFW_DIR}/include
     ${CMAKE_SOURCE_DIR}/src
     ${CMAKE_SOURCE_DIR}/src/include
 )
 
-# Link libraries
-target_link_libraries(main PRIVATE glfw vulkan)
+# Link GLFW and Vulkan (assumes system Vulkan loader is available)
+find_package(Vulkan REQUIRED)
+target_link_libraries(main PRIVATE glfw Vulkan::Vulkan)
 
-# Copy Vulkan runtime library to output directory for Windows
+# Copy Vulkan runtime library to output directory for Windows (optional)
 if(WIN32)
+    find_library(VULKAN_DLL NAMES vulkan-1.dll PATHS ENV VULKAN_SDK PATH_SUFFIXES Bin REQUIRED)
     add_custom_command(TARGET main POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        $<TARGET_FILE:vulkan>
+        "${VULKAN_DLL}"
         $<TARGET_FILE_DIR:main>/vulkan-1.dll
     )
 endif()

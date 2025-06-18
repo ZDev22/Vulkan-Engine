@@ -1,11 +1,8 @@
 # Usage:
 # cmake -P GenerateMappings.cmake <path/to/mappings.h.in> <path/to/mappings.h>
 
-<<<<<<< HEAD
-=======
 cmake_policy(VERSION 3.16)
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 set(source_url "https://raw.githubusercontent.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt")
 set(source_path "${CMAKE_CURRENT_BINARY_DIR}/gamecontrollerdb.txt")
 set(template_path "${CMAKE_ARGV3}")
@@ -27,26 +24,6 @@ if (status_code)
 endif()
 
 file(STRINGS "${source_path}" lines)
-<<<<<<< HEAD
-foreach(line ${lines})
-    if (line MATCHES "^[0-9a-fA-F]")
-        if (line MATCHES "platform:Windows")
-            if (GLFW_WIN32_MAPPINGS)
-                string(APPEND GLFW_WIN32_MAPPINGS "\n")
-            endif()
-            string(APPEND GLFW_WIN32_MAPPINGS "\"${line}\",")
-        elseif (line MATCHES "platform:Mac OS X")
-            if (GLFW_COCOA_MAPPINGS)
-                string(APPEND GLFW_COCOA_MAPPINGS "\n")
-            endif()
-            string(APPEND GLFW_COCOA_MAPPINGS "\"${line}\",")
-        elseif (line MATCHES "platform:Linux")
-            if (GLFW_LINUX_MAPPINGS)
-                string(APPEND GLFW_LINUX_MAPPINGS "\n")
-            endif()
-            string(APPEND GLFW_LINUX_MAPPINGS "\"${line}\",")
-        endif()
-=======
 list(FILTER lines INCLUDE REGEX "^[0-9a-fA-F]")
 
 foreach(line IN LISTS lines)
@@ -65,7 +42,6 @@ foreach(line IN LISTS lines)
             string(APPEND GLFW_LINUX_MAPPINGS "\n")
         endif()
         string(APPEND GLFW_LINUX_MAPPINGS "\"${line}\",")
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
     endif()
 endforeach()
 
