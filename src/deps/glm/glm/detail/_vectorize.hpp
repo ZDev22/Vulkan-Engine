@@ -52,15 +52,6 @@ namespace detail
 		{
 			return vec<1, T, Q>(Func(a.x, b.x));
 		}
-<<<<<<< HEAD
-
-		template<typename Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<1, T, Q> call(Fct Func, vec<1, T, Q> const& a, vec<1, T, Q> const& b)
-		{
-			return vec<1, T, Q>(Func(a.x, b.x));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<template<length_t L, typename T, qualifier Q> class vec, typename T, qualifier Q>
@@ -70,15 +61,6 @@ namespace detail
 		{
 			return vec<2, T, Q>(Func(a.x, b.x), Func(a.y, b.y));
 		}
-<<<<<<< HEAD
-
-		template<typename Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<2, T, Q> call(Fct Func, vec<2, T, Q> const& a, vec<2, T, Q> const& b)
-		{
-			return vec<2, T, Q>(Func(a.x, b.x), Func(a.y, b.y));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<template<length_t L, typename T, qualifier Q> class vec, typename T, qualifier Q>
@@ -88,15 +70,6 @@ namespace detail
 		{
 			return vec<3, T, Q>(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z));
 		}
-<<<<<<< HEAD
-
-		template<class Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<3, T, Q> call(Fct Func, vec<3, T, Q> const& a, vec<3, T, Q> const& b)
-		{
-			return vec<3, T, Q>(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<template<length_t L, typename T, qualifier Q> class vec, typename T, qualifier Q>
@@ -106,15 +79,6 @@ namespace detail
 		{
 			return vec<4, T, Q>(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z), Func(a.w, b.w));
 		}
-<<<<<<< HEAD
-
-		template<class Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<4, T, Q> call(Fct Func, vec<4, T, Q> const& a, vec<4, T, Q> const& b)
-		{
-			return vec<4, T, Q>(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z), Func(a.w, b.w));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<template<length_t L, typename T, qualifier Q> class vec, length_t L, typename T, qualifier Q>
@@ -127,14 +91,6 @@ namespace detail
 		{
 			return vec<1, T, Q>(Func(a.x, b));
 		}
-<<<<<<< HEAD
-		template<class Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<1, T, Q> call(Fct Func, vec<1, T, Q> const& a, T b)
-		{
-			return vec<1, T, Q>(Func(a.x, b));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<template<length_t L, typename T, qualifier Q> class vec, typename T, qualifier Q>
@@ -144,15 +100,6 @@ namespace detail
 		{
 			return vec<2, T, Q>(Func(a.x, b), Func(a.y, b));
 		}
-<<<<<<< HEAD
-
-		template<class Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<2, T, Q> call(Fct Func, vec<2, T, Q> const& a, T b)
-		{
-			return vec<2, T, Q>(Func(a.x, b), Func(a.y, b));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<template<length_t L, typename T, qualifier Q> class vec, typename T, qualifier Q>
@@ -162,15 +109,6 @@ namespace detail
 		{
 			return vec<3, T, Q>(Func(a.x, b), Func(a.y, b), Func(a.z, b));
 		}
-<<<<<<< HEAD
-
-		template<class Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<3, T, Q> call(Fct Func, vec<3, T, Q> const& a, T b)
-		{
-			return vec<3, T, Q>(Func(a.x, b), Func(a.y, b), Func(a.z, b));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<template<length_t L, typename T, qualifier Q> class vec, typename T, qualifier Q>
@@ -180,14 +118,6 @@ namespace detail
 		{
 			return vec<4, T, Q>(Func(a.x, b), Func(a.y, b), Func(a.z, b), Func(a.w, b));
 		}
-<<<<<<< HEAD
-		template<class Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<4, T, Q> call(Fct Func, vec<4, T, Q> const& a, T b)
-		{
-			return vec<4, T, Q>(Func(a.x, b), Func(a.y, b), Func(a.z, b), Func(a.w, b));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<length_t L, typename T, qualifier Q>
@@ -200,15 +130,6 @@ namespace detail
 		{
 			return vec<1, int, Q>(Func(a.x, b.x));
 		}
-<<<<<<< HEAD
-
-		template<class Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<1, int, Q> call(Fct Func, vec<1, T, Q> const& a, vec<1, int, Q> const& b)
-		{
-			return vec<1, int, Q>(Func(a.x, b.x));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<typename T, qualifier Q>
@@ -218,14 +139,6 @@ namespace detail
 		{
 			return vec<2, int, Q>(Func(a.x, b.x), Func(a.y, b.y));
 		}
-<<<<<<< HEAD
-		template<class Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<2, int, Q> call(Fct Func, vec<2, T, Q> const& a, vec<2, int, Q> const& b)
-		{
-			return vec<2, int, Q>(Func(a.x, b.x), Func(a.y, b.y));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<typename T, qualifier Q>
@@ -235,14 +148,6 @@ namespace detail
 		{
 			return vec<3, int, Q>(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z));
 		}
-<<<<<<< HEAD
-		template<class Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<3, int, Q> call(Fct Func, vec<3, T, Q> const& a, vec<3, int, Q> const& b)
-		{
-			return vec<3, int, Q>(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<typename T, qualifier Q>
@@ -252,15 +157,6 @@ namespace detail
 		{
 			return vec<4, int, Q>(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z), Func(a.w, b.w));
 		}
-<<<<<<< HEAD
-
-		template<class Fct>
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<4, int, Q> call(Fct Func, vec<4, T, Q> const& a, vec<4, int, Q> const& b)
-		{
-			return vec<4, int, Q>(Func(a.x, b.x), Func(a.y, b.y), Func(a.z, b.z), Func(a.w, b.w));
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 }//namespace detail
 }//namespace glm

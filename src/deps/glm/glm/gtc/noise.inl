@@ -1,15 +1,9 @@
 /// @ref gtc_noise
 ///
 // Based on the work of Stefan Gustavson and Ashima Arts on "webgl-noise":
-<<<<<<< HEAD
-// https://github.com/stegu/webgl-noise
-// Following Stefan Gustavson's paper "Simplex noise demystified":
-// https://itn-web.it.liu.se/~stegu76/simplexnoise/simplexnoise.pdf
-=======
 // https://github.com/ashima/webgl-noise
 // Following Stefan Gustavson's paper "Simplex noise demystified":
 // http://www.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 namespace glm{
 namespace detail

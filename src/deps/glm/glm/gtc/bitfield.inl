@@ -231,11 +231,7 @@ namespace detail
 	{
 		GLM_STATIC_ASSERT(std::numeric_limits<genIUType>::is_integer, "'mask' accepts only integer values");
 
-<<<<<<< HEAD
-		return Bits >= static_cast<genIUType>(sizeof(genIUType) * 8) ? ~static_cast<genIUType>(0) : (static_cast<genIUType>(1) << Bits) - static_cast<genIUType>(1);
-=======
 		return Bits >= sizeof(genIUType) * 8 ? ~static_cast<genIUType>(0) : (static_cast<genIUType>(1) << Bits) - static_cast<genIUType>(1);
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 #if GLM_COMPILER & GLM_COMPILER_CLANG

@@ -14,11 +14,7 @@ namespace detail
 		using std::log2;
 #	else
 		template<typename genType>
-<<<<<<< HEAD
-		GLM_FUNC_QUALIFIER genType log2(genType Value)
-=======
 		genType log2(genType Value)
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 		{
 			return std::log(Value) * static_cast<genType>(1.4426950408889634073599246810019);
 		}

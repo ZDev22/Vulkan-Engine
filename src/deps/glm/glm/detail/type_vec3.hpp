@@ -22,14 +22,6 @@ namespace glm
 		typedef vec<3, T, Q> type;
 		typedef vec<3, bool, Q> bool_type;
 
-<<<<<<< HEAD
-		enum is_aligned
-		{
-			value = detail::is_aligned<Q>::value
-		};
-
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 		// -- Data --
 
 #		if GLM_SILENT_WARNINGS == GLM_ENABLE
@@ -261,11 +253,6 @@ namespace glm
 		GLM_FUNC_DISCARD_DECL GLM_CONSTEXPR vec<3, T, Q> & operator>>=(vec<3, U, Q> const& v);
 	};
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	// -- Unary operators --
 
 	template<typename T, qualifier Q>
@@ -442,13 +429,6 @@ namespace glm
 
 	template<qualifier Q>
 	GLM_FUNC_DECL GLM_CONSTEXPR vec<3, bool, Q> operator||(vec<3, bool, Q> const& v1, vec<3, bool, Q> const& v2);
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 }//namespace glm
 
 #ifndef GLM_EXTERNAL_TEMPLATE

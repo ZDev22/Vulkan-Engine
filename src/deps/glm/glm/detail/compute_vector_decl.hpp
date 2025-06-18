@@ -159,13 +159,8 @@ namespace glm {
 			GLM_FUNC_QUALIFIER GLM_CONSTEXPR static bool call(vec<L, T, Q> const& v1, vec<L, T, Q> const& v2)
 			{
 				bool b = true;
-<<<<<<< HEAD
-				for (length_t i = 0; b && i < L; ++i)
-					b = detail::compute_equal<T, std::numeric_limits<T>::is_iec559>::call(v1[i], v2[i]);
-=======
 				for (length_t i = 0; i < L; ++i)
 					b = b && detail::compute_equal<T, std::numeric_limits<T>::is_iec559>::call(v1.x, v2.x);
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 				return b;
 			}
 		};

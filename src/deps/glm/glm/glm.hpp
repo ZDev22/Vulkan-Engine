@@ -135,13 +135,3 @@
 #include "matrix.hpp"
 #include "vector_relational.hpp"
 #include "integer.hpp"
-<<<<<<< HEAD
-
-export VULKAN_SDK=/home/user/vulkan-sdk/x86_64
-export PATH=$VULKAN_SDK/bin:$PATH
-export LD_LIBRARY_PATH=$VULKAN_SDK/lib:$LD_LIBRARY_PATH
-export VK_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
-export VK_LAYER_SETTINGS_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d
-export CPLUS_INCLUDE_PATH=/mnt/chromeos/MyFiles/Downloads/glm-master/glm
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3

@@ -16,10 +16,7 @@
 
 // Dependency:
 #include "../geometric.hpp"
-<<<<<<< HEAD
-=======
 #include "../gtx/quaternion.hpp"
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 #include "../gtx/component_wise.hpp"
 
 #ifndef GLM_ENABLE_EXPERIMENTAL

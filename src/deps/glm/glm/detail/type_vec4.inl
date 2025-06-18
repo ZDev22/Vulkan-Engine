@@ -1,17 +1,10 @@
 /// @ref core
 
 #include "compute_vector_relational.hpp"
-<<<<<<< HEAD
-#include "compute_vector_decl.hpp"
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 namespace glm{
 namespace detail
 {
-<<<<<<< HEAD
-
-=======
 	template<typename T, qualifier Q, bool Aligned>
 	struct compute_vec4_add
 	{
@@ -132,7 +125,6 @@ namespace detail
 			return vec<4, T, Q>(~v.x, ~v.y, ~v.z, ~v.w);
 		}
 	};
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 }//namespace detail
 
 	// -- Implicit basic constructors --
@@ -166,11 +158,7 @@ namespace detail
 		: x(scalar), y(scalar), z(scalar), w(scalar)
 	{}
 
-<<<<<<< HEAD
-	template<typename T, qualifier Q>
-=======
 	template <typename T, qualifier Q>
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q>::vec(T _x, T _y, T _z, T _w)
 		: x(_x), y(_y), z(_z), w(_w)
 	{}
@@ -485,21 +473,13 @@ namespace detail
 		, w(static_cast<T>(v.w))
 	{}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	// -- Component accesses --
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T& vec<4, T, Q>::operator[](typename vec<4, T, Q>::length_type i)
 	{
 		GLM_ASSERT_LENGTH(i, this->length());
-<<<<<<< HEAD
-		switch (i)
-=======
 		switch(i)
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 		{
 		default:
 		case 0:
@@ -517,11 +497,7 @@ namespace detail
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR T const& vec<4, T, Q>::operator[](typename vec<4, T, Q>::length_type i) const
 	{
 		GLM_ASSERT_LENGTH(i, this->length());
-<<<<<<< HEAD
-		switch (i)
-=======
 		switch(i)
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 		{
 		default:
 		case 0:
@@ -564,132 +540,84 @@ namespace detail
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator+=(U scalar)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_add<4, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
-=======
 		return (*this = detail::compute_vec4_add<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator+=(vec<1, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_add<4, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v.x)));
-=======
 		return (*this = detail::compute_vec4_add<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v.x)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator+=(vec<4, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_add<4, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_add<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator-=(U scalar)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_sub<4, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
-=======
 		return (*this = detail::compute_vec4_sub<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator-=(vec<1, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_sub<4, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v.x)));
-=======
 		return (*this = detail::compute_vec4_sub<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v.x)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator-=(vec<4, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_sub<4, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_sub<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator*=(U scalar)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_mul<4,T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
-=======
 		return (*this = detail::compute_vec4_mul<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator*=(vec<1, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_mul<4,T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v.x)));
-=======
 		return (*this = detail::compute_vec4_mul<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v.x)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator*=(vec<4, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_mul<4,T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_mul<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator/=(U scalar)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_div<4, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
-=======
 		return (*this = detail::compute_vec4_div<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator/=(vec<1, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_div<4, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v.x)));
-=======
 		return (*this = detail::compute_vec4_div<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v.x)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator/=(vec<4, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_div<4, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_div<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	// -- Increment and decrement operators --
@@ -736,198 +664,126 @@ namespace detail
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator%=(U scalar)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_mod<4, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
-=======
 		return (*this = detail::compute_vec4_mod<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator%=(vec<1, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_mod<3, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<3, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_mod<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator%=(vec<4, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_mod<4, T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_mod<T, Q, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator&=(U scalar)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_and<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
-=======
 		return (*this = detail::compute_vec4_and<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator&=(vec<1, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_and<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_and<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator&=(vec<4, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_and<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_and<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator|=(U scalar)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_or<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
-=======
 		return (*this = detail::compute_vec4_or<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator|=(vec<1, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_or<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_or<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator|=(vec<4, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_or<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_or<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator^=(U scalar)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_xor<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
-=======
 		return (*this = detail::compute_vec4_xor<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator^=(vec<1, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_xor<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_xor<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator^=(vec<4, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_xor<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_xor<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator<<=(U scalar)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_shift_left<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
-=======
 		return (*this = detail::compute_vec4_shift_left<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator<<=(vec<1, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_shift_left<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_shift_left<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator<<=(vec<4, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_shift_left<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_shift_left<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator>>=(U scalar)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_shift_right<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
-=======
 		return (*this = detail::compute_vec4_shift_right<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(scalar)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator>>=(vec<1, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_shift_right<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_shift_right<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	template<typename U>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> & vec<4, T, Q>::operator>>=(vec<4, U, Q> const& v)
 	{
-<<<<<<< HEAD
-		return (*this = detail::compute_vec_shift_right<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
-=======
 		return (*this = detail::compute_vec4_shift_right<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(*this, vec<4, T, Q>(v)));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	// -- Unary constant operators --
@@ -1251,11 +1107,7 @@ namespace detail
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, T, Q> operator~(vec<4, T, Q> const& v)
 	{
-<<<<<<< HEAD
-		return detail::compute_vec_bitwise_not<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(v);
-=======
 		return detail::compute_vec4_bitwise_not<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(v);
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	// -- Boolean operators --
@@ -1263,21 +1115,13 @@ namespace detail
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR bool operator==(vec<4, T, Q> const& v1, vec<4, T, Q> const& v2)
 	{
-<<<<<<< HEAD
-		return detail::compute_vec_equal<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(v1, v2);
-=======
 		return detail::compute_vec4_equal<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(v1, v2);
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR bool operator!=(vec<4, T, Q> const& v1, vec<4, T, Q> const& v2)
 	{
-<<<<<<< HEAD
-		return detail::compute_vec_nequal<4, T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(v1, v2);
-=======
 		return detail::compute_vec4_nequal<T, Q, detail::is_int<T>::value, sizeof(T) * 8, detail::is_aligned<Q>::value>::call(v1, v2);
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<qualifier Q>
@@ -1294,114 +1138,5 @@ namespace detail
 }//namespace glm
 
 #if GLM_CONFIG_SIMD == GLM_ENABLE
-<<<<<<< HEAD
-#	include "type_vec_simd.inl"
-
-namespace glm {
-#if GLM_ARCH & GLM_ARCH_NEON_BIT && !GLM_CONFIG_XYZW_ONLY
-	CTORSL(4, CTOR_FLOAT);
-	CTORSL(4, CTOR_INT);
-	CTORSL(4, CTOR_UINT);
-	CTORSL(4, CTOR_VECF_INT4);
-	CTORSL(4, CTOR_VECF_UINT4);
-	CTORSL(4, CTOR_VECF_VECF);
-	CTORSL(4, CTOR_VECF_VECI);
-	CTORSL(4, CTOR_VECF_VECU);
-
-
-#endif// GLM_ARCH & GLM_ARCH_NEON_BIT
-
-#if GLM_ARCH & GLM_ARCH_SSE2_BIT
-	CTORSL(4, CTOR_FLOAT);
-	CTORSL(4, CTOR_DOUBLE);
-	CTORSL(4, CTOR_FLOAT4);
-	CTORSL(4, CTOR_DOUBLE4);
-	CTORSL(4, CTOR_INT);
-	CTORSL(4, CTOR_INT4);
-	CTORSL(4, CTOR_VECF_INT4);
-
-	template<>
-	template<>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, float, aligned_highp>::vec(const vec<4, float, aligned_highp>& v):
-		data(v.data)
-	{
-	}
-
-	template<>
-	template<>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, float, aligned_highp>::vec(const vec<4, float, packed_highp>& v)
-	{
-		data = _mm_loadu_ps(reinterpret_cast<const float*>(&v));
-	}
-		
-	template<>
-	template<>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, float, packed_highp>::vec(const vec<4, float, aligned_highp>& v)
-	{
-		_mm_storeu_ps(reinterpret_cast<float*>(this), v.data);
-	}
-
-	template<>
-	template<>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, int, aligned_highp>::vec(const vec<4, int, aligned_highp>& v) :
-		data(v.data)
-	{
-	}
-
-	template<>
-	template<>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, int, aligned_highp>::vec(const vec<4, int, packed_highp>& v)
-	{
-		data = _mm_loadu_si128(reinterpret_cast<const __m128i*>(&v));
-	}
-
-	template<>
-	template<>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, int, packed_highp>::vec(const vec<4, int, aligned_highp>& v)
-	{
-		_mm_storeu_si128(reinterpret_cast<__m128i*>(this), v.data);
-	}
-
-	template<>
-	template<>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, double, aligned_highp>::vec(const vec<4, double, aligned_highp>& v)
-	{
-#	if (GLM_ARCH & GLM_ARCH_AVX_BIT)
-		data = v.data;
-#else
-		data.setv(0, v.data.getv(0));
-		data.setv(1, v.data.getv(1));
-#endif
-	}
-
-	template<>
-	template<>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, double, aligned_highp>::vec(const vec<4, double, packed_highp>& v)
-	{
-#	if (GLM_ARCH & GLM_ARCH_AVX_BIT)
-		data = _mm256_loadu_pd(reinterpret_cast<const double*>(&v));
-#else
-		data.setv(0, _mm_loadu_pd(reinterpret_cast<const double*>(&v)));
-		data.setv(1, _mm_loadu_pd(reinterpret_cast<const double*>(&v)+2));
-#endif
-	}
-
-	template<>
-	template<>
-	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<4, double, packed_highp>::vec(const vec<4, double, aligned_highp>& v)
-	{
-#	if (GLM_ARCH & GLM_ARCH_AVX_BIT)
-		_mm256_storeu_pd(reinterpret_cast<double*>(this), v.data);
-#else
-		_mm_storeu_pd(reinterpret_cast<double*>(this), v.data.getv(0));
-		_mm_storeu_pd(reinterpret_cast<double*>(this) + 2, v.data.getv(1));
-#endif
-	}
-
-#endif//GLM_ARCH & GLM_ARCH_SSE2_BIT
-}
-
-=======
 #	include "type_vec4_simd.inl"
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 #endif

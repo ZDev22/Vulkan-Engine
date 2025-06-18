@@ -127,27 +127,6 @@ namespace detail
 	};
 
 	template<>
-<<<<<<< HEAD
-	struct storage<3, float, true>
-	{
-		typedef glm_f32vec4 type;
-	};
-
-	template<>
-	struct storage<3, int, true>
-	{
-		typedef glm_i32vec4 type;
-	};
-
-	template<>
-	struct storage<3, unsigned int, true>
-	{
-		typedef glm_i32vec4 type;
-	};
-
-	template<>
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	struct storage<2, double, true>
 	{
 		typedef glm_f64vec2 type;
@@ -164,40 +143,6 @@ namespace detail
 	{
 		typedef glm_u64vec2 type;
 	};
-<<<<<<< HEAD
-
-
-	template<>
-	struct storage<3, detail::uint64, true>
-	{
-		typedef glm_u64vec2 type;
-	};
-
-	template<>
-	struct storage<4, double, true>
-	{
-#	if (GLM_ARCH & GLM_ARCH_AVX_BIT)
-		typedef glm_f64vec4 type;
-#	else
-		struct type
-		{
-			glm_f64vec2 data[2];
-			GLM_CONSTEXPR glm_f64vec2 getv(int i) const {
-				return data[i];
-			}
-			GLM_CONSTEXPR void setv(int i, const glm_f64vec2& v) {
-				data[i] = v;
-			}
-		};
-#	endif
-	};
-
-
-	template<>
-	struct storage<3, double, true> : public storage<4, double, true>
-	{};
-	
-=======
 #	endif
 #	if (GLM_ARCH & GLM_ARCH_AVX_BIT)
 	template<>
@@ -205,7 +150,6 @@ namespace detail
 	{
 		typedef glm_f64vec4 type;
 	};
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 #	endif
 
 #	if (GLM_ARCH & GLM_ARCH_AVX2_BIT)
@@ -230,48 +174,16 @@ namespace detail
 	};
 
 	template<>
-<<<<<<< HEAD
-	struct storage<3, float, true> : public storage<4, float, true>
-	{};
-
-	template<>
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	struct storage<4, int, true>
 	{
 		typedef glm_i32vec4 type;
 	};
 
 	template<>
-<<<<<<< HEAD
-	struct storage<3, int, true> : public storage<4, int, true>
-	{};
-
-	template<>
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	struct storage<4, unsigned int, true>
 	{
 		typedef glm_u32vec4 type;
 	};
-<<<<<<< HEAD
-
-	template<>
-	struct storage<3, unsigned int, true> : public storage<4, unsigned int, true>
-	{};
-
-#	if GLM_HAS_ALIGNOF
-	template<>
-	struct storage<3, double, true>
-	{
-		typedef struct alignas(4 * sizeof(double)) type {
-			double data[4];
-		} type;
-	};
-#	endif//GLM_HAS_ALIGNOF
-
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 #	endif
 
 	enum genTypeEnum

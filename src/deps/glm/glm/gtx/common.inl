@@ -12,11 +12,7 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER static vec<L, T, Q> call(vec<L, T, Q> const& a, vec<L, T, Q> const& b)
 		{
-<<<<<<< HEAD
-			return detail::functor2<vec, L, T, Q>::call(TFmod<T>(), a, b);
-=======
 			return detail::functor2<vec, L, T, Q>::call(std::fmod, a, b);
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 		}
 	};
 

@@ -10,11 +10,7 @@ namespace glm
 	{
 		return equal(x, y, vec<L, T, Q>(Epsilon));
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	template<length_t L, typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR vec<L, bool, Q> equal(vec<L, T, Q> const& x, vec<L, T, Q> const& y, vec<L, T, Q> const& Epsilon)
 	{

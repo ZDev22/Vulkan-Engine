@@ -21,14 +21,6 @@ namespace glm
 		typedef T value_type;
 		typedef vec<4, T, Q> type;
 		typedef vec<4, bool, Q> bool_type;
-<<<<<<< HEAD
-		
-		enum is_aligned
-		{
-			value = detail::is_aligned<Q>::value
-		};
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 		// -- Data --
 
@@ -243,21 +235,13 @@ namespace glm
 			}
 
 			template<int E0, int E1, int E2>
-<<<<<<< HEAD
-			GLM_FUNC_DISCARD_DECL vec(detail::_swizzle<3, T, Q, E0, E1, E2, 3> const& v, T const& w)
-=======
 			GLM_FUNC_DISCARD_DECL vec(detail::_swizzle<3, T, Q, E0, E1, E2, -1> const& v, T const& w)
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 			{
 				*this = vec<4, T, Q>(v(), w);
 			}
 
 			template<int E0, int E1, int E2>
-<<<<<<< HEAD
-			GLM_FUNC_DISCARD_DECL vec(T const& x, detail::_swizzle<3, T, Q, E0, E1, E2, 3> const& v)
-=======
 			GLM_FUNC_DISCARD_DECL vec(T const& x, detail::_swizzle<3, T, Q, E0, E1, E2, -1> const& v)
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 			{
 				*this = vec<4, T, Q>(x, v());
 			}
@@ -341,10 +325,6 @@ namespace glm
 		GLM_FUNC_DECL GLM_CONSTEXPR vec<4, T, Q> & operator>>=(vec<4, U, Q> const& v);
 	};
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	// -- Unary operators --
 
 	template<typename T, qualifier Q>

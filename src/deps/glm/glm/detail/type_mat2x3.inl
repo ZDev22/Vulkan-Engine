@@ -433,18 +433,6 @@ namespace glm
 	template<typename T, qualifier Q>
 	GLM_FUNC_QUALIFIER GLM_CONSTEXPR mat<3, 3, T, Q> operator*(mat<2, 3, T, Q> const& m1, mat<3, 2, T, Q> const& m2)
 	{
-<<<<<<< HEAD
-		return mat<3, 3, T, Q>(
-			m1[0][0] * m2[0][0] + m1[1][0] * m2[0][1],
-			m1[0][1] * m2[0][0] + m1[1][1] * m2[0][1],
-			m1[0][2] * m2[0][0] + m1[1][2] * m2[0][1],
-			m1[0][0] * m2[1][0] + m1[1][0] * m2[1][1],
-			m1[0][1] * m2[1][0] + m1[1][1] * m2[1][1],
-			m1[0][2] * m2[1][0] + m1[1][2] * m2[1][1],
-			m1[0][0] * m2[2][0] + m1[1][0] * m2[2][1],
-			m1[0][1] * m2[2][0] + m1[1][1] * m2[2][1],
-			m1[0][2] * m2[2][0] + m1[1][2] * m2[2][1]);
-=======
 		T SrcA00 = m1[0][0];
 		T SrcA01 = m1[0][1];
 		T SrcA02 = m1[0][2];
@@ -470,7 +458,6 @@ namespace glm
 		Result[2][1] = SrcA01 * SrcB20 + SrcA11 * SrcB21;
 		Result[2][2] = SrcA02 * SrcB20 + SrcA12 * SrcB21;
 		return Result;
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	}
 
 	template<typename T, qualifier Q>

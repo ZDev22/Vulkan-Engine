@@ -11,6 +11,7 @@
 #elif defined(__linux__)
     #define VK_USE_PLATFORM_XLIB_KHR
 #endif
+
 #include <vulkan/vulkan.h>
 
 #include <vulkan/vulkan.h>

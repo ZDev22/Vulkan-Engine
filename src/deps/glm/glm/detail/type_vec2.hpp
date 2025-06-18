@@ -21,13 +21,6 @@ namespace glm
 		typedef T value_type;
 		typedef vec<2, T, Q> type;
 		typedef vec<2, bool, Q> bool_type;
-<<<<<<< HEAD
-		enum is_aligned
-		{
-			value = false
-		};
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 
 		// -- Data --
 

@@ -59,18 +59,8 @@ namespace detail
 	{
 		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static T call(vec<4, T, Q> const& a, vec<4, T, Q> const& b)
 		{
-<<<<<<< HEAD
-			// VS 17.7.4 generates longer assembly (~20 instructions vs 11 instructions)
-			#if defined(_MSC_VER)
-				return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
-			#else
-				vec<4, T, Q> tmp(a * b);
-				return (tmp.x + tmp.y) + (tmp.z + tmp.w);
-			#endif
-=======
 			vec<4, T, Q> tmp(a * b);
 			return (tmp.x + tmp.y) + (tmp.z + tmp.w);
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 		}
 	};
 
@@ -86,20 +76,6 @@ namespace detail
 				x.z * y.x - y.z * x.x,
 				x.x * y.y - y.x * x.y);
 		}
-<<<<<<< HEAD
-
-		GLM_FUNC_QUALIFIER GLM_CONSTEXPR static vec<4, T, Q> call(vec<4, T, Q> const& x, vec<4, T, Q> const& y)
-		{
-			GLM_STATIC_ASSERT(std::numeric_limits<T>::is_iec559, "'cross' accepts only floating-point inputs");
-
-			return vec<4, T, Q>(
-				x.y * y.z - y.y * x.z,
-				x.z * y.x - y.z * x.x,
-				x.x * y.y - y.x * x.y,
-				0.0f);
-		}
-=======
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 	};
 
 	template<length_t L, typename T, qualifier Q, bool Aligned>

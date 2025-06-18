@@ -40,23 +40,8 @@
 #include "../mat4x3.hpp"
 #include "../mat4x4.hpp"
 
-<<<<<<< HEAD
-#if defined(_MSC_VER)
-    // MSVC uses _MSVC_LANG instead of __cplusplus
-    #if _MSVC_LANG < 201103L
-        #pragma message("GLM_GTX_hash requires C++11 standard library support")
-    #endif
-#elif defined(__GNUC__) || defined(__clang__)
-    // GNU and Clang use __cplusplus
-    #if __cplusplus < 201103L
-        #pragma message("GLM_GTX_hash requires C++11 standard library support")
-    #endif
-#else
-    #error "Unknown compiler"
-=======
 #if __cplusplus < 201103L
 #pragma message("GLM_GTX_hash requires C++11 standard library support")
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 #endif
 
 #if GLM_LANG & GLM_LANG_CXX11

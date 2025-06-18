@@ -69,11 +69,7 @@ namespace detail
 		{
 			return
 				(vec<L, uint16, Q>(compute_rand<L, uint8, Q>::call()) << static_cast<uint16>(8)) |
-<<<<<<< HEAD
-				(vec<L, uint16, Q>(compute_rand<L, uint8, Q>::call()));
-=======
 				(vec<L, uint16, Q>(compute_rand<L, uint8, Q>::call()) << static_cast<uint16>(0));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 		}
 	};
 
@@ -84,11 +80,7 @@ namespace detail
 		{
 			return
 				(vec<L, uint32, Q>(compute_rand<L, uint16, Q>::call()) << static_cast<uint32>(16)) |
-<<<<<<< HEAD
-				(vec<L, uint32, Q>(compute_rand<L, uint16, Q>::call()));
-=======
 				(vec<L, uint32, Q>(compute_rand<L, uint16, Q>::call()) << static_cast<uint32>(0));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 		}
 	};
 
@@ -99,11 +91,7 @@ namespace detail
 		{
 			return
 				(vec<L, uint64, Q>(compute_rand<L, uint32, Q>::call()) << static_cast<uint64>(32)) |
-<<<<<<< HEAD
-				(vec<L, uint64, Q>(compute_rand<L, uint32, Q>::call()));
-=======
 				(vec<L, uint64, Q>(compute_rand<L, uint32, Q>::call()) << static_cast<uint64>(0));
->>>>>>> 98512c69f4a6c0c95d0f6de65cd416eae7b987c3
 		}
 	};
 
