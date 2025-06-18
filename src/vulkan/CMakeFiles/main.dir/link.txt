@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/main.dir/main.cpp.o -o main  -Wl,-rpath,/home/adamorrtexas/vulkan-sdk/x86_64/lib /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 /home/adamorrtexas/vulkan-sdk/x86_64/lib/libvulkan.so 

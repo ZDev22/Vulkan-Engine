@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build all cpp files (Linux)",
+      "type": "shell",
+      "command": "ninja",
+      "args": ["-j8"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+    },
+    {
+      "label": "build all cpp files (Windows)",
+      "type": "shell",
+      "command": "ninja",
+      "args": ["-j8"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "Build the project using Ninja on Windows"
+    }
+  ]
+}
