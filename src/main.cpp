@@ -27,6 +27,19 @@ float randomNumber(float min, float max) {
 
 int main() {
     if (compile()) {
+
+        std::cout << "Calling glfwInit()..." << std::endl;
+        if (!glfwInit()) {
+            std::cerr << "GLFW failed to initialize!" << std::endl;
+            return -1;
+        }
+        std::cout << "GLFW initialized OK" << std::endl;
+        if (!glfwVulkanSupported()) {
+            std::cerr << "GLFW says Vulkan is NOT supported!" << std::endl;
+            return -1;
+        }
+        std::cout << "GLFW says Vulkan is supported." << std::endl;
+
         vulkan::App app{};
 
         try {

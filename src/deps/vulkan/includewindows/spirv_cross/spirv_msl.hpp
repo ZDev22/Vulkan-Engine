@@ -793,12 +793,11 @@ protected:
 		SPVFuncImplInverse4x4,
 		SPVFuncImplInverse3x3,
 		SPVFuncImplInverse2x2,
-		// It is very important that this come before *Swizzle and ChromaReconstruct*, to ensure it's
-		// emitted before them.
-		SPVFuncImplForwardArgs,
-		// Likewise, this must come before *Swizzle.
+		// It is very important that this come before *Swizzle, to ensure it's emitted before them.
 		SPVFuncImplGetSwizzle,
 		SPVFuncImplTextureSwizzle,
+		SPVFuncImplGatherReturn,
+		SPVFuncImplGatherCompareReturn,
 		SPVFuncImplGatherSwizzle,
 		SPVFuncImplGatherCompareSwizzle,
 		SPVFuncImplGatherConstOffsets,
@@ -850,6 +849,7 @@ protected:
 		SPVFuncImplTextureCast,
 		SPVFuncImplMulExtended,
 		SPVFuncImplSetMeshOutputsEXT,
+		SPVFuncImplAssume,
 	};
 
 	// If the underlying resource has been used for comparison then duplicate loads of that resource must be too
@@ -995,6 +995,7 @@ protected:
 	void add_tess_level_input_to_interface_block(const std::string &ib_var_ref, SPIRType &ib_type, SPIRVariable &var);
 	void add_tess_level_input(const std::string &base_ref, const std::string &mbr_name, SPIRVariable &var);
 
+	void ensure_struct_members_valid_vecsizes(SPIRType &struct_type, uint32_t &location);
 	void fix_up_interface_member_indices(spv::StorageClass storage, uint32_t ib_type_id);
 
 	void mark_location_as_used_by_shader(uint32_t location, const SPIRType &type,

@@ -1,0 +1,9 @@
+C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/CMakeFiles/main.dir
+C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/CMakeFiles/edit_cache.dir
+C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/CMakeFiles/rebuild_cache.dir
+C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/CMakeFiles/edit_cache.dir
+C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/CMakeFiles/rebuild_cache.dir
+C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src/CMakeFiles/glfw.dir
+C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src/CMakeFiles/update_mappings.dir
+C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src/CMakeFiles/edit_cache.dir
+C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src/CMakeFiles/rebuild_cache.dir

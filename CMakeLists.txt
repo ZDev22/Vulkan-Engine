@@ -10,9 +10,9 @@ set(GLM_DIR ${CMAKE_SOURCE_DIR}/src/deps/glm)
 
 # Select Vulkan include directory based on platform
 if(UNIX AND NOT APPLE)
-    set(VULKAN_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/deps/vulkan/includelinux/include)
+    set(VULKAN_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/deps/vulkan/includelinux)
 elseif(WIN32)
-    set(VULKAN_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/deps/vulkan/includewindows/include)
+    set(VULKAN_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/deps/vulkan/includewindows)
 else()
     message(FATAL_ERROR "Unsupported platform for Vulkan include directory")
 endif()
@@ -28,8 +28,8 @@ add_subdirectory(${GLFW_DIR})
 set(GLM_INCLUDE_DIR ${GLM_DIR})
 
 # Collect source files (only from src/, excluding deps)
-file(GLOB_RECURSIVE CPP_SOURCES "src/*.cpp")
-file(GLOB_RECURSIVE C_SOURCES "src/*.c")
+file(GLOB_RECURSE CPP_SOURCES "src/*.cpp")
+file(GLOB_RECURSE C_SOURCES "src/*.c")
 list(APPEND SOURCES ${CPP_SOURCES} ${C_SOURCES})
 list(FILTER SOURCES EXCLUDE REGEX "CMakeCXXCompilerId\\.cpp")
 list(FILTER SOURCES EXCLUDE REGEX "CMakeCCompilerId\\.c")
@@ -64,10 +64,9 @@ target_link_libraries(main PRIVATE glfw Vulkan::Vulkan)
 
 # Copy Vulkan runtime library to output directory for Windows (optional)
 if(WIN32)
-    find_library(VULKAN_DLL NAMES vulkan-1.dll PATHS ENV VULKAN_SDK PATH_SUFFIXES Bin REQUIRED)
     add_custom_command(TARGET main POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${VULKAN_DLL}"
+        "${CMAKE_SOURCE_DIR}/src/deps/vulkan/includewindows/vulkan-1.dll"
         $<TARGET_FILE_DIR:main>/vulkan-1.dll
     )
 endif()

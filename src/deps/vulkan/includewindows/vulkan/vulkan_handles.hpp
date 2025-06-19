@@ -949,6 +949,9 @@ namespace VULKAN_HPP_NAMESPACE
   struct AttachmentSampleCountInfoAMD;
   using AttachmentSampleCountInfoNV = AttachmentSampleCountInfoAMD;
 
+  //=== VK_KHR_shader_bfloat16 ===
+  struct PhysicalDeviceShaderBfloat16FeaturesKHR;
+
   //=== VK_EXT_sample_locations ===
   struct SampleLocationEXT;
   struct SampleLocationsInfoEXT;
@@ -1347,6 +1350,14 @@ namespace VULKAN_HPP_NAMESPACE
   struct PhysicalDeviceCudaKernelLaunchPropertiesNV;
 #endif /*VK_ENABLE_BETA_EXTENSIONS*/
 
+  //=== VK_QCOM_tile_shading ===
+  struct PhysicalDeviceTileShadingFeaturesQCOM;
+  struct PhysicalDeviceTileShadingPropertiesQCOM;
+  struct RenderPassTileShadingCreateInfoQCOM;
+  struct PerTileBeginInfoQCOM;
+  struct PerTileEndInfoQCOM;
+  struct DispatchTileInfoQCOM;
+
   //=== VK_NV_low_latency ===
   struct QueryLowLatencySupportNV;
 
@@ -1628,11 +1639,6 @@ namespace VULKAN_HPP_NAMESPACE
   struct RenderPassStripeInfoARM;
   struct RenderPassStripeSubmitInfoARM;
 
-  //=== VK_QCOM_fragment_density_map_offset ===
-  struct PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM;
-  struct PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM;
-  struct SubpassFragmentDensityMapOffsetEndInfoQCOM;
-
   //=== VK_NV_copy_memory_indirect ===
   struct CopyMemoryIndirectCommandNV;
   struct CopyMemoryToImageIndirectCommandNV;
@@ -1898,6 +1904,13 @@ namespace VULKAN_HPP_NAMESPACE
   //=== VK_NV_descriptor_pool_overallocation ===
   struct PhysicalDeviceDescriptorPoolOverallocationFeaturesNV;
 
+  //=== VK_QCOM_tile_memory_heap ===
+  struct PhysicalDeviceTileMemoryHeapFeaturesQCOM;
+  struct PhysicalDeviceTileMemoryHeapPropertiesQCOM;
+  struct TileMemoryRequirementsQCOM;
+  struct TileMemoryBindInfoQCOM;
+  struct TileMemorySizeInfoQCOM;
+
   //=== VK_NV_display_stereo ===
   struct DisplaySurfaceStereoCreateInfoNV;
   struct DisplayModeStereoPropertiesNV;
@@ -1916,6 +1929,12 @@ namespace VULKAN_HPP_NAMESPACE
 
   //=== VK_NV_raw_access_chains ===
   struct PhysicalDeviceRawAccessChainsFeaturesNV;
+
+  //=== VK_NV_external_compute_queue ===
+  struct ExternalComputeQueueDeviceCreateInfoNV;
+  struct ExternalComputeQueueCreateInfoNV;
+  struct ExternalComputeQueueDataParamsNV;
+  struct PhysicalDeviceExternalComputeQueuePropertiesNV;
 
   //=== VK_KHR_shader_relaxed_extended_instruction ===
   struct PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR;
@@ -2046,6 +2065,15 @@ namespace VULKAN_HPP_NAMESPACE
   struct PhysicalDevicePresentMeteringFeaturesNV;
 #endif /*VK_ENABLE_BETA_EXTENSIONS*/
 
+  //=== VK_EXT_fragment_density_map_offset ===
+  struct RenderingEndInfoEXT;
+  struct PhysicalDeviceFragmentDensityMapOffsetFeaturesEXT;
+  using PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM = PhysicalDeviceFragmentDensityMapOffsetFeaturesEXT;
+  struct PhysicalDeviceFragmentDensityMapOffsetPropertiesEXT;
+  using PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM = PhysicalDeviceFragmentDensityMapOffsetPropertiesEXT;
+  struct RenderPassFragmentDensityMapOffsetEndInfoEXT;
+  using SubpassFragmentDensityMapOffsetEndInfoQCOM = RenderPassFragmentDensityMapOffsetEndInfoEXT;
+
   //===================================
   //=== HANDLE forward declarations ===
   //===================================
@@ -2148,6 +2176,9 @@ namespace VULKAN_HPP_NAMESPACE
 
   //=== VK_KHR_pipeline_binary ===
   class PipelineBinaryKHR;
+
+  //=== VK_NV_external_compute_queue ===
+  class ExternalComputeQueueNV;
 
   //=== VK_EXT_device_generated_commands ===
   class IndirectCommandsLayoutEXT;
@@ -2620,6 +2651,16 @@ namespace VULKAN_HPP_NAMESPACE
   };
 
   using UniquePipelineBinaryKHR = UniqueHandle<PipelineBinaryKHR, VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>;
+
+  //=== VK_NV_external_compute_queue ===
+  template <typename Dispatch>
+  class UniqueHandleTraits<ExternalComputeQueueNV, Dispatch>
+  {
+  public:
+    using deleter = detail::ObjectDestroy<Device, Dispatch>;
+  };
+
+  using UniqueExternalComputeQueueNV = UniqueHandle<ExternalComputeQueueNV, VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>;
 
   //=== VK_EXT_device_generated_commands ===
   template <typename Dispatch>
@@ -6858,6 +6899,38 @@ namespace VULKAN_HPP_NAMESPACE
 #  endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
 #endif   /*VK_ENABLE_BETA_EXTENSIONS*/
 
+    //=== VK_QCOM_tile_shading ===
+
+    // wrapper function for command vkCmdDispatchTileQCOM, see https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdDispatchTileQCOM.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void dispatchTileQCOM( Dispatch const & d VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+
+    // wrapper function for command vkCmdBeginPerTileExecutionQCOM, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBeginPerTileExecutionQCOM.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void beginPerTileExecutionQCOM( const VULKAN_HPP_NAMESPACE::PerTileBeginInfoQCOM * pPerTileBeginInfo,
+                                    Dispatch const & d                                 VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#ifndef VULKAN_HPP_DISABLE_ENHANCED_MODE
+    // wrapper function for command vkCmdBeginPerTileExecutionQCOM, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBeginPerTileExecutionQCOM.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void beginPerTileExecutionQCOM( const VULKAN_HPP_NAMESPACE::PerTileBeginInfoQCOM & perTileBeginInfo,
+                                    Dispatch const & d                                 VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
+
+    // wrapper function for command vkCmdEndPerTileExecutionQCOM, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdEndPerTileExecutionQCOM.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void endPerTileExecutionQCOM( const VULKAN_HPP_NAMESPACE::PerTileEndInfoQCOM * pPerTileEndInfo,
+                                  Dispatch const & d                               VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#ifndef VULKAN_HPP_DISABLE_ENHANCED_MODE
+    // wrapper function for command vkCmdEndPerTileExecutionQCOM, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdEndPerTileExecutionQCOM.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void endPerTileExecutionQCOM( const VULKAN_HPP_NAMESPACE::PerTileEndInfoQCOM & perTileEndInfo,
+                                  Dispatch const & d                               VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
+
     //=== VK_KHR_synchronization2 ===
 
     // wrapper function for command vkCmdSetEvent2KHR, see https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdSetEvent2KHR.html
@@ -7735,6 +7808,19 @@ namespace VULKAN_HPP_NAMESPACE
       Dispatch const & d                                                        VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
 #endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
 
+    //=== VK_QCOM_tile_memory_heap ===
+
+    // wrapper function for command vkCmdBindTileMemoryQCOM, see https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindTileMemoryQCOM.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void bindTileMemoryQCOM( const VULKAN_HPP_NAMESPACE::TileMemoryBindInfoQCOM * pTileMemoryBindInfo,
+                             Dispatch const & d                                   VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#ifndef VULKAN_HPP_DISABLE_ENHANCED_MODE
+    // wrapper function for command vkCmdBindTileMemoryQCOM, see https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdBindTileMemoryQCOM.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void bindTileMemoryQCOM( Optional<const VULKAN_HPP_NAMESPACE::TileMemoryBindInfoQCOM> tileMemoryBindInfo VULKAN_HPP_DEFAULT_ARGUMENT_NULLPTR_ASSIGNMENT,
+                             Dispatch const & d VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
+
     //=== VK_NV_cluster_acceleration_structure ===
 
     // wrapper function for command vkCmdBuildClusterAccelerationStructureIndirectNV, see
@@ -7795,6 +7881,19 @@ namespace VULKAN_HPP_NAMESPACE
     void executeGeneratedCommandsEXT( VULKAN_HPP_NAMESPACE::Bool32                           isPreprocessed,
                                       const VULKAN_HPP_NAMESPACE::GeneratedCommandsInfoEXT & generatedCommandsInfo,
                                       Dispatch const & d VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
+
+    //=== VK_EXT_fragment_density_map_offset ===
+
+    // wrapper function for command vkCmdEndRendering2EXT, see https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdEndRendering2EXT.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void endRendering2EXT( const VULKAN_HPP_NAMESPACE::RenderingEndInfoEXT * pRenderingEndInfo,
+                           Dispatch const & d                                VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#ifndef VULKAN_HPP_DISABLE_ENHANCED_MODE
+    // wrapper function for command vkCmdEndRendering2EXT, see https://registry.khronos.org/vulkan/specs/latest/man/html/vkCmdEndRendering2EXT.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void endRendering2EXT( Optional<const VULKAN_HPP_NAMESPACE::RenderingEndInfoEXT> renderingEndInfo VULKAN_HPP_DEFAULT_ARGUMENT_NULLPTR_ASSIGNMENT,
+                           Dispatch const & d VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
 #endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
 
     operator VkCommandBuffer() const VULKAN_HPP_NOEXCEPT
@@ -9059,6 +9158,110 @@ namespace VULKAN_HPP_NAMESPACE
 
   template <>
   struct isVulkanHandleType<VULKAN_HPP_NAMESPACE::DescriptorSetLayout>
+  {
+    static VULKAN_HPP_CONST_OR_CONSTEXPR bool value = true;
+  };
+
+  // wrapper class for handle VkExternalComputeQueueNV, see https://registry.khronos.org/vulkan/specs/latest/man/html/VkExternalComputeQueueNV.html
+  class ExternalComputeQueueNV
+  {
+  public:
+    using CType      = VkExternalComputeQueueNV;
+    using NativeType = VkExternalComputeQueueNV;
+
+    static VULKAN_HPP_CONST_OR_CONSTEXPR VULKAN_HPP_NAMESPACE::ObjectType objectType = VULKAN_HPP_NAMESPACE::ObjectType::eExternalComputeQueueNV;
+    static VULKAN_HPP_CONST_OR_CONSTEXPR VULKAN_HPP_NAMESPACE::DebugReportObjectTypeEXT debugReportObjectType =
+      VULKAN_HPP_NAMESPACE::DebugReportObjectTypeEXT::eUnknown;
+
+  public:
+    ExternalComputeQueueNV() VULKAN_HPP_NOEXCEPT {}  // = default; - try to workaround a compiler issue
+
+    ExternalComputeQueueNV( ExternalComputeQueueNV const & rhs )             = default;
+    ExternalComputeQueueNV & operator=( ExternalComputeQueueNV const & rhs ) = default;
+
+#if !defined( VULKAN_HPP_HANDLES_MOVE_EXCHANGE )
+    ExternalComputeQueueNV( ExternalComputeQueueNV && rhs )             = default;
+    ExternalComputeQueueNV & operator=( ExternalComputeQueueNV && rhs ) = default;
+#else
+    ExternalComputeQueueNV( ExternalComputeQueueNV && rhs ) VULKAN_HPP_NOEXCEPT
+      : m_externalComputeQueueNV( VULKAN_HPP_NAMESPACE::exchange( rhs.m_externalComputeQueueNV, {} ) )
+    {
+    }
+
+    ExternalComputeQueueNV & operator=( ExternalComputeQueueNV && rhs ) VULKAN_HPP_NOEXCEPT
+    {
+      m_externalComputeQueueNV = VULKAN_HPP_NAMESPACE::exchange( rhs.m_externalComputeQueueNV, {} );
+      return *this;
+    }
+#endif
+
+    VULKAN_HPP_CONSTEXPR ExternalComputeQueueNV( std::nullptr_t ) VULKAN_HPP_NOEXCEPT {}
+
+    ExternalComputeQueueNV( VkExternalComputeQueueNV externalComputeQueueNV ) VULKAN_HPP_NOEXCEPT : m_externalComputeQueueNV( externalComputeQueueNV ) {}
+
+    ExternalComputeQueueNV & operator=( VkExternalComputeQueueNV externalComputeQueueNV ) VULKAN_HPP_NOEXCEPT
+    {
+      m_externalComputeQueueNV = externalComputeQueueNV;
+      return *this;
+    }
+
+    ExternalComputeQueueNV & operator=( std::nullptr_t ) VULKAN_HPP_NOEXCEPT
+    {
+      m_externalComputeQueueNV = {};
+      return *this;
+    }
+
+    //=== VK_NV_external_compute_queue ===
+
+    // wrapper function for command vkGetExternalComputeQueueDataNV, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetExternalComputeQueueDataNV.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void getData( VULKAN_HPP_NAMESPACE::ExternalComputeQueueDataParamsNV * params,
+                  void *                                                   pData,
+                  Dispatch const & d                                       VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#ifndef VULKAN_HPP_DISABLE_ENHANCED_MODE
+    // wrapper function for command vkGetExternalComputeQueueDataNV, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkGetExternalComputeQueueDataNV.html
+    template <typename DataType, typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    VULKAN_HPP_NODISCARD std::pair<VULKAN_HPP_NAMESPACE::ExternalComputeQueueDataParamsNV, DataType>
+                         getData( Dispatch const & d VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
+
+    operator VkExternalComputeQueueNV() const VULKAN_HPP_NOEXCEPT
+    {
+      return m_externalComputeQueueNV;
+    }
+
+    explicit operator bool() const VULKAN_HPP_NOEXCEPT
+    {
+      return m_externalComputeQueueNV != VK_NULL_HANDLE;
+    }
+
+    bool operator!() const VULKAN_HPP_NOEXCEPT
+    {
+      return m_externalComputeQueueNV == VK_NULL_HANDLE;
+    }
+
+  private:
+    VkExternalComputeQueueNV m_externalComputeQueueNV = {};
+  };
+
+  template <>
+  struct CppType<VULKAN_HPP_NAMESPACE::ObjectType, VULKAN_HPP_NAMESPACE::ObjectType::eExternalComputeQueueNV>
+  {
+    using Type = VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV;
+  };
+
+#if ( VK_USE_64_BIT_PTR_DEFINES == 1 )
+  template <>
+  struct CppType<VkExternalComputeQueueNV, VK_NULL_HANDLE>
+  {
+    using Type = VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV;
+  };
+#endif
+
+  template <>
+  struct isVulkanHandleType<VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV>
   {
     static VULKAN_HPP_CONST_OR_CONSTEXPR bool value = true;
   };
@@ -17160,6 +17363,64 @@ namespace VULKAN_HPP_NAMESPACE
                                  Dispatch const & d                                       VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const;
 #endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
 
+    //=== VK_NV_external_compute_queue ===
+
+    // wrapper function for command vkCreateExternalComputeQueueNV, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateExternalComputeQueueNV.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    VULKAN_HPP_NODISCARD Result createExternalComputeQueueNV( const VULKAN_HPP_NAMESPACE::ExternalComputeQueueCreateInfoNV * pCreateInfo,
+                                                              const VULKAN_HPP_NAMESPACE::AllocationCallbacks *              pAllocator,
+                                                              VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV *                 pExternalQueue,
+                                                              Dispatch const & d VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#ifndef VULKAN_HPP_DISABLE_ENHANCED_MODE
+    // wrapper function for command vkCreateExternalComputeQueueNV, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateExternalComputeQueueNV.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    VULKAN_HPP_NODISCARD typename ResultValueType<VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV>::type
+      createExternalComputeQueueNV( const VULKAN_HPP_NAMESPACE::ExternalComputeQueueCreateInfoNV &      createInfo,
+                                    Optional<const VULKAN_HPP_NAMESPACE::AllocationCallbacks> allocator VULKAN_HPP_DEFAULT_ARGUMENT_NULLPTR_ASSIGNMENT,
+                                    Dispatch const & d                                                  VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const;
+#  ifndef VULKAN_HPP_NO_SMART_HANDLE
+    // wrapper function for command vkCreateExternalComputeQueueNV, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkCreateExternalComputeQueueNV.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    VULKAN_HPP_NODISCARD typename ResultValueType<UniqueHandle<VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV, Dispatch>>::type
+      createExternalComputeQueueNVUnique( const VULKAN_HPP_NAMESPACE::ExternalComputeQueueCreateInfoNV &      createInfo,
+                                          Optional<const VULKAN_HPP_NAMESPACE::AllocationCallbacks> allocator VULKAN_HPP_DEFAULT_ARGUMENT_NULLPTR_ASSIGNMENT,
+                                          Dispatch const & d                                                  VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const;
+#  endif /* VULKAN_HPP_NO_SMART_HANDLE */
+#endif   /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
+
+    // wrapper function for command vkDestroyExternalComputeQueueNV, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkDestroyExternalComputeQueueNV.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void destroyExternalComputeQueueNV( VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV      externalQueue,
+                                        const VULKAN_HPP_NAMESPACE::AllocationCallbacks * pAllocator,
+                                        Dispatch const & d                                VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#ifndef VULKAN_HPP_DISABLE_ENHANCED_MODE
+    // wrapper function for command vkDestroyExternalComputeQueueNV, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkDestroyExternalComputeQueueNV.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void destroyExternalComputeQueueNV( VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV                        externalQueue,
+                                        Optional<const VULKAN_HPP_NAMESPACE::AllocationCallbacks> allocator VULKAN_HPP_DEFAULT_ARGUMENT_NULLPTR_ASSIGNMENT,
+                                        Dispatch const & d VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
+
+    // wrapper function for command vkDestroyExternalComputeQueueNV, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkDestroyExternalComputeQueueNV.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void destroy( VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV      externalQueue,
+                  const VULKAN_HPP_NAMESPACE::AllocationCallbacks * pAllocator,
+                  Dispatch const & d                                VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#ifndef VULKAN_HPP_DISABLE_ENHANCED_MODE
+    // wrapper function for command vkDestroyExternalComputeQueueNV, see
+    // https://registry.khronos.org/vulkan/specs/latest/man/html/vkDestroyExternalComputeQueueNV.html
+    template <typename Dispatch = VULKAN_HPP_DEFAULT_DISPATCHER_TYPE>
+    void destroy( VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV                        externalQueue,
+                  Optional<const VULKAN_HPP_NAMESPACE::AllocationCallbacks> allocator VULKAN_HPP_DEFAULT_ARGUMENT_NULLPTR_ASSIGNMENT,
+                  Dispatch const & d                                                  VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT ) const VULKAN_HPP_NOEXCEPT;
+#endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
+
     //=== VK_NV_cluster_acceleration_structure ===
 
     // wrapper function for command vkGetClusterAccelerationStructureBuildSizesNV, see
@@ -20426,7 +20687,7 @@ namespace VULKAN_HPP_NAMESPACE
   VULKAN_HPP_NODISCARD typename ResultValueType<uint32_t>::type enumerateInstanceVersion( Dispatch const & d VULKAN_HPP_DEFAULT_DISPATCHER_ASSIGNMENT );
 #endif /* VULKAN_HPP_DISABLE_ENHANCED_MODE */
 
-  // operators to compare vk::-handles
+  // operators to compare VULKAN_HPP_NAMESPACE::-handles
 #if defined( VULKAN_HPP_HAS_SPACESHIP_OPERATOR )
   template <typename T, typename std::enable_if<VULKAN_HPP_NAMESPACE::isVulkanHandleType<T>::value, int>::type = 0>
   auto operator<=>( T const & lhs, T const & rhs )

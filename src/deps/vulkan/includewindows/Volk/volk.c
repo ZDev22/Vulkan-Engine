@@ -21,6 +21,8 @@
 #	include <stdlib.h>
 #endif
 
+#include <string.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -188,6 +190,7 @@ VkDevice volkGetLoadedDevice(void)
 
 void volkLoadDeviceTable(struct VolkDeviceTable* table, VkDevice device)
 {
+	memset(table, 0, sizeof(*table));
 	volkGenLoadDeviceTable(table, device, vkGetDeviceProcAddrStub);
 }
 
@@ -750,6 +753,9 @@ static void volkGenLoadDevice(void* context, PFN_vkVoidFunction (*load)(void*, c
 	vkGetMemoryMetalHandleEXT = (PFN_vkGetMemoryMetalHandleEXT)load(context, "vkGetMemoryMetalHandleEXT");
 	vkGetMemoryMetalHandlePropertiesEXT = (PFN_vkGetMemoryMetalHandlePropertiesEXT)load(context, "vkGetMemoryMetalHandlePropertiesEXT");
 #endif /* defined(VK_EXT_external_memory_metal) */
+#if defined(VK_EXT_fragment_density_map_offset)
+	vkCmdEndRendering2EXT = (PFN_vkCmdEndRendering2EXT)load(context, "vkCmdEndRendering2EXT");
+#endif /* defined(VK_EXT_fragment_density_map_offset) */
 #if defined(VK_EXT_full_screen_exclusive)
 	vkAcquireFullScreenExclusiveModeEXT = (PFN_vkAcquireFullScreenExclusiveModeEXT)load(context, "vkAcquireFullScreenExclusiveModeEXT");
 	vkReleaseFullScreenExclusiveModeEXT = (PFN_vkReleaseFullScreenExclusiveModeEXT)load(context, "vkReleaseFullScreenExclusiveModeEXT");
@@ -1173,6 +1179,11 @@ static void volkGenLoadDevice(void* context, PFN_vkVoidFunction (*load)(void*, c
 	vkGetPipelineIndirectDeviceAddressNV = (PFN_vkGetPipelineIndirectDeviceAddressNV)load(context, "vkGetPipelineIndirectDeviceAddressNV");
 	vkGetPipelineIndirectMemoryRequirementsNV = (PFN_vkGetPipelineIndirectMemoryRequirementsNV)load(context, "vkGetPipelineIndirectMemoryRequirementsNV");
 #endif /* defined(VK_NV_device_generated_commands_compute) */
+#if defined(VK_NV_external_compute_queue)
+	vkCreateExternalComputeQueueNV = (PFN_vkCreateExternalComputeQueueNV)load(context, "vkCreateExternalComputeQueueNV");
+	vkDestroyExternalComputeQueueNV = (PFN_vkDestroyExternalComputeQueueNV)load(context, "vkDestroyExternalComputeQueueNV");
+	vkGetExternalComputeQueueDataNV = (PFN_vkGetExternalComputeQueueDataNV)load(context, "vkGetExternalComputeQueueDataNV");
+#endif /* defined(VK_NV_external_compute_queue) */
 #if defined(VK_NV_external_memory_rdma)
 	vkGetMemoryRemoteAddressNV = (PFN_vkGetMemoryRemoteAddressNV)load(context, "vkGetMemoryRemoteAddressNV");
 #endif /* defined(VK_NV_external_memory_rdma) */
@@ -1235,10 +1246,18 @@ static void volkGenLoadDevice(void* context, PFN_vkVoidFunction (*load)(void*, c
 	vkCmdSetCoarseSampleOrderNV = (PFN_vkCmdSetCoarseSampleOrderNV)load(context, "vkCmdSetCoarseSampleOrderNV");
 	vkCmdSetViewportShadingRatePaletteNV = (PFN_vkCmdSetViewportShadingRatePaletteNV)load(context, "vkCmdSetViewportShadingRatePaletteNV");
 #endif /* defined(VK_NV_shading_rate_image) */
+#if defined(VK_QCOM_tile_memory_heap)
+	vkCmdBindTileMemoryQCOM = (PFN_vkCmdBindTileMemoryQCOM)load(context, "vkCmdBindTileMemoryQCOM");
+#endif /* defined(VK_QCOM_tile_memory_heap) */
 #if defined(VK_QCOM_tile_properties)
 	vkGetDynamicRenderingTilePropertiesQCOM = (PFN_vkGetDynamicRenderingTilePropertiesQCOM)load(context, "vkGetDynamicRenderingTilePropertiesQCOM");
 	vkGetFramebufferTilePropertiesQCOM = (PFN_vkGetFramebufferTilePropertiesQCOM)load(context, "vkGetFramebufferTilePropertiesQCOM");
 #endif /* defined(VK_QCOM_tile_properties) */
+#if defined(VK_QCOM_tile_shading)
+	vkCmdBeginPerTileExecutionQCOM = (PFN_vkCmdBeginPerTileExecutionQCOM)load(context, "vkCmdBeginPerTileExecutionQCOM");
+	vkCmdDispatchTileQCOM = (PFN_vkCmdDispatchTileQCOM)load(context, "vkCmdDispatchTileQCOM");
+	vkCmdEndPerTileExecutionQCOM = (PFN_vkCmdEndPerTileExecutionQCOM)load(context, "vkCmdEndPerTileExecutionQCOM");
+#endif /* defined(VK_QCOM_tile_shading) */
 #if defined(VK_QNX_external_memory_screen_buffer)
 	vkGetScreenBufferPropertiesQNX = (PFN_vkGetScreenBufferPropertiesQNX)load(context, "vkGetScreenBufferPropertiesQNX");
 #endif /* defined(VK_QNX_external_memory_screen_buffer) */
@@ -1678,6 +1697,9 @@ static void volkGenLoadDeviceTable(struct VolkDeviceTable* table, void* context,
 	table->vkGetMemoryMetalHandleEXT = (PFN_vkGetMemoryMetalHandleEXT)load(context, "vkGetMemoryMetalHandleEXT");
 	table->vkGetMemoryMetalHandlePropertiesEXT = (PFN_vkGetMemoryMetalHandlePropertiesEXT)load(context, "vkGetMemoryMetalHandlePropertiesEXT");
 #endif /* defined(VK_EXT_external_memory_metal) */
+#if defined(VK_EXT_fragment_density_map_offset)
+	table->vkCmdEndRendering2EXT = (PFN_vkCmdEndRendering2EXT)load(context, "vkCmdEndRendering2EXT");
+#endif /* defined(VK_EXT_fragment_density_map_offset) */
 #if defined(VK_EXT_full_screen_exclusive)
 	table->vkAcquireFullScreenExclusiveModeEXT = (PFN_vkAcquireFullScreenExclusiveModeEXT)load(context, "vkAcquireFullScreenExclusiveModeEXT");
 	table->vkReleaseFullScreenExclusiveModeEXT = (PFN_vkReleaseFullScreenExclusiveModeEXT)load(context, "vkReleaseFullScreenExclusiveModeEXT");
@@ -2101,6 +2123,11 @@ static void volkGenLoadDeviceTable(struct VolkDeviceTable* table, void* context,
 	table->vkGetPipelineIndirectDeviceAddressNV = (PFN_vkGetPipelineIndirectDeviceAddressNV)load(context, "vkGetPipelineIndirectDeviceAddressNV");
 	table->vkGetPipelineIndirectMemoryRequirementsNV = (PFN_vkGetPipelineIndirectMemoryRequirementsNV)load(context, "vkGetPipelineIndirectMemoryRequirementsNV");
 #endif /* defined(VK_NV_device_generated_commands_compute) */
+#if defined(VK_NV_external_compute_queue)
+	table->vkCreateExternalComputeQueueNV = (PFN_vkCreateExternalComputeQueueNV)load(context, "vkCreateExternalComputeQueueNV");
+	table->vkDestroyExternalComputeQueueNV = (PFN_vkDestroyExternalComputeQueueNV)load(context, "vkDestroyExternalComputeQueueNV");
+	table->vkGetExternalComputeQueueDataNV = (PFN_vkGetExternalComputeQueueDataNV)load(context, "vkGetExternalComputeQueueDataNV");
+#endif /* defined(VK_NV_external_compute_queue) */
 #if defined(VK_NV_external_memory_rdma)
 	table->vkGetMemoryRemoteAddressNV = (PFN_vkGetMemoryRemoteAddressNV)load(context, "vkGetMemoryRemoteAddressNV");
 #endif /* defined(VK_NV_external_memory_rdma) */
@@ -2163,10 +2190,18 @@ static void volkGenLoadDeviceTable(struct VolkDeviceTable* table, void* context,
 	table->vkCmdSetCoarseSampleOrderNV = (PFN_vkCmdSetCoarseSampleOrderNV)load(context, "vkCmdSetCoarseSampleOrderNV");
 	table->vkCmdSetViewportShadingRatePaletteNV = (PFN_vkCmdSetViewportShadingRatePaletteNV)load(context, "vkCmdSetViewportShadingRatePaletteNV");
 #endif /* defined(VK_NV_shading_rate_image) */
+#if defined(VK_QCOM_tile_memory_heap)
+	table->vkCmdBindTileMemoryQCOM = (PFN_vkCmdBindTileMemoryQCOM)load(context, "vkCmdBindTileMemoryQCOM");
+#endif /* defined(VK_QCOM_tile_memory_heap) */
 #if defined(VK_QCOM_tile_properties)
 	table->vkGetDynamicRenderingTilePropertiesQCOM = (PFN_vkGetDynamicRenderingTilePropertiesQCOM)load(context, "vkGetDynamicRenderingTilePropertiesQCOM");
 	table->vkGetFramebufferTilePropertiesQCOM = (PFN_vkGetFramebufferTilePropertiesQCOM)load(context, "vkGetFramebufferTilePropertiesQCOM");
 #endif /* defined(VK_QCOM_tile_properties) */
+#if defined(VK_QCOM_tile_shading)
+	table->vkCmdBeginPerTileExecutionQCOM = (PFN_vkCmdBeginPerTileExecutionQCOM)load(context, "vkCmdBeginPerTileExecutionQCOM");
+	table->vkCmdDispatchTileQCOM = (PFN_vkCmdDispatchTileQCOM)load(context, "vkCmdDispatchTileQCOM");
+	table->vkCmdEndPerTileExecutionQCOM = (PFN_vkCmdEndPerTileExecutionQCOM)load(context, "vkCmdEndPerTileExecutionQCOM");
+#endif /* defined(VK_QCOM_tile_shading) */
 #if defined(VK_QNX_external_memory_screen_buffer)
 	table->vkGetScreenBufferPropertiesQNX = (PFN_vkGetScreenBufferPropertiesQNX)load(context, "vkGetScreenBufferPropertiesQNX");
 #endif /* defined(VK_QNX_external_memory_screen_buffer) */
@@ -2679,6 +2714,9 @@ PFN_vkGetMemoryHostPointerPropertiesEXT vkGetMemoryHostPointerPropertiesEXT;
 PFN_vkGetMemoryMetalHandleEXT vkGetMemoryMetalHandleEXT;
 PFN_vkGetMemoryMetalHandlePropertiesEXT vkGetMemoryMetalHandlePropertiesEXT;
 #endif /* defined(VK_EXT_external_memory_metal) */
+#if defined(VK_EXT_fragment_density_map_offset)
+PFN_vkCmdEndRendering2EXT vkCmdEndRendering2EXT;
+#endif /* defined(VK_EXT_fragment_density_map_offset) */
 #if defined(VK_EXT_full_screen_exclusive)
 PFN_vkAcquireFullScreenExclusiveModeEXT vkAcquireFullScreenExclusiveModeEXT;
 PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT vkGetPhysicalDeviceSurfacePresentModes2EXT;
@@ -3218,6 +3256,11 @@ PFN_vkCmdUpdatePipelineIndirectBufferNV vkCmdUpdatePipelineIndirectBufferNV;
 PFN_vkGetPipelineIndirectDeviceAddressNV vkGetPipelineIndirectDeviceAddressNV;
 PFN_vkGetPipelineIndirectMemoryRequirementsNV vkGetPipelineIndirectMemoryRequirementsNV;
 #endif /* defined(VK_NV_device_generated_commands_compute) */
+#if defined(VK_NV_external_compute_queue)
+PFN_vkCreateExternalComputeQueueNV vkCreateExternalComputeQueueNV;
+PFN_vkDestroyExternalComputeQueueNV vkDestroyExternalComputeQueueNV;
+PFN_vkGetExternalComputeQueueDataNV vkGetExternalComputeQueueDataNV;
+#endif /* defined(VK_NV_external_compute_queue) */
 #if defined(VK_NV_external_memory_capabilities)
 PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV vkGetPhysicalDeviceExternalImageFormatPropertiesNV;
 #endif /* defined(VK_NV_external_memory_capabilities) */
@@ -3284,10 +3327,18 @@ PFN_vkCmdBindShadingRateImageNV vkCmdBindShadingRateImageNV;
 PFN_vkCmdSetCoarseSampleOrderNV vkCmdSetCoarseSampleOrderNV;
 PFN_vkCmdSetViewportShadingRatePaletteNV vkCmdSetViewportShadingRatePaletteNV;
 #endif /* defined(VK_NV_shading_rate_image) */
+#if defined(VK_QCOM_tile_memory_heap)
+PFN_vkCmdBindTileMemoryQCOM vkCmdBindTileMemoryQCOM;
+#endif /* defined(VK_QCOM_tile_memory_heap) */
 #if defined(VK_QCOM_tile_properties)
 PFN_vkGetDynamicRenderingTilePropertiesQCOM vkGetDynamicRenderingTilePropertiesQCOM;
 PFN_vkGetFramebufferTilePropertiesQCOM vkGetFramebufferTilePropertiesQCOM;
 #endif /* defined(VK_QCOM_tile_properties) */
+#if defined(VK_QCOM_tile_shading)
+PFN_vkCmdBeginPerTileExecutionQCOM vkCmdBeginPerTileExecutionQCOM;
+PFN_vkCmdDispatchTileQCOM vkCmdDispatchTileQCOM;
+PFN_vkCmdEndPerTileExecutionQCOM vkCmdEndPerTileExecutionQCOM;
+#endif /* defined(VK_QCOM_tile_shading) */
 #if defined(VK_QNX_external_memory_screen_buffer)
 PFN_vkGetScreenBufferPropertiesQNX vkGetScreenBufferPropertiesQNX;
 #endif /* defined(VK_QNX_external_memory_screen_buffer) */

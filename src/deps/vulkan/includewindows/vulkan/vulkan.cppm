@@ -753,6 +753,10 @@ export namespace VULKAN_HPP_NAMESPACE
   using VULKAN_HPP_NAMESPACE::DeviceDiagnosticsConfigFlagBitsNV;
   using VULKAN_HPP_NAMESPACE::DeviceDiagnosticsConfigFlagsNV;
 
+  //=== VK_QCOM_tile_shading ===
+  using VULKAN_HPP_NAMESPACE::TileShadingRenderPassFlagBitsQCOM;
+  using VULKAN_HPP_NAMESPACE::TileShadingRenderPassFlagsQCOM;
+
 #if defined( VK_USE_PLATFORM_METAL_EXT )
   //=== VK_EXT_metal_objects ===
   using VULKAN_HPP_NAMESPACE::ExportMetalObjectTypeFlagBitsEXT;
@@ -1555,6 +1559,10 @@ export namespace VULKAN_HPP_NAMESPACE
   using VULKAN_HPP_NAMESPACE::EXTShaderStencilExportExtensionName;
   using VULKAN_HPP_NAMESPACE::EXTShaderStencilExportSpecVersion;
 
+  //=== VK_KHR_shader_bfloat16 ===
+  using VULKAN_HPP_NAMESPACE::KHRShaderBfloat16ExtensionName;
+  using VULKAN_HPP_NAMESPACE::KHRShaderBfloat16SpecVersion;
+
   //=== VK_EXT_sample_locations ===
   using VULKAN_HPP_NAMESPACE::EXTSampleLocationsExtensionName;
   using VULKAN_HPP_NAMESPACE::EXTSampleLocationsSpecVersion;
@@ -2087,6 +2095,10 @@ export namespace VULKAN_HPP_NAMESPACE
   using VULKAN_HPP_NAMESPACE::NVCudaKernelLaunchExtensionName;
   using VULKAN_HPP_NAMESPACE::NVCudaKernelLaunchSpecVersion;
 #endif /*VK_ENABLE_BETA_EXTENSIONS*/
+
+  //=== VK_QCOM_tile_shading ===
+  using VULKAN_HPP_NAMESPACE::QCOMTileShadingExtensionName;
+  using VULKAN_HPP_NAMESPACE::QCOMTileShadingSpecVersion;
 
   //=== VK_NV_low_latency ===
   using VULKAN_HPP_NAMESPACE::NVLowLatencyExtensionName;
@@ -2637,6 +2649,10 @@ export namespace VULKAN_HPP_NAMESPACE
   using VULKAN_HPP_NAMESPACE::NVDescriptorPoolOverallocationExtensionName;
   using VULKAN_HPP_NAMESPACE::NVDescriptorPoolOverallocationSpecVersion;
 
+  //=== VK_QCOM_tile_memory_heap ===
+  using VULKAN_HPP_NAMESPACE::QCOMTileMemoryHeapExtensionName;
+  using VULKAN_HPP_NAMESPACE::QCOMTileMemoryHeapSpecVersion;
+
   //=== VK_NV_display_stereo ===
   using VULKAN_HPP_NAMESPACE::NVDisplayStereoExtensionName;
   using VULKAN_HPP_NAMESPACE::NVDisplayStereoSpecVersion;
@@ -2648,6 +2664,10 @@ export namespace VULKAN_HPP_NAMESPACE
   //=== VK_NV_raw_access_chains ===
   using VULKAN_HPP_NAMESPACE::NVRawAccessChainsExtensionName;
   using VULKAN_HPP_NAMESPACE::NVRawAccessChainsSpecVersion;
+
+  //=== VK_NV_external_compute_queue ===
+  using VULKAN_HPP_NAMESPACE::NVExternalComputeQueueExtensionName;
+  using VULKAN_HPP_NAMESPACE::NVExternalComputeQueueSpecVersion;
 
   //=== VK_KHR_shader_relaxed_extended_instruction ===
   using VULKAN_HPP_NAMESPACE::KHRShaderRelaxedExtendedInstructionExtensionName;
@@ -2733,6 +2753,10 @@ export namespace VULKAN_HPP_NAMESPACE
   using VULKAN_HPP_NAMESPACE::NVPresentMeteringExtensionName;
   using VULKAN_HPP_NAMESPACE::NVPresentMeteringSpecVersion;
 #endif /*VK_ENABLE_BETA_EXTENSIONS*/
+
+  //=== VK_EXT_fragment_density_map_offset ===
+  using VULKAN_HPP_NAMESPACE::EXTFragmentDensityMapOffsetExtensionName;
+  using VULKAN_HPP_NAMESPACE::EXTFragmentDensityMapOffsetSpecVersion;
 
   //========================
   //=== CONSTEXPR VALUEs ===
@@ -3723,6 +3747,9 @@ export namespace VULKAN_HPP_NAMESPACE
   using VULKAN_HPP_NAMESPACE::AttachmentSampleCountInfoAMD;
   using VULKAN_HPP_NAMESPACE::AttachmentSampleCountInfoNV;
 
+  //=== VK_KHR_shader_bfloat16 ===
+  using VULKAN_HPP_NAMESPACE::PhysicalDeviceShaderBfloat16FeaturesKHR;
+
   //=== VK_EXT_sample_locations ===
   using VULKAN_HPP_NAMESPACE::AttachmentSampleLocationsEXT;
   using VULKAN_HPP_NAMESPACE::MultisamplePropertiesEXT;
@@ -4121,6 +4148,14 @@ export namespace VULKAN_HPP_NAMESPACE
   using VULKAN_HPP_NAMESPACE::PhysicalDeviceCudaKernelLaunchPropertiesNV;
 #endif /*VK_ENABLE_BETA_EXTENSIONS*/
 
+  //=== VK_QCOM_tile_shading ===
+  using VULKAN_HPP_NAMESPACE::DispatchTileInfoQCOM;
+  using VULKAN_HPP_NAMESPACE::PerTileBeginInfoQCOM;
+  using VULKAN_HPP_NAMESPACE::PerTileEndInfoQCOM;
+  using VULKAN_HPP_NAMESPACE::PhysicalDeviceTileShadingFeaturesQCOM;
+  using VULKAN_HPP_NAMESPACE::PhysicalDeviceTileShadingPropertiesQCOM;
+  using VULKAN_HPP_NAMESPACE::RenderPassTileShadingCreateInfoQCOM;
+
   //=== VK_NV_low_latency ===
   using VULKAN_HPP_NAMESPACE::QueryLowLatencySupportNV;
 
@@ -4402,11 +4437,6 @@ export namespace VULKAN_HPP_NAMESPACE
   using VULKAN_HPP_NAMESPACE::RenderPassStripeInfoARM;
   using VULKAN_HPP_NAMESPACE::RenderPassStripeSubmitInfoARM;
 
-  //=== VK_QCOM_fragment_density_map_offset ===
-  using VULKAN_HPP_NAMESPACE::PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM;
-  using VULKAN_HPP_NAMESPACE::PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM;
-  using VULKAN_HPP_NAMESPACE::SubpassFragmentDensityMapOffsetEndInfoQCOM;
-
   //=== VK_NV_copy_memory_indirect ===
   using VULKAN_HPP_NAMESPACE::CopyMemoryIndirectCommandNV;
   using VULKAN_HPP_NAMESPACE::CopyMemoryToImageIndirectCommandNV;
@@ -4672,6 +4702,13 @@ export namespace VULKAN_HPP_NAMESPACE
   //=== VK_NV_descriptor_pool_overallocation ===
   using VULKAN_HPP_NAMESPACE::PhysicalDeviceDescriptorPoolOverallocationFeaturesNV;
 
+  //=== VK_QCOM_tile_memory_heap ===
+  using VULKAN_HPP_NAMESPACE::PhysicalDeviceTileMemoryHeapFeaturesQCOM;
+  using VULKAN_HPP_NAMESPACE::PhysicalDeviceTileMemoryHeapPropertiesQCOM;
+  using VULKAN_HPP_NAMESPACE::TileMemoryBindInfoQCOM;
+  using VULKAN_HPP_NAMESPACE::TileMemoryRequirementsQCOM;
+  using VULKAN_HPP_NAMESPACE::TileMemorySizeInfoQCOM;
+
   //=== VK_NV_display_stereo ===
   using VULKAN_HPP_NAMESPACE::DisplayModeStereoPropertiesNV;
   using VULKAN_HPP_NAMESPACE::DisplaySurfaceStereoCreateInfoNV;
@@ -4690,6 +4727,12 @@ export namespace VULKAN_HPP_NAMESPACE
 
   //=== VK_NV_raw_access_chains ===
   using VULKAN_HPP_NAMESPACE::PhysicalDeviceRawAccessChainsFeaturesNV;
+
+  //=== VK_NV_external_compute_queue ===
+  using VULKAN_HPP_NAMESPACE::ExternalComputeQueueCreateInfoNV;
+  using VULKAN_HPP_NAMESPACE::ExternalComputeQueueDataParamsNV;
+  using VULKAN_HPP_NAMESPACE::ExternalComputeQueueDeviceCreateInfoNV;
+  using VULKAN_HPP_NAMESPACE::PhysicalDeviceExternalComputeQueuePropertiesNV;
 
   //=== VK_KHR_shader_relaxed_extended_instruction ===
   using VULKAN_HPP_NAMESPACE::PhysicalDeviceShaderRelaxedExtendedInstructionFeaturesKHR;
@@ -4820,6 +4863,15 @@ export namespace VULKAN_HPP_NAMESPACE
   using VULKAN_HPP_NAMESPACE::SetPresentConfigNV;
 #endif /*VK_ENABLE_BETA_EXTENSIONS*/
 
+  //=== VK_EXT_fragment_density_map_offset ===
+  using VULKAN_HPP_NAMESPACE::PhysicalDeviceFragmentDensityMapOffsetFeaturesEXT;
+  using VULKAN_HPP_NAMESPACE::PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM;
+  using VULKAN_HPP_NAMESPACE::PhysicalDeviceFragmentDensityMapOffsetPropertiesEXT;
+  using VULKAN_HPP_NAMESPACE::PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM;
+  using VULKAN_HPP_NAMESPACE::RenderingEndInfoEXT;
+  using VULKAN_HPP_NAMESPACE::RenderPassFragmentDensityMapOffsetEndInfoEXT;
+  using VULKAN_HPP_NAMESPACE::SubpassFragmentDensityMapOffsetEndInfoQCOM;
+
   //===============
   //=== HANDLEs ===
   //===============
@@ -4924,6 +4976,9 @@ export namespace VULKAN_HPP_NAMESPACE
 
   //=== VK_KHR_pipeline_binary ===
   using VULKAN_HPP_NAMESPACE::PipelineBinaryKHR;
+
+  //=== VK_NV_external_compute_queue ===
+  using VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV;
 
   //=== VK_EXT_device_generated_commands ===
   using VULKAN_HPP_NAMESPACE::IndirectCommandsLayoutEXT;
@@ -5030,6 +5085,9 @@ export namespace VULKAN_HPP_NAMESPACE
 
   //=== VK_KHR_pipeline_binary ===
   using VULKAN_HPP_NAMESPACE::UniquePipelineBinaryKHR;
+
+  //=== VK_NV_external_compute_queue ===
+  using VULKAN_HPP_NAMESPACE::UniqueExternalComputeQueueNV;
 
   //=== VK_EXT_device_generated_commands ===
   using VULKAN_HPP_NAMESPACE::UniqueHandleTraits;
@@ -5141,6 +5199,9 @@ export namespace VULKAN_HPP_NAMESPACE
 
   //=== VK_KHR_pipeline_binary ===
   using VULKAN_HPP_NAMESPACE::SharedPipelineBinaryKHR;
+
+  //=== VK_NV_external_compute_queue ===
+  using VULKAN_HPP_NAMESPACE::SharedExternalComputeQueueNV;
 
   //=== VK_EXT_device_generated_commands ===
   using VULKAN_HPP_NAMESPACE::SharedHandleTraits;
@@ -5337,6 +5398,9 @@ export namespace VULKAN_HPP_NAMESPACE
     using VULKAN_HPP_RAII_NAMESPACE::PipelineBinaryKHR;
     using VULKAN_HPP_RAII_NAMESPACE::PipelineBinaryKHRs;
 
+    //=== VK_NV_external_compute_queue ===
+    using VULKAN_HPP_RAII_NAMESPACE::ExternalComputeQueueNV;
+
     //=== VK_EXT_device_generated_commands ===
     using VULKAN_HPP_RAII_NAMESPACE::IndirectCommandsLayoutEXT;
     using VULKAN_HPP_RAII_NAMESPACE::IndirectExecutionSetEXT;
@@ -5508,6 +5572,10 @@ export namespace std
   //=== VK_KHR_pipeline_binary ===
   template <>
   struct hash<VULKAN_HPP_NAMESPACE::PipelineBinaryKHR>;
+
+  //=== VK_NV_external_compute_queue ===
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::ExternalComputeQueueNV>;
 
   //=== VK_EXT_device_generated_commands ===
   template <>
@@ -6771,6 +6839,10 @@ export namespace std
   template <>
   struct hash<VULKAN_HPP_NAMESPACE::AttachmentSampleCountInfoAMD>;
 
+  //=== VK_KHR_shader_bfloat16 ===
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceShaderBfloat16FeaturesKHR>;
+
   //=== VK_EXT_sample_locations ===
   template <>
   struct hash<VULKAN_HPP_NAMESPACE::SampleLocationEXT>;
@@ -7395,6 +7467,20 @@ export namespace std
   struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceCudaKernelLaunchPropertiesNV>;
 #endif /*VK_ENABLE_BETA_EXTENSIONS*/
 
+  //=== VK_QCOM_tile_shading ===
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceTileShadingFeaturesQCOM>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceTileShadingPropertiesQCOM>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::RenderPassTileShadingCreateInfoQCOM>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::PerTileBeginInfoQCOM>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::PerTileEndInfoQCOM>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::DispatchTileInfoQCOM>;
+
   //=== VK_NV_low_latency ===
   template <>
   struct hash<VULKAN_HPP_NAMESPACE::QueryLowLatencySupportNV>;
@@ -7831,14 +7917,6 @@ export namespace std
   template <>
   struct hash<VULKAN_HPP_NAMESPACE::RenderPassStripeSubmitInfoARM>;
 
-  //=== VK_QCOM_fragment_density_map_offset ===
-  template <>
-  struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM>;
-  template <>
-  struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM>;
-  template <>
-  struct hash<VULKAN_HPP_NAMESPACE::SubpassFragmentDensityMapOffsetEndInfoQCOM>;
-
   //=== VK_NV_copy_memory_indirect ===
   template <>
   struct hash<VULKAN_HPP_NAMESPACE::CopyMemoryIndirectCommandNV>;
@@ -8261,6 +8339,18 @@ export namespace std
   template <>
   struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceDescriptorPoolOverallocationFeaturesNV>;
 
+  //=== VK_QCOM_tile_memory_heap ===
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceTileMemoryHeapFeaturesQCOM>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceTileMemoryHeapPropertiesQCOM>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::TileMemoryRequirementsQCOM>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::TileMemoryBindInfoQCOM>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::TileMemorySizeInfoQCOM>;
+
   //=== VK_NV_display_stereo ===
   template <>
   struct hash<VULKAN_HPP_NAMESPACE::DisplaySurfaceStereoCreateInfoNV>;
@@ -8292,6 +8382,16 @@ export namespace std
   //=== VK_NV_raw_access_chains ===
   template <>
   struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceRawAccessChainsFeaturesNV>;
+
+  //=== VK_NV_external_compute_queue ===
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::ExternalComputeQueueDeviceCreateInfoNV>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::ExternalComputeQueueCreateInfoNV>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::ExternalComputeQueueDataParamsNV>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceExternalComputeQueuePropertiesNV>;
 
   //=== VK_KHR_shader_relaxed_extended_instruction ===
   template <>
@@ -8505,9 +8605,19 @@ export namespace std
   struct hash<VULKAN_HPP_NAMESPACE::PhysicalDevicePresentMeteringFeaturesNV>;
 #endif /*VK_ENABLE_BETA_EXTENSIONS*/
 
-  //===============================================
-  //=== Required exports for vk::StructureChain ===
-  //===============================================
+  //=== VK_EXT_fragment_density_map_offset ===
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::RenderingEndInfoEXT>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceFragmentDensityMapOffsetFeaturesEXT>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::PhysicalDeviceFragmentDensityMapOffsetPropertiesEXT>;
+  template <>
+  struct hash<VULKAN_HPP_NAMESPACE::RenderPassFragmentDensityMapOffsetEndInfoEXT>;
+
+  //=================================================================
+  //=== Required exports for VULKAN_HPP_NAMESPACE::StructureChain ===
+  //=================================================================
 
 #if !defined( VULKAN_HPP_DISABLE_ENHANCED_MODE )
   using std::tuple_element;
@@ -8516,5 +8626,5 @@ export namespace std
 }  // namespace std
 
 // This VkFlags type is used as part of a bitfield in some structure.
-// As it that can't be mimiced by vk-data types, we need to export just that!!
-export VkGeometryInstanceFlagsKHR;
+// As it can't be mimicked by vk-data types, we need to export just that!!
+export using ::VkGeometryInstanceFlagsKHR;

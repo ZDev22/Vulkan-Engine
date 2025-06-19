@@ -336,9 +336,6 @@ GLFW_SOURCE_DIR:STATIC=C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/d
 //Force use of high-performance GPU on hybrid systems
 GLFW_USE_HYBRID_HPG:BOOL=OFF
 
-//Path to a library.
-VULKAN_DLL:FILEPATH=VULKAN_DLL-NOTFOUND
-
 //Value Computed by CMake
 VulkanProject_BINARY_DIR:STATIC=C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build
 

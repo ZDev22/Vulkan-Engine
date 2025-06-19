@@ -1,6 +1,10 @@
 #ifndef SLANG_H
 #define SLANG_H
 
+#ifdef SLANG_USER_CONFIG
+    #include SLANG_USER_CONFIG
+#endif
+
 /** \file slang.h
 
 The Slang API provides services to compile, reflect, and specialize code
@@ -653,6 +657,7 @@ typedef uint32_t SlangSizeT;
         SLANG_PASS_THROUGH_SPIRV_OPT,     ///< SPIRV-opt
         SLANG_PASS_THROUGH_METAL,         ///< Metal compiler
         SLANG_PASS_THROUGH_TINT,          ///< Tint WGSL compiler
+        SLANG_PASS_THROUGH_SPIRV_LINK,    ///< SPIRV-link
         SLANG_PASS_THROUGH_COUNT_OF,
     };
 
@@ -980,7 +985,9 @@ typedef uint32_t SlangSizeT;
         ArchiveType,
         CompileCoreModule,
         Doc,
-        IrCompression,
+
+        IrCompression, //< deprecated
+
         LoadCoreModule,
         ReferenceModule,
         SaveCoreModule,
@@ -1008,6 +1015,9 @@ typedef uint32_t SlangSizeT;
 
         EmitReflectionJSON, // bool
         SaveGLSLModuleBinSource,
+
+        SkipDownstreamLinking, // bool, experimental
+        DumpModule,
         CountOf,
     };
 
@@ -2914,6 +2924,11 @@ struct VariableLayoutReflection
             (SlangParameterCategory)category);
     }
 
+    SlangImageFormat getImageFormat()
+    {
+        return spReflectionVariableLayout_GetImageFormat((SlangReflectionVariableLayout*)this);
+    }
+
     char const* getSemanticName()
     {
         return spReflectionVariableLayout_GetSemanticName((SlangReflectionVariableLayout*)this);
@@ -3887,6 +3902,10 @@ struct SessionDesc
     /** Number of additional compiler option entries.
      */
     uint32_t compilerOptionEntryCount = 0;
+
+    /** Whether to skip SPIRV validation.
+     */
+    bool skipSPIRVValidation = false;
 };
 
 enum class ContainerType
@@ -4410,6 +4429,11 @@ struct IModule : public IComponentType
     virtual SLANG_NO_THROW char const* SLANG_MCALL getDependencyFilePath(SlangInt32 index) = 0;
 
     virtual SLANG_NO_THROW DeclReflection* SLANG_MCALL getModuleReflection() = 0;
+
+    /** Disassemble a module.
+     */
+    virtual SLANG_NO_THROW SlangResult SLANG_MCALL
+    disassemble(slang::IBlob** outDisassembledBlob) = 0;
 };
 
     #define SLANG_UUID_IModule IModule::getTypeGuid()
