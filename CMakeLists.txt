@@ -7,7 +7,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Define paths to local dependencies in src/deps
 set(GLFW_DIR ${CMAKE_SOURCE_DIR}/src/deps/glfw)
 set(GLM_DIR ${CMAKE_SOURCE_DIR}/src/deps/glm)
-set(VULKAN_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/deps/vulkan/include)
+
+# Select Vulkan include directory based on platform
+if(UNIX AND NOT APPLE)
+    set(VULKAN_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/deps/vulkan/includelinux/include)
+elseif(WIN32)
+    set(VULKAN_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/deps/vulkan/includewindows/include)
+else()
+    message(FATAL_ERROR "Unsupported platform for Vulkan include directory")
+endif()
 
 # Add GLFW as a subdirectory (build from source)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
@@ -20,8 +28,8 @@ add_subdirectory(${GLFW_DIR})
 set(GLM_INCLUDE_DIR ${GLM_DIR})
 
 # Collect source files (only from src/, excluding deps)
-file(GLOB_RECURSE CPP_SOURCES "src/*.cpp")
-file(GLOB_RECURSE C_SOURCES "src/*.c")
+file(GLOB_RECURSIVE CPP_SOURCES "src/*.cpp")
+file(GLOB_RECURSIVE C_SOURCES "src/*.c")
 list(APPEND SOURCES ${CPP_SOURCES} ${C_SOURCES})
 list(FILTER SOURCES EXCLUDE REGEX "CMakeCXXCompilerId\\.cpp")
 list(FILTER SOURCES EXCLUDE REGEX "CMakeCCompilerId\\.c")

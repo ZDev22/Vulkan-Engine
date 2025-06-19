@@ -1,7 +1,7 @@
-prefix=/usr/local
+prefix=C:/Program Files (x86)/VulkanProject
 exec_prefix=${prefix}
-includedir=/usr/local/include
-libdir=/usr/local/lib
+includedir=C:/Program Files (x86)/VulkanProject/include
+libdir=C:/Program Files (x86)/VulkanProject/lib
 
 Name: GLFW
 Description: A multi-platform library for OpenGL, window and input
@@ -9,5 +9,5 @@ Version: 3.5.0
 URL: https://www.glfw.org/
 Requires.private: 
 Libs: -L${libdir} -lglfw3
-Libs.private: -lrt -lm -ldl
+Libs.private: -lgdi32
 Cflags: -I${includedir}
