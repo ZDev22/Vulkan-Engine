@@ -305,11 +305,14 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Doxygen documentation generation tool (https://www.doxygen.nl)
+DOXYGEN_EXECUTABLE:FILEPATH=C:/mingw64/bin/doxygen.exe
+
 //Value Computed by CMake
 GLFW_BINARY_DIR:STATIC=C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw
 
 //Build the GLFW documentation
-GLFW_BUILD_DOCS:BOOL=OFF
+GLFW_BUILD_DOCS:BOOL=ON
 
 //Build the GLFW example programs
 GLFW_BUILD_EXAMPLES:BOOL=OFF
@@ -321,7 +324,7 @@ GLFW_BUILD_TESTS:BOOL=OFF
 GLFW_BUILD_WIN32:BOOL=ON
 
 //Generate installation target
-GLFW_INSTALL:BOOL=OFF
+GLFW_INSTALL:BOOL=ON
 
 //Value Computed by CMake
 GLFW_IS_TOP_LEVEL:STATIC=OFF
@@ -496,7 +499,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -554,12 +557,20 @@ CMAKE_TAPI-ADVANCED:INTERNAL=1
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Have include dinput.h
 DINPUT_H_FOUND:INTERNAL=1
+//ADVANCED property for variable: DOXYGEN_EXECUTABLE
+DOXYGEN_EXECUTABLE-ADVANCED:INTERNAL=1
+//Details about finding Doxygen
+FIND_PACKAGE_MESSAGE_DETAILS_Doxygen:INTERNAL=[C:/mingw64/bin/doxygen.exe][cfound components: doxygen ][v1.12.0()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding Vulkan
 FIND_PACKAGE_MESSAGE_DETAILS_Vulkan:INTERNAL=[C:/VULKAN/1.4.309.0/Lib/vulkan-1.lib][C:/VULKAN/1.4.309.0/Include][cfound components: glslc glslangValidator ][v1.4.309()]
+//Build support for Wayland
+GLFW_BUILD_WAYLAND:INTERNAL=OFF
+//Build support for X11
+GLFW_BUILD_X11:INTERNAL=OFF
 //GLFW pkg-config Libs.private
-GLFW_PKG_CONFIG_LIBS_PRIVATE:INTERNAL=-lgdi32
+GLFW_PKG_CONFIG_LIBS_PRIVATE:INTERNAL= -lgdi32
 //GLFW pkg-config Requires.private
 GLFW_PKG_CONFIG_REQUIRES_PRIVATE:INTERNAL=
 //ADVANCED property for variable: Vulkan_GLSLANG_VALIDATOR_EXECUTABLE

@@ -50,8 +50,6 @@ build CMakeFiles/main.dir/src/main.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Us
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/app.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/app.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\app.cpp.obj.d
@@ -59,8 +57,6 @@ build CMakeFiles/main.dir/src/vulkan/app.cpp.obj: CXX_COMPILER__main_unscanned_ 
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/buffer.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/buffer.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\buffer.cpp.obj.d
@@ -68,8 +64,6 @@ build CMakeFiles/main.dir/src/vulkan/buffer.cpp.obj: CXX_COMPILER__main_unscanne
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/compileShader.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/compileShader.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\compileShader.cpp.obj.d
@@ -77,8 +71,6 @@ build CMakeFiles/main.dir/src/vulkan/compileShader.cpp.obj: CXX_COMPILER__main_u
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/device.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/device.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\device.cpp.obj.d
@@ -86,8 +78,6 @@ build CMakeFiles/main.dir/src/vulkan/device.cpp.obj: CXX_COMPILER__main_unscanne
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/global.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/global.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\global.cpp.obj.d
@@ -95,8 +85,6 @@ build CMakeFiles/main.dir/src/vulkan/global.cpp.obj: CXX_COMPILER__main_unscanne
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/model.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/model.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\model.cpp.obj.d
@@ -104,8 +92,6 @@ build CMakeFiles/main.dir/src/vulkan/model.cpp.obj: CXX_COMPILER__main_unscanned
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/pipeline.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/pipeline.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\pipeline.cpp.obj.d
@@ -113,8 +99,6 @@ build CMakeFiles/main.dir/src/vulkan/pipeline.cpp.obj: CXX_COMPILER__main_unscan
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/renderSystem.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/renderSystem.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\renderSystem.cpp.obj.d
@@ -122,8 +106,6 @@ build CMakeFiles/main.dir/src/vulkan/renderSystem.cpp.obj: CXX_COMPILER__main_un
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/renderer.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/renderer.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\renderer.cpp.obj.d
@@ -131,8 +113,6 @@ build CMakeFiles/main.dir/src/vulkan/renderer.cpp.obj: CXX_COMPILER__main_unscan
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/swapChain.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/swapChain.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\swapChain.cpp.obj.d
@@ -140,8 +120,6 @@ build CMakeFiles/main.dir/src/vulkan/swapChain.cpp.obj: CXX_COMPILER__main_unsca
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/texture.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/texture.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\texture.cpp.obj.d
@@ -149,8 +127,6 @@ build CMakeFiles/main.dir/src/vulkan/texture.cpp.obj: CXX_COMPILER__main_unscann
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/vulkan/window.cpp.obj: CXX_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/vulkan/window.cpp || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\vulkan\window.cpp.obj.d
@@ -158,304 +134,228 @@ build CMakeFiles/main.dir/src/vulkan/window.cpp.obj: CXX_COMPILER__main_unscanne
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\vulkan
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/deps/getopt.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/deps/getopt.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\deps\getopt.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\deps
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/deps/tinycthread.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/deps/tinycthread.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\deps\tinycthread.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\deps
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/cocoa_time.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/cocoa_time.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\cocoa_time.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/context.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/context.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\context.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/egl_context.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/egl_context.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\egl_context.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/glx_context.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/glx_context.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\glx_context.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/init.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/init.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\init.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/input.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/input.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\input.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/linux_joystick.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/linux_joystick.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\linux_joystick.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/monitor.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/monitor.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\monitor.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/null_init.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/null_init.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\null_init.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/null_joystick.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/null_joystick.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\null_joystick.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/null_monitor.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/null_monitor.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\null_monitor.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/null_window.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/null_window.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\null_window.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/osmesa_context.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/osmesa_context.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\osmesa_context.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/platform.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/platform.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\platform.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/posix_module.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/posix_module.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\posix_module.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/posix_poll.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/posix_poll.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\posix_poll.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/posix_thread.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/posix_thread.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\posix_thread.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/posix_time.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/posix_time.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\posix_time.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/vulkan.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/vulkan.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\vulkan.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/wgl_context.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/wgl_context.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\wgl_context.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/win32_init.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_init.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\win32_init.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/win32_joystick.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_joystick.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\win32_joystick.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/win32_module.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_module.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\win32_module.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/win32_monitor.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_monitor.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\win32_monitor.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/win32_thread.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_thread.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\win32_thread.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/win32_time.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_time.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\win32_time.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/win32_window.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_window.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\win32_window.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/window.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/window.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\window.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/wl_init.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/wl_init.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\wl_init.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/wl_monitor.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/wl_monitor.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\wl_monitor.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/wl_window.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/wl_window.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\wl_window.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/x11_init.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/x11_init.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\x11_init.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/x11_monitor.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/x11_monitor.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\x11_monitor.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/x11_window.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/x11_window.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\x11_window.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 build CMakeFiles/main.dir/src/deps/glfw/src/xkb_unicode.c.obj: C_COMPILER__main_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/xkb_unicode.c || cmake_object_order_depends_target_main
   DEP_FILE = CMakeFiles\main.dir\src\deps\glfw\src\xkb_unicode.c.obj.d
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glm -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/include -isystem C:/VULKAN/1.4.309.0/Include
   OBJECT_DIR = CMakeFiles\main.dir
   OBJECT_FILE_DIR = CMakeFiles\main.dir\src\deps\glfw\src
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
-  TARGET_PDB = main.pdb
 
 
 # =============================================================================
@@ -471,10 +371,9 @@ build main.exe: CXX_EXECUTABLE_LINKER__main_ CMakeFiles/main.dir/src/main.cpp.ob
   OBJECT_DIR = CMakeFiles\main.dir
   POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build && C:\mingw64\bin\cmake.exe -E copy_if_different C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/vulkan/includewindows/vulkan-1.dll C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/vulkan-1.dll"
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\main.dir\
   TARGET_FILE = main.exe
   TARGET_IMPLIB = libmain.dll.a
-  TARGET_PDB = main.pdb
+  TARGET_PDB = main.exe.dbg
 
 
 #############################################
@@ -499,10 +398,58 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build && C:\mingw64\bin\cmake.exe -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
 # C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/CMakeLists.txt
 # =============================================================================
+
+
+#############################################
+# Utility command for uninstall
+
+build src/deps/glfw/uninstall: phony src/deps/glfw/CMakeFiles/uninstall
 
 
 #############################################
@@ -527,6 +474,55 @@ build src/deps/glfw/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build src/deps/glfw/rebuild_cache: phony src/deps/glfw/CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build src/deps/glfw/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build src/deps/glfw/CMakeFiles/install.util: CUSTOM_COMMAND src/deps/glfw/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw && C:\mingw64\bin\cmake.exe -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build src/deps/glfw/install: phony src/deps/glfw/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build src/deps/glfw/CMakeFiles/install/local.util: CUSTOM_COMMAND src/deps/glfw/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build src/deps/glfw/install/local: phony src/deps/glfw/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build src/deps/glfw/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/deps/glfw/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build src/deps/glfw/install/strip: phony src/deps/glfw/CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for src\deps\glfw\CMakeFiles\uninstall
+
+build src/deps/glfw/CMakeFiles/uninstall | ${cmake_ninja_workdir}src/deps/glfw/CMakeFiles/uninstall: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw && C:\mingw64\bin\cmake.exe -P C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/cmake_uninstall.cmake"
+
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
 # C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMakeLists.txt
@@ -548,8 +544,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/context.c.obj: C_COMPILER__glfw_unsc
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/init.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/init.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -558,8 +552,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/init.c.obj: C_COMPILER__glfw_unscann
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/input.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/input.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -568,8 +560,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/input.c.obj: C_COMPILER__glfw_unscan
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -578,8 +568,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj: C_COMPILER__glfw_unsc
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/platform.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/platform.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -588,8 +576,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/platform.c.obj: C_COMPILER__glfw_uns
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/vulkan.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -598,8 +584,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj: C_COMPILER__glfw_unsca
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/window.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/window.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -608,8 +592,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/window.c.obj: C_COMPILER__glfw_unsca
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/egl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -618,8 +600,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj: C_COMPILER__glfw_
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/osmesa_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -628,8 +608,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: C_COMPILER__gl
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/null_init.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -638,8 +616,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/null_init.c.obj: C_COMPILER__glfw_un
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/null_monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -648,8 +624,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/null_monitor.c.obj: C_COMPILER__glfw
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/null_window.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -658,8 +632,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/null_window.c.obj: C_COMPILER__glfw_
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/null_joystick.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -668,8 +640,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/null_joystick.c.obj: C_COMPILER__glf
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_module.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -678,8 +648,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_module.c.obj: C_COMPILER__glfw
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_time.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -688,8 +656,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: C_COMPILER__glfw_u
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_thread.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -698,8 +664,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: C_COMPILER__glfw
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_init.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -708,8 +672,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: C_COMPILER__glfw_u
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_joystick.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -718,8 +680,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: C_COMPILER__gl
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -728,8 +688,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: C_COMPILER__glf
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/win32_window.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -738,8 +696,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: C_COMPILER__glfw
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 build src/deps/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: C_COMPILER__glfw_unscanned_ C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/wgl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_WIN32 -D_UNICODE
@@ -748,8 +704,6 @@ build src/deps/glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: C_COMPILER__glfw_
   INCLUDES = -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/include -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src -IC:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/src
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
 
 
 # =============================================================================
@@ -763,9 +717,8 @@ build src/deps/glfw/src/libglfw3.a: C_STATIC_LIBRARY_LINKER__glfw_ src/deps/glfw
   OBJECT_DIR = src\deps\glfw\src\CMakeFiles\glfw.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = src\deps\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_FILE = src\deps\glfw\src\libglfw3.a
-  TARGET_PDB = src\deps\glfw\src\libglfw3.pdb
+  TARGET_PDB = glfw3.a.dbg
 
 
 #############################################
@@ -798,6 +751,48 @@ build src/deps/glfw/src/rebuild_cache: phony src/deps/glfw/src/CMakeFiles/rebuil
 
 
 #############################################
+# Utility command for list_install_components
+
+build src/deps/glfw/src/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build src/deps/glfw/src/CMakeFiles/install.util: CUSTOM_COMMAND src/deps/glfw/src/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw\src && C:\mingw64\bin\cmake.exe -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build src/deps/glfw/src/install: phony src/deps/glfw/src/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build src/deps/glfw/src/CMakeFiles/install/local.util: CUSTOM_COMMAND src/deps/glfw/src/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw\src && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build src/deps/glfw/src/install/local: phony src/deps/glfw/src/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build src/deps/glfw/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/deps/glfw/src/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw\src && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build src/deps/glfw/src/install/strip: phony src/deps/glfw/src/CMakeFiles/install/strip.util
+
+
+#############################################
 # Custom command for src\deps\glfw\src\CMakeFiles\update_mappings
 
 build src/deps/glfw/src/CMakeFiles/update_mappings | ${cmake_ninja_workdir}src/deps/glfw/src/CMakeFiles/update_mappings: CUSTOM_COMMAND
@@ -805,13 +800,93 @@ build src/deps/glfw/src/CMakeFiles/update_mappings | ${cmake_ninja_workdir}src/d
   DESC = Updating gamepad mappings from upstream repository
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for docs
+
+build src/deps/glfw/docs/docs: phony
+
+
+#############################################
+# Utility command for edit_cache
+
+build src/deps/glfw/docs/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw\docs && C:\mingw64\bin\cmake.exe -E echo "No interactive CMake dialog available.""
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build src/deps/glfw/docs/edit_cache: phony src/deps/glfw/docs/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build src/deps/glfw/docs/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw\docs && C:\mingw64\bin\cmake.exe --regenerate-during-build -SC:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan -BC:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build src/deps/glfw/docs/rebuild_cache: phony src/deps/glfw/docs/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build src/deps/glfw/docs/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build src/deps/glfw/docs/CMakeFiles/install.util: CUSTOM_COMMAND src/deps/glfw/docs/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw\docs && C:\mingw64\bin\cmake.exe -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build src/deps/glfw/docs/install: phony src/deps/glfw/docs/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build src/deps/glfw/docs/CMakeFiles/install/local.util: CUSTOM_COMMAND src/deps/glfw/docs/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw\docs && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build src/deps/glfw/docs/install/local: phony src/deps/glfw/docs/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build src/deps/glfw/docs/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/deps/glfw/docs/all
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D C:\Users\adamo_pk2pdts\OneDrive\Desktop\ZDev\Vulkan\build\src\deps\glfw\docs && C:\mingw64\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build src/deps/glfw/docs/install/strip: phony src/deps/glfw/docs/CMakeFiles/install/strip.util
+
+# =============================================================================
 # Target aliases.
+
+build docs: phony src/deps/glfw/docs/docs
 
 build glfw: phony src/deps/glfw/src/libglfw3.a
 
 build libglfw3.a: phony src/deps/glfw/src/libglfw3.a
 
 build main: phony main.exe
+
+build uninstall: phony src/deps/glfw/uninstall
 
 build update_mappings: phony src/deps/glfw/src/update_mappings
 
@@ -830,7 +905,14 @@ build all: phony main.exe src/deps/glfw/all
 #############################################
 # Folder: C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw
 
-build src/deps/glfw/all: phony src/deps/glfw/src/all
+build src/deps/glfw/all: phony src/deps/glfw/src/all src/deps/glfw/docs/all
+
+# =============================================================================
+
+#############################################
+# Folder: C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/src/deps/glfw/docs
+
+build src/deps/glfw/docs/all: phony src/deps/glfw/docs/docs
 
 # =============================================================================
 
@@ -846,14 +928,14 @@ build src/deps/glfw/src/all: phony src/deps/glfw/src/libglfw3.a
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/CMakeLists.txt C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMakeLists.txt C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMake/glfw3.pc.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMake/glfw3Config.cmake.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/CMakeLists.txt C$:/mingw64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeCCompiler.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeCCompilerABI.c C$:/mingw64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDependentOption.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineRCCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeNinjaFindMake.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystem.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeTestRCCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/CrayClang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/LCC-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/OrangeC-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/TI-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/TIClang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Tasking-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/mingw64/share/cmake-3.30/Modules/FindThreads.cmake C$:/mingw64/share/cmake-3.30/Modules/FindVulkan.cmake C$:/mingw64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-Determine-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/mingw64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.30.4/CMakeCCompiler.cmake CMakeFiles/3.30.4/CMakeCXXCompiler.cmake CMakeFiles/3.30.4/CMakeRCCompiler.cmake CMakeFiles/3.30.4/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/CMakeLists.txt C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMakeLists.txt C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMake/cmake_uninstall.cmake.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMake/glfw3.pc.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMake/glfw3Config.cmake.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/docs/CMakeLists.txt C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/docs/Doxyfile.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/CMakeLists.txt C$:/mingw64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDependentOption.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/FindDoxygen.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/mingw64/share/cmake-3.30/Modules/FindThreads.cmake C$:/mingw64/share/cmake-3.30/Modules/FindVulkan.cmake C$:/mingw64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/mingw64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.30.4/CMakeCCompiler.cmake CMakeFiles/3.30.4/CMakeCXXCompiler.cmake CMakeFiles/3.30.4/CMakeRCCompiler.cmake CMakeFiles/3.30.4/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/CMakeLists.txt C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMakeLists.txt C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMake/glfw3.pc.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMake/glfw3Config.cmake.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/CMakeLists.txt C$:/mingw64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeCCompiler.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeCCompilerABI.c C$:/mingw64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompiler.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXCompilerABI.cpp C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCompilerIdDetection.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDependentOption.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineCompilerSupport.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineRCCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeFindBinUtils.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeNinjaFindMake.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeParseImplicitLinkInfo.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeParseLibraryArchitecture.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeRCCompiler.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystem.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeTestCompilerCommon.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeTestRCCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/CrayClang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-FindBinUtils.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/LCC-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/OrangeC-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/TI-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/TIClang-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Tasking-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/mingw64/share/cmake-3.30/Modules/FindThreads.cmake C$:/mingw64/share/cmake-3.30/Modules/FindVulkan.cmake C$:/mingw64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/FeatureTesting.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-Determine-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/mingw64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.30.4/CMakeCCompiler.cmake CMakeFiles/3.30.4/CMakeCXXCompiler.cmake CMakeFiles/3.30.4/CMakeRCCompiler.cmake CMakeFiles/3.30.4/CMakeSystem.cmake: phony
+build C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/CMakeLists.txt C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMakeLists.txt C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMake/cmake_uninstall.cmake.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMake/glfw3.pc.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/CMake/glfw3Config.cmake.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/docs/CMakeLists.txt C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/docs/Doxyfile.in C$:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/src/deps/glfw/src/CMakeLists.txt C$:/mingw64/share/cmake-3.30/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/mingw64/share/cmake-3.30/Modules/CMakeCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeDependentOption.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakePackageConfigHelpers.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeRCInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake C$:/mingw64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckIncludeFile.cmake C$:/mingw64/share/cmake-3.30/Modules/CheckLibraryExists.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Compiler/GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/FindDoxygen.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake C$:/mingw64/share/cmake-3.30/Modules/FindPackageMessage.cmake C$:/mingw64/share/cmake-3.30/Modules/FindThreads.cmake C$:/mingw64/share/cmake-3.30/Modules/FindVulkan.cmake C$:/mingw64/share/cmake-3.30/Modules/GNUInstallDirs.cmake C$:/mingw64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows-windres.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/Windows.cmake C$:/mingw64/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake C$:/mingw64/share/cmake-3.30/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.30.4/CMakeCCompiler.cmake CMakeFiles/3.30.4/CMakeCXXCompiler.cmake CMakeFiles/3.30.4/CMakeRCCompiler.cmake CMakeFiles/3.30.4/CMakeSystem.cmake: phony
 
 
 #############################################

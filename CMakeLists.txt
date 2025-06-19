@@ -17,12 +17,33 @@ else()
     message(FATAL_ERROR "Unsupported platform for Vulkan include directory")
 endif()
 
-# Add GLFW as a subdirectory (build from source)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
+# ---- Platform-specific: Ensure a real window backend is enabled for GLFW ----
+# Set these before adding GLFW subdirectory to ensure they take effect
+if(WIN32)
+    set(GLFW_BUILD_WIN32 ON CACHE BOOL "Enable Win32 backend" FORCE)
+    set(GLFW_BUILD_X11 OFF CACHE BOOL "Disable X11 backend" FORCE)
+    set(GLFW_BUILD_WAYLAND OFF CACHE BOOL "Disable Wayland backend" FORCE)
+elseif(UNIX AND NOT APPLE)
+    set(GLFW_BUILD_X11 ON CACHE BOOL "Enable X11 backend" FORCE)
+    set(GLFW_BUILD_WAYLAND ON CACHE BOOL "Enable Wayland backend" FORCE)
+    set(GLFW_BUILD_WIN32 OFF CACHE BOOL "Disable Win32 backend" FORCE)
+else()
+    message(FATAL_ERROR "Unsupported platform for GLFW backend")
+endif()
+
+# Add GLFW subdirectory
 add_subdirectory(${GLFW_DIR})
+
+# Verify GLFW backend configuration
+if(UNIX AND NOT APPLE)
+    if(NOT GLFW_BUILD_X11 AND NOT GLFW_BUILD_WAYLAND)
+        message(FATAL_ERROR "GLFW requires either X11 or Wayland backend enabled. Ensure required libraries are installed.")
+    endif()
+elseif(WIN32)
+    if(NOT GLFW_BUILD_WIN32)
+        message(FATAL_ERROR "GLFW requires Win32 backend enabled.")
+    endif()
+endif()
 
 # GLM is header-only
 set(GLM_INCLUDE_DIR ${GLM_DIR})
@@ -58,15 +79,21 @@ target_include_directories(main PRIVATE
     ${CMAKE_SOURCE_DIR}/src/include
 )
 
-# Link GLFW and Vulkan (assumes system Vulkan loader is available)
-find_package(Vulkan REQUIRED)
-target_link_libraries(main PRIVATE glfw Vulkan::Vulkan)
-
-# Copy Vulkan runtime library to output directory for Windows (optional)
+# Platform-specific Vulkan library linking
 if(WIN32)
+    # Use Vulkan loader import library and copy runtime DLL for Windows
+    find_package(Vulkan REQUIRED)
+    target_link_libraries(main PRIVATE glfw Vulkan::Vulkan)
     add_custom_command(TARGET main POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${CMAKE_SOURCE_DIR}/src/deps/vulkan/includewindows/vulkan-1.dll"
         $<TARGET_FILE_DIR:main>/vulkan-1.dll
     )
+elseif(UNIX AND NOT APPLE)
+    # Prefer system Vulkan, fallback to local loader if available
+    find_package(Vulkan REQUIRED)
+    target_link_libraries(main PRIVATE glfw Vulkan::Vulkan dl pthread)
 endif()
+
+# Ensure correct entry point for Windows console app (not WIN32 GUI)
+set_target_properties(main PROPERTIES WIN32_EXECUTABLE FALSE)

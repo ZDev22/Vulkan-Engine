@@ -78,7 +78,6 @@ int main(int argc, char** argv)
         glfwTerminate();
         exit(EXIT_FAILURE);
     }
-    glfwSetInputMode(window, GLFW_UNLIMITED_MOUSE_BUTTONS, GLFW_TRUE);
 
     glfwMakeContextCurrent(window);
     gladLoadGL(glfwGetProcAddress);

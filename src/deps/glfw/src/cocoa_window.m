@@ -1,5 +1,5 @@
 //========================================================================
-// GLFW 3.5 macOS - www.glfw.org
+// GLFW 3.4 macOS - www.glfw.org
 //------------------------------------------------------------------------
 // Copyright (c) 2009-2019 Camilla Löwy <elmindreda@glfw.org>
 //
@@ -28,11 +28,8 @@
 
 #if defined(_GLFW_COCOA)
 
-#import <QuartzCore/CAMetalLayer.h>
-
 #include <float.h>
 #include <string.h>
-#include <assert.h>
 
 // HACK: This enum value is missing from framework headers on OS X 10.11 despite
 //       having been (according to documentation) added in Mac OS X 10.7
@@ -312,6 +309,7 @@ static const NSRange kEmptyRange = { NSNotFound, 0 };
 
 - (void)windowDidChangeOcclusionState:(NSNotification* )notification
 {
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 1090
     if ([window->ns.object respondsToSelector:@selector(occlusionState)])
     {
         if ([window->ns.object occlusionState] & NSWindowOcclusionStateVisible)
@@ -319,6 +317,7 @@ static const NSRange kEmptyRange = { NSNotFound, 0 };
         else
             window->ns.occluded = GLFW_TRUE;
     }
+#endif
 }
 
 @end
@@ -1950,8 +1949,19 @@ VkResult _glfwCreateWindowSurfaceCocoa(VkInstance instance,
 {
     @autoreleasepool {
 
+#if MAC_OS_X_VERSION_MAX_ALLOWED >= 101100
+    // HACK: Dynamically load Core Animation to avoid adding an extra
+    //       dependency for the majority who don't use MoltenVK
+    NSBundle* bundle = [NSBundle bundleWithPath:@"/System/Library/Frameworks/QuartzCore.framework"];
+    if (!bundle)
+    {
+        _glfwInputError(GLFW_PLATFORM_ERROR,
+                        "Cocoa: Failed to find QuartzCore.framework");
+        return VK_ERROR_EXTENSION_NOT_PRESENT;
+    }
+
     // NOTE: Create the layer here as makeBackingLayer should not return nil
-    window->ns.layer = [CAMetalLayer layer];
+    window->ns.layer = [[bundle classNamed:@"CAMetalLayer"] layer];
     if (!window->ns.layer)
     {
         _glfwInputError(GLFW_PLATFORM_ERROR,
@@ -2016,6 +2026,9 @@ VkResult _glfwCreateWindowSurfaceCocoa(VkInstance instance,
     }
 
     return err;
+#else
+    return VK_ERROR_EXTENSION_NOT_PRESENT;
+#endif
 
     } // autoreleasepool
 }
@@ -2027,6 +2040,7 @@ VkResult _glfwCreateWindowSurfaceCocoa(VkInstance instance,
 
 GLFWAPI id glfwGetCocoaWindow(GLFWwindow* handle)
 {
+    _GLFWwindow* window = (_GLFWwindow*) handle;
     _GLFW_REQUIRE_INIT_OR_RETURN(nil);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_COCOA)
@@ -2035,15 +2049,13 @@ GLFWAPI id glfwGetCocoaWindow(GLFWwindow* handle)
                         "Cocoa: Platform not initialized");
         return nil;
     }
-
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-    assert(window != NULL);
 
     return window->ns.object;
 }
 
 GLFWAPI id glfwGetCocoaView(GLFWwindow* handle)
 {
+    _GLFWwindow* window = (_GLFWwindow*) handle;
     _GLFW_REQUIRE_INIT_OR_RETURN(nil);
 
     if (_glfw.platform.platformID != GLFW_PLATFORM_COCOA)
@@ -2052,9 +2064,6 @@ GLFWAPI id glfwGetCocoaView(GLFWwindow* handle)
                         "Cocoa: Platform not initialized");
         return nil;
     }
-
-    _GLFWwindow* window = (_GLFWwindow*) handle;
-    assert(window != NULL);
 
     return window->ns.view;
 }

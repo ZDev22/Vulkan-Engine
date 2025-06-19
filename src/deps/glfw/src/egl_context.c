@@ -1,5 +1,5 @@
 //========================================================================
-// GLFW 3.5 EGL - www.glfw.org
+// GLFW 3.4 EGL - www.glfw.org
 //------------------------------------------------------------------------
 // Copyright (c) 2002-2006 Marcus Geelnard
 // Copyright (c) 2006-2019 Camilla Löwy <elmindreda@glfw.org>
@@ -92,7 +92,7 @@ static GLFWbool chooseEGLConfig(const _GLFWctxconfig* ctxconfig,
     EGLConfig* nativeConfigs;
     _GLFWfbconfig* usableConfigs;
     const _GLFWfbconfig* closest;
-    int i, nativeCount, usableCount, apiBit, surfaceTypeBit;
+    int i, nativeCount, usableCount, apiBit;
     GLFWbool wrongApiAvailable = GLFW_FALSE;
 
     if (ctxconfig->client == GLFW_OPENGL_ES_API)
@@ -104,11 +104,6 @@ static GLFWbool chooseEGLConfig(const _GLFWctxconfig* ctxconfig,
     }
     else
         apiBit = EGL_OPENGL_BIT;
-
-    if (_glfw.egl.platform == EGL_PLATFORM_SURFACELESS_MESA)
-        surfaceTypeBit = EGL_PBUFFER_BIT;
-    else
-        surfaceTypeBit = EGL_WINDOW_BIT;
 
     if (fbconfig->stereo)
     {
@@ -138,7 +133,8 @@ static GLFWbool chooseEGLConfig(const _GLFWctxconfig* ctxconfig,
         if (getEGLConfigAttrib(n, EGL_COLOR_BUFFER_TYPE) != EGL_RGB_BUFFER)
             continue;
 
-        if (!(getEGLConfigAttrib(n, EGL_SURFACE_TYPE) & surfaceTypeBit))
+        // Only consider window EGLConfigs
+        if (!(getEGLConfigAttrib(n, EGL_SURFACE_TYPE) & EGL_WINDOW_BIT))
             continue;
 
 #if defined(_GLFW_X11)
@@ -424,8 +420,6 @@ GLFWbool _glfwInitEGL(void)
         _glfwPlatformGetModuleSymbol(_glfw.egl.handle, "eglDestroyContext");
     _glfw.egl.CreateWindowSurface = (PFN_eglCreateWindowSurface)
         _glfwPlatformGetModuleSymbol(_glfw.egl.handle, "eglCreateWindowSurface");
-    _glfw.egl.CreatePbufferSurface = (PFN_eglCreatePbufferSurface)
-        _glfwPlatformGetModuleSymbol(_glfw.egl.handle, "eglCreatePbufferSurface");
     _glfw.egl.MakeCurrent = (PFN_eglMakeCurrent)
         _glfwPlatformGetModuleSymbol(_glfw.egl.handle, "eglMakeCurrent");
     _glfw.egl.SwapBuffers = (PFN_eglSwapBuffers)
@@ -448,7 +442,6 @@ GLFWbool _glfwInitEGL(void)
         !_glfw.egl.DestroySurface ||
         !_glfw.egl.DestroyContext ||
         !_glfw.egl.CreateWindowSurface ||
-        !_glfw.egl.CreatePbufferSurface ||
         !_glfw.egl.MakeCurrent ||
         !_glfw.egl.SwapBuffers ||
         !_glfw.egl.SwapInterval ||
@@ -484,8 +477,6 @@ GLFWbool _glfwInitEGL(void)
             _glfwStringInExtensionString("EGL_ANGLE_platform_angle_vulkan", extensions);
         _glfw.egl.ANGLE_platform_angle_metal =
             _glfwStringInExtensionString("EGL_ANGLE_platform_angle_metal", extensions);
-        _glfw.egl.MESA_platform_surfaceless =
-            _glfwStringInExtensionString("EGL_MESA_platform_surfaceless", extensions);
     }
 
     if (_glfw.egl.EXT_platform_base)
@@ -717,36 +708,20 @@ GLFWbool _glfwCreateContextEGL(_GLFWwindow* window,
             SET_ATTRIB(EGL_PRESENT_OPAQUE_EXT, !fbconfig->transparent);
     }
 
-    if (_glfw.egl.platform == EGL_PLATFORM_SURFACELESS_MESA)
-    {
-        int width, height;
-        _glfw.platform.getFramebufferSize(window, &width, &height);
-
-        SET_ATTRIB(EGL_WIDTH, width);
-        SET_ATTRIB(EGL_HEIGHT, height);
-    }
-
     SET_ATTRIB(EGL_NONE, EGL_NONE);
 
     native = _glfw.platform.getEGLNativeWindow(window);
-    if (!_glfw.egl.platform || _glfw.egl.platform == EGL_PLATFORM_ANGLE_ANGLE)
+    // HACK: ANGLE does not implement eglCreatePlatformWindowSurfaceEXT
+    //       despite reporting EGL_EXT_platform_base
+    if (_glfw.egl.platform && _glfw.egl.platform != EGL_PLATFORM_ANGLE_ANGLE)
     {
-        // HACK: Also use non-platform function for ANGLE, as it does not
-        //       implement eglCreatePlatformWindowSurfaceEXT despite reporting
-        //       support for EGL_EXT_platform_base
         window->context.egl.surface =
-            eglCreateWindowSurface(_glfw.egl.display, config, native, attribs);
-    }
-    else if (_glfw.egl.platform == EGL_PLATFORM_SURFACELESS_MESA)
-    {
-        // HACK: Use a pbuffer surface as the default framebuffer
-        window->context.egl.surface =
-            eglCreatePbufferSurface(_glfw.egl.display, config, attribs);
+            eglCreatePlatformWindowSurfaceEXT(_glfw.egl.display, config, native, attribs);
     }
     else
     {
         window->context.egl.surface =
-            eglCreatePlatformWindowSurfaceEXT(_glfw.egl.display, config, native, attribs);
+            eglCreateWindowSurface(_glfw.egl.display, config, native, attribs);
     }
 
     if (window->context.egl.surface == EGL_NO_SURFACE)
@@ -908,19 +883,13 @@ GLFWAPI EGLDisplay glfwGetEGLDisplay(void)
 
 GLFWAPI EGLContext glfwGetEGLContext(GLFWwindow* handle)
 {
-    _GLFW_REQUIRE_INIT_OR_RETURN(EGL_NO_CONTEXT);
-
     _GLFWwindow* window = (_GLFWwindow*) handle;
-    assert(window != NULL);
+    _GLFW_REQUIRE_INIT_OR_RETURN(EGL_NO_CONTEXT);
 
     if (window->context.source != GLFW_EGL_CONTEXT_API)
     {
-        if (_glfw.platform.platformID != GLFW_PLATFORM_WAYLAND ||
-            window->context.source != GLFW_NATIVE_CONTEXT_API)
-        {
-            _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);
-            return EGL_NO_CONTEXT;
-        }
+        _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);
+        return EGL_NO_CONTEXT;
     }
 
     return window->context.egl.handle;
@@ -928,19 +897,13 @@ GLFWAPI EGLContext glfwGetEGLContext(GLFWwindow* handle)
 
 GLFWAPI EGLSurface glfwGetEGLSurface(GLFWwindow* handle)
 {
-    _GLFW_REQUIRE_INIT_OR_RETURN(EGL_NO_SURFACE);
-
     _GLFWwindow* window = (_GLFWwindow*) handle;
-    assert(window != NULL);
+    _GLFW_REQUIRE_INIT_OR_RETURN(EGL_NO_SURFACE);
 
     if (window->context.source != GLFW_EGL_CONTEXT_API)
     {
-        if (_glfw.platform.platformID != GLFW_PLATFORM_WAYLAND ||
-            window->context.source != GLFW_NATIVE_CONTEXT_API)
-        {
-            _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);
-            return EGL_NO_CONTEXT;
-        }
+        _glfwInputError(GLFW_NO_WINDOW_CONTEXT, NULL);
+        return EGL_NO_SURFACE;
     }
 
     return window->context.egl.surface;

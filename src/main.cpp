@@ -8,6 +8,8 @@
 #include <stdexcept>
 #include <random>
 
+#include <GLFW/glfw3.h>
+
 short scene = 1;
 
 uint32_t state = 123456789;
@@ -25,15 +27,20 @@ float randomNumber(float min, float max) {
     return min + (max - min) * normalized;
 }
 
+void error_callback(int error, const char* description) {
+    std::cerr << "GLFW Error (" << error << "): " << description << std::endl;
+}
+
 int main() {
     if (compile()) {
 
         std::cout << "Calling glfwInit()..." << std::endl;
+        glfwSetErrorCallback(error_callback);
         if (!glfwInit()) {
-            std::cerr << "GLFW failed to initialize!" << std::endl;
-            return -1;
+            std::cout << "GLFW failed to initialize!" << std::endl;
+            return 1;
         }
-        std::cout << "GLFW initialized OK" << std::endl;
+        std::cout << "GLFW initialized successfully!" << std::endl;
         if (!glfwVulkanSupported()) {
             std::cerr << "GLFW says Vulkan is NOT supported!" << std::endl;
             return -1;
