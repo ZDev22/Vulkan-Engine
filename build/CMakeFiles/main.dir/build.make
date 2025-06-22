@@ -83,10 +83,24 @@ CMakeFiles/main.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/main.cpp -o CMakeFiles/main.dir/src/main.cpp.s
 
+CMakeFiles/main.dir/src/program/program.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/src/program/program.cpp.o: /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/program/program.cpp
+CMakeFiles/main.dir/src/program/program.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/program/program.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/program/program.cpp.o -MF CMakeFiles/main.dir/src/program/program.cpp.o.d -o CMakeFiles/main.dir/src/program/program.cpp.o -c /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/program/program.cpp
+
+CMakeFiles/main.dir/src/program/program.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/program/program.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/program/program.cpp > CMakeFiles/main.dir/src/program/program.cpp.i
+
+CMakeFiles/main.dir/src/program/program.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/program/program.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/program/program.cpp -o CMakeFiles/main.dir/src/program/program.cpp.s
+
 CMakeFiles/main.dir/src/vulkan/app.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/vulkan/app.cpp.o: /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/app.cpp
 CMakeFiles/main.dir/src/vulkan/app.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/vulkan/app.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/vulkan/app.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/vulkan/app.cpp.o -MF CMakeFiles/main.dir/src/vulkan/app.cpp.o.d -o CMakeFiles/main.dir/src/vulkan/app.cpp.o -c /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/app.cpp
 
 CMakeFiles/main.dir/src/vulkan/app.cpp.i: cmake_force
@@ -100,7 +114,7 @@ CMakeFiles/main.dir/src/vulkan/app.cpp.s: cmake_force
 CMakeFiles/main.dir/src/vulkan/buffer.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/vulkan/buffer.cpp.o: /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/buffer.cpp
 CMakeFiles/main.dir/src/vulkan/buffer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/vulkan/buffer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/vulkan/buffer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/vulkan/buffer.cpp.o -MF CMakeFiles/main.dir/src/vulkan/buffer.cpp.o.d -o CMakeFiles/main.dir/src/vulkan/buffer.cpp.o -c /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/buffer.cpp
 
 CMakeFiles/main.dir/src/vulkan/buffer.cpp.i: cmake_force
@@ -110,20 +124,6 @@ CMakeFiles/main.dir/src/vulkan/buffer.cpp.i: cmake_force
 CMakeFiles/main.dir/src/vulkan/buffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/vulkan/buffer.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/buffer.cpp -o CMakeFiles/main.dir/src/vulkan/buffer.cpp.s
-
-CMakeFiles/main.dir/src/vulkan/compileShader.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/vulkan/compileShader.cpp.o: /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/compileShader.cpp
-CMakeFiles/main.dir/src/vulkan/compileShader.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/chromeos/MyFiles/Downloads/vulkanProjects/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/vulkan/compileShader.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/vulkan/compileShader.cpp.o -MF CMakeFiles/main.dir/src/vulkan/compileShader.cpp.o.d -o CMakeFiles/main.dir/src/vulkan/compileShader.cpp.o -c /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/compileShader.cpp
-
-CMakeFiles/main.dir/src/vulkan/compileShader.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/src/vulkan/compileShader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/compileShader.cpp > CMakeFiles/main.dir/src/vulkan/compileShader.cpp.i
-
-CMakeFiles/main.dir/src/vulkan/compileShader.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/vulkan/compileShader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/compileShader.cpp -o CMakeFiles/main.dir/src/vulkan/compileShader.cpp.s
 
 CMakeFiles/main.dir/src/vulkan/device.cpp.o: CMakeFiles/main.dir/flags.make
 CMakeFiles/main.dir/src/vulkan/device.cpp.o: /mnt/chromeos/MyFiles/Downloads/vulkanProjects/src/vulkan/device.cpp
@@ -254,9 +254,9 @@ CMakeFiles/main.dir/src/vulkan/window.cpp.s: cmake_force
 # Object files for target main
 main_OBJECTS = \
 "CMakeFiles/main.dir/src/main.cpp.o" \
+"CMakeFiles/main.dir/src/program/program.cpp.o" \
 "CMakeFiles/main.dir/src/vulkan/app.cpp.o" \
 "CMakeFiles/main.dir/src/vulkan/buffer.cpp.o" \
-"CMakeFiles/main.dir/src/vulkan/compileShader.cpp.o" \
 "CMakeFiles/main.dir/src/vulkan/device.cpp.o" \
 "CMakeFiles/main.dir/src/vulkan/global.cpp.o" \
 "CMakeFiles/main.dir/src/vulkan/model.cpp.o" \
@@ -271,9 +271,9 @@ main_OBJECTS = \
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/src/main.cpp.o
+main: CMakeFiles/main.dir/src/program/program.cpp.o
 main: CMakeFiles/main.dir/src/vulkan/app.cpp.o
 main: CMakeFiles/main.dir/src/vulkan/buffer.cpp.o
-main: CMakeFiles/main.dir/src/vulkan/compileShader.cpp.o
 main: CMakeFiles/main.dir/src/vulkan/device.cpp.o
 main: CMakeFiles/main.dir/src/vulkan/global.cpp.o
 main: CMakeFiles/main.dir/src/vulkan/model.cpp.o

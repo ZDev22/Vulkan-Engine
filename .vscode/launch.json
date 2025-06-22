@@ -19,7 +19,6 @@
           "ignoreFailures": true
         }
       ],
-      //"preLaunchTask": "build all cpp files (Linux)"
     },
     {
       "name": "Windows",
@@ -39,7 +38,6 @@
           "ignoreFailures": true
         }
       ],
-      //"preLaunchTask": "build all cpp files (Linux)"
     }
   ]
 }

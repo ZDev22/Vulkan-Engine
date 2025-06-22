@@ -153,6 +153,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/program/program.o: src/program/program.cpp.o
+.PHONY : src/program/program.o
+
+# target to build an object file
+src/program/program.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/program/program.cpp.o
+.PHONY : src/program/program.cpp.o
+
+src/program/program.i: src/program/program.cpp.i
+.PHONY : src/program/program.i
+
+# target to preprocess a source file
+src/program/program.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/program/program.cpp.i
+.PHONY : src/program/program.cpp.i
+
+src/program/program.s: src/program/program.cpp.s
+.PHONY : src/program/program.s
+
+# target to generate assembly for a file
+src/program/program.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/program/program.cpp.s
+.PHONY : src/program/program.cpp.s
+
 src/vulkan/app.o: src/vulkan/app.cpp.o
 .PHONY : src/vulkan/app.o
 
@@ -200,30 +224,6 @@ src/vulkan/buffer.s: src/vulkan/buffer.cpp.s
 src/vulkan/buffer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/vulkan/buffer.cpp.s
 .PHONY : src/vulkan/buffer.cpp.s
-
-src/vulkan/compileShader.o: src/vulkan/compileShader.cpp.o
-.PHONY : src/vulkan/compileShader.o
-
-# target to build an object file
-src/vulkan/compileShader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/vulkan/compileShader.cpp.o
-.PHONY : src/vulkan/compileShader.cpp.o
-
-src/vulkan/compileShader.i: src/vulkan/compileShader.cpp.i
-.PHONY : src/vulkan/compileShader.i
-
-# target to preprocess a source file
-src/vulkan/compileShader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/vulkan/compileShader.cpp.i
-.PHONY : src/vulkan/compileShader.cpp.i
-
-src/vulkan/compileShader.s: src/vulkan/compileShader.cpp.s
-.PHONY : src/vulkan/compileShader.s
-
-# target to generate assembly for a file
-src/vulkan/compileShader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/vulkan/compileShader.cpp.s
-.PHONY : src/vulkan/compileShader.cpp.s
 
 src/vulkan/device.o: src/vulkan/device.cpp.o
 .PHONY : src/vulkan/device.o
@@ -453,15 +453,15 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/program/program.o"
+	@echo "... src/program/program.i"
+	@echo "... src/program/program.s"
 	@echo "... src/vulkan/app.o"
 	@echo "... src/vulkan/app.i"
 	@echo "... src/vulkan/app.s"
 	@echo "... src/vulkan/buffer.o"
 	@echo "... src/vulkan/buffer.i"
 	@echo "... src/vulkan/buffer.s"
-	@echo "... src/vulkan/compileShader.o"
-	@echo "... src/vulkan/compileShader.i"
-	@echo "... src/vulkan/compileShader.s"
 	@echo "... src/vulkan/device.o"
 	@echo "... src/vulkan/device.i"
 	@echo "... src/vulkan/device.s"
