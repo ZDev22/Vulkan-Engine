@@ -1,12 +1,12 @@
 #include "main.hpp"
 
 #include "vulkan/app.hpp"
-#include "vulkan/compileShader.hpp"
 
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
 #include <random>
+#include <string>
 
 #include <GLFW/glfw3.h>
 
@@ -14,6 +14,20 @@ short scene = 1;
 
 uint32_t state = 123456789;
 float normalized;
+
+bool compileShader(const std::string& inputFile, const std::string& outputFile, const std::string& stage) {
+    std::string command = "glslc -fshader-stage=" + stage + " " + inputFile + " -o " + outputFile;
+    int result = std::system(command.c_str());
+    if (result == 0) { return true; }
+    else { std::cerr << "Failed to compile " << inputFile << " (exit code: " << result << ")" << std::endl; return false; }
+}
+
+bool compile() {
+    bool success = true;
+    success &= compileShader("vulkan/shaders/triangle.vert", "vulkan/shaders/triangle.vert.spv", "vert");
+    success &= compileShader("vulkan/shaders/triangle.frag", "vulkan/shaders/triangle.frag.spv", "frag");
+    return success;
+}
 
 uint32_t xorshift32() {
     state ^= state << 13;
@@ -34,8 +48,8 @@ void error_callback(int error, const char* description) {
 int main() {
     if (compile()) {
 
-        std::cout << "Calling glfwInit()..." << std::endl;
         glfwSetErrorCallback(error_callback);
+        std::cout << "Calling glfwInit()..." << std::endl;
         if (!glfwInit()) {
             std::cout << "GLFW failed to initialize!" << std::endl;
             return 1;
@@ -45,7 +59,7 @@ int main() {
             std::cerr << "GLFW says Vulkan is NOT supported!" << std::endl;
             return -1;
         }
-        std::cout << "GLFW says Vulkan is supported." << std::endl;
+        std::cout << "GLFW Vulkan is supported." << std::endl;
 
         vulkan::App app{};
 

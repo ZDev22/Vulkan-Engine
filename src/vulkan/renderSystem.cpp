@@ -174,6 +174,7 @@ namespace vulkan {
     }
 
     void RenderSystem::updateSprites(float deltaTime) {
+
         std::for_each(std::execution::par, spriteData.begin(), spriteData.end(), [deltaTime](auto& sprite) {
             sprite._translation += sprite._speed * deltaTime;
         });

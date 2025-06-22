@@ -11,6 +11,7 @@
         "isDefault": true
       },
       "problemMatcher": [],
+      "detail": "Build the project using Make on Linux",
     },
     {
       "label": "build all cpp files (Windows)",
