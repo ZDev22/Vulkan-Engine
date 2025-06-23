@@ -9,23 +9,21 @@
 
 #include <memory>
 
-namespace vulkan {
-    class App {
-    public:
-        App();
-        ~App();
+class App {
+public:
+    App();
+    ~App();
 
-        App(const App&) = delete;
-        App& operator=(const App&) = delete;
+    App(const App&) = delete;
+    App& operator=(const App&) = delete;
 
-        void run();
+    void run();
 
-    private:
-        Window window{1280, 720, "Vulkan"};
-        Device device{window};
-        Renderer renderer{window, device};
-        std::unique_ptr<Pipeline> pipeline;
-        std::unique_ptr<Global> global; 
-        std::unique_ptr<RenderSystem> renderSystem;
-    };
-}
+private:
+    Window window{1280, 720, "Vulkan"};
+    Device device{window};
+    Renderer renderer{window, device};
+    std::unique_ptr<Pipeline> pipeline;
+    std::unique_ptr<Global> global; 
+    std::unique_ptr<RenderSystem> renderSystem;
+};

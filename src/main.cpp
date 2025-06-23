@@ -61,7 +61,7 @@ int main() {
         }
         std::cout << "GLFW Vulkan is supported." << std::endl;
 
-        vulkan::App app{};
+        App app{};
 
         try {
             app.run();
