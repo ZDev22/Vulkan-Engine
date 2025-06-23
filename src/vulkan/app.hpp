@@ -21,7 +21,7 @@ namespace vulkan {
         void run();
 
     private:
-        Window window{1280, 720, "BibleBaseball"};
+        Window window{1280, 720, "Vulkan"};
         Device device{window};
         Renderer renderer{window, device};
         std::unique_ptr<Pipeline> pipeline;
