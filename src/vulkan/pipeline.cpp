@@ -2,11 +2,11 @@
 #include "global.hpp"
 #include "../main.hpp"
 
-#include "../deps/c++/fstream"
-#include "../deps/c++/stdexcept"
-#include "../deps/c++/iostream"
-#include "../deps/c++/cassert"
-#include "../deps/c++/random"
+#include <fstream>
+#include <stdexcept>
+#include <iostream>
+#include <cassert>
+#include <random>
 
 Pipeline::Pipeline(Device& device, const std::string& vertFilepath, const std::string& fragFilepath, VkRenderPass renderPass)
     : device{ device } {

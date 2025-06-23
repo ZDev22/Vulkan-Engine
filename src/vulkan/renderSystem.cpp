@@ -1,12 +1,12 @@
 #include "renderSystem.hpp"
 #include "../program/program.hpp"
 
-#include "../deps/c++/stdexcept"
-#include "../deps/c++/iostream"
-#include "../deps/c++/array"
-#include "../deps/c++/algorithm"
-#include "../deps/c++/execution"
-#include "../deps/c++/thread"
+#include <stdexcept>
+#include <iostream>
+#include <array>
+#include <algorithm>
+#include <execution>
+#include <thread>
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -92,8 +92,7 @@ void RenderSystem::initializeSpriteData() {
     spriteDataBuffer->map();
     spriteDataBuffer->writeToBuffer(spriteData.data(), bufferSize);
 
-    thread program(startProgram);
-    program.detach();
+    startProgram();
 }
 
 void RenderSystem::createTextureArrayDescriptorSet() {

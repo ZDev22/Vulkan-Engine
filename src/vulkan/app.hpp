@@ -7,7 +7,7 @@
 #include "renderSystem.hpp"
 #include "global.hpp" 
 
-#include "../deps/c++/memory"
+#include <memory>
 
 class App {
 public:

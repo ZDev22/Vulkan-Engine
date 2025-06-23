@@ -1,12 +1,12 @@
 #include "swapChain.hpp"
 
-#include "../deps/c++/array"
-#include "../deps/c++/cstdlib"
-#include "../deps/c++/cstring"
-#include "../deps/c++/iostream"
-#include "../deps/c++/limits"
-#include "../deps/c++/set"
-#include "../deps/c++/stdexcept"
+#include <array>
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+#include <limits>
+#include <set>
+#include <stdexcept>
 
 SwapChain::SwapChain(Device& deviceRef, VkExtent2D extent) : device{ deviceRef }, windowExtent{ extent } {
     init();

@@ -2,8 +2,8 @@
 
 #include "window.hpp"
 
-#include "../deps/c++/string"
-#include "../deps/c++/vector"
+#include <string>
+#include <vector>
 
 struct SwapChainSupportDetails {
     VkSurfaceCapabilitiesKHR capabilities;

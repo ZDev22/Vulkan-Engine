@@ -2,11 +2,11 @@
 
 #include "vulkan/app.hpp"
 
-#include "deps/c++/cstdlib"
-#include "deps/c++/iostream"
-#include "deps/c++/stdexcept"
-#include "deps/c++/random"
-#include "deps/c++/string"
+#include <cstdlib>
+#include <iostream>
+#include <stdexcept>
+#include <random>
+#include <string>
 
 #include <GLFW/glfw3.h>
 

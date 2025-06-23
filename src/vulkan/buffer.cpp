@@ -1,7 +1,7 @@
 #include "buffer.hpp"
 
-#include "../deps/c++/stdexcept"
-#include "../deps/c++/cstring"
+#include <stdexcept>
+#include <cstring>
 
 Buffer::Buffer(
     Device& device,

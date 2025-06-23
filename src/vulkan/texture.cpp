@@ -4,9 +4,9 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
-#include "../deps/c++/stdexcept"
-#include "../deps/c++/cstring"
-#include "../deps/c++/iostream"
+#include <stdexcept>
+#include <cstring>
+#include <iostream>
 
 Texture::Texture(Device& device, const std::string& filepath, VkDescriptorSetLayout descriptorSetLayout,
     VkDescriptorPool descriptorPool, Pipeline& pipeline)

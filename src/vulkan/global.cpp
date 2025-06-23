@@ -1,3 +1,5 @@
 #include "global.hpp"
 
-std::vector<Sprite> sprites;
+namespace vulkan {
+    std::vector<Sprite> sprites; 
+}

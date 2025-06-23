@@ -3,8 +3,8 @@
 #include "device.hpp"
 #include "buffer.hpp"
 
-#include "../deps/c++/vector"
-#include "../deps/c++/memory"
+#include <vector>
+#include <memory>
 
 #include <vulkan/vulkan.h>
 #include <glm/glm.hpp>

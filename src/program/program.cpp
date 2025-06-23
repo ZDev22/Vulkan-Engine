@@ -1,7 +1,8 @@
 #include "program.hpp"
+#include <iostream>
 
-#include "../deps/c++/iostream"
-
-void startProgram() {
-    std::cout << "program started!\n";
+namespace vulkan {
+    void startProgram() {
+        std::cout << "program started!\n";
+    }
 }

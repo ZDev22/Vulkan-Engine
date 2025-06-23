@@ -2,9 +2,9 @@
 
 #include "device.hpp"
 
-#include "../deps/c++/memory"
-#include "../deps/c++/string"
-#include "../deps/c++/vector"
+#include <memory>
+#include <string>
+#include <vector>
 
 #include <vulkan/vulkan.h>
 

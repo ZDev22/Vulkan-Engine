@@ -6,12 +6,12 @@
 
 #include "device.hpp"
 
-#include "../deps/c++/cstring"
-#include "../deps/c++/iostream"
-#include "../deps/c++/vector"
-#include "../deps/c++/unordered_set"
-#include "../deps/c++/set"
-#include "../deps/c++/stdexcept"
+#include <cstring>
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+#include <set>
+#include <stdexcept>
 
 #include <vulkan/vulkan.h>
 

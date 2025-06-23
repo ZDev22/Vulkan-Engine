@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../deps/c++/string"
+#include <string>
 
 #include <vulkan/vulkan.h>
 #include <GLFW/glfw3.h>

@@ -2,9 +2,9 @@
 #include "sprite.hpp"
 #include "global.hpp"
 
-#include "../deps/c++/iostream"
-#include "../deps/c++/stdexcept"
-#include "../deps/c++/chrono"
+#include <iostream>
+#include <stdexcept>
+#include <chrono>
 
 using HighResClock = std::chrono::high_resolution_clock;
 static HighResClock::time_point lastTime;
