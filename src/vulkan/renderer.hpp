@@ -5,9 +5,9 @@
 #include "swapChain.hpp"
 #include "window.hpp"
 
-#include <memory>
-#include <vector>
-#include <cassert>
+#include "../deps/c++/memory"
+#include "../deps/c++/vector"
+#include "../deps/c++/cassert"
 
 class Renderer {
 public:

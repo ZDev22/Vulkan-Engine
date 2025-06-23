@@ -2,10 +2,10 @@
 #include "pipeline.hpp"
 #include "../main.hpp"
 
-#include <array>
-#include <cassert>
-#include <stdexcept>
-#include <iostream>
+#include "../deps/c++/array"
+#include "../deps/c++/cassert"
+#include "../deps/c++/stdexcept"
+#include "../deps/c++/iostream"
 
 double lastTime;
 double currentTime;

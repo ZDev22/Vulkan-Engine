@@ -1,7 +1,7 @@
 #include "model.hpp"
 
-#include <stdexcept>
-#include <iostream>
+#include "../deps/c++/stdexcept"
+#include "../deps/c++/iostream"
 
 Model::Model(Device& device, const std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices)
     : device{ device }, vertexCount{ static_cast<uint32_t>(vertices.size()) }, indexCount{ static_cast<uint32_t>(indices.size()) } {

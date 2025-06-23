@@ -6,9 +6,10 @@
 #include "global.hpp"
 
 #include <vulkan/vulkan.h>
-#include <memory>
-#include <vector>
-#include <string>
+
+#include "../deps/c++/memory"
+#include "../deps/c++/vector"
+#include "../deps/c++/string"
 
 class Pipeline {
 public:

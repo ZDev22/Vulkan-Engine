@@ -3,9 +3,10 @@
 #include "model.hpp"
 #include "texture.hpp"
 
-#include <memory>
+#include "../deps/c++/memory"
+#include "../deps/c++/cstdint"
+
 #include <glm/glm.hpp>
-#include <cstdint>
 
 struct Sprite {
     std::shared_ptr<Model> model;

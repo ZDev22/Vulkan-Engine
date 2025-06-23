@@ -1,6 +1,6 @@
 #include "window.hpp"
 
-#include <stdexcept>
+#include "../deps/c++/stdexcept"
 
 Window::Window(int w, int h, std::string name) : width{ w }, height{ h }, windowName{ name } {
     initWindow();

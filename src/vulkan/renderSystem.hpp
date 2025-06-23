@@ -6,8 +6,8 @@
 #include "buffer.hpp"
 #include "sprite.hpp" 
 
-#include <memory>
-#include <vector>
+#include "../deps/c++/memory"
+#include "../deps/c++/vector"
 
 class RenderSystem {
 public:

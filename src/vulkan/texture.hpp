@@ -1,7 +1,7 @@
 #pragma once
 
-#include <string>
-#include <vector>
+#include "../deps/c++/string"
+#include "../deps/c++/vector"
 
 #include <vulkan/vulkan.h>
 
