@@ -45,7 +45,7 @@ void DestroyDebugUtilsMessengerEXT(VkInstance instance,
     if (func) func(instance, debugMessenger, pAllocator);
 }
 
-Device::Device(Window& window) : window{ window } {
+Device::Device(AppWindow& window) : window{ window } {
     cout << "[Device] Creating instance...\n";
     createInstance();
     cout << "[Device] Creating debug messenger...\n";

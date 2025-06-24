@@ -2,16 +2,16 @@
 
 #include <stdexcept>
 
-Window::Window(int w, int h, std::string name) : width{ w }, height{ h }, windowName{ name } {
+AppWindow::AppWindow(int w, int h, std::string name) : width{ w }, height{ h }, windowName{ name } {
     initWindow();
 }
 
-Window::~Window() {
+AppWindow::~AppWindow() {
     glfwDestroyWindow(window);
     glfwTerminate();
 }
 
-void Window::initWindow() {
+void AppWindow::initWindow() {
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
@@ -20,14 +20,14 @@ void Window::initWindow() {
     glfwSetFramebufferSizeCallback(window, framebufferResizeCallback);
 }
 
-void Window::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface) {
+void AppWindow::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface) {
     if (glfwCreateWindowSurface(instance, window, nullptr, surface) != VK_SUCCESS) {
         throw std::runtime_error("failed to create window surface!");
     }
 }
 
-void Window::framebufferResizeCallback(GLFWwindow* window, int width, int height) {
-    auto vulkanWindow = reinterpret_cast<Window*>(glfwGetWindowUserPointer(window));
+void AppWindow::framebufferResizeCallback(GLFWwindow* window, int width, int height) {
+    auto vulkanWindow = reinterpret_cast<AppWindow*>(glfwGetWindowUserPointer(window));
     vulkanWindow->framebufferResized = true;
     vulkanWindow->width = width;
     vulkanWindow->height = height;

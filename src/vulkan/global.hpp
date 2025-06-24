@@ -16,7 +16,7 @@ extern float deltaTime;
 
 class Global {
 public:
-    Global(Window& window) : window(window), aspectRatio(1.0f) {
+    Global(AppWindow& window) : window(window), aspectRatio(1.0f) {
         setAspectRatio(); 
     }
 
@@ -30,5 +30,5 @@ public:
 private:
     VkExtent2D extent;
     float aspectRatio;
-    Window& window;
+    AppWindow& window;
 };

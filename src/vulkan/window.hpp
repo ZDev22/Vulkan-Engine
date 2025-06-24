@@ -5,13 +5,13 @@
 #include <vulkan/vulkan.h>
 #include <GLFW/glfw3.h>
 
-class Window {
+class AppWindow {
 public:
-    Window(int w, int h, std::string name);
-    ~Window();
+    AppWindow(int w, int h, std::string name);
+    ~AppWindow();
 
-    Window(const Window&) = delete;
-    Window& operator=(const Window&) = delete;
+    AppWindow(const AppWindow&) = delete;
+    AppWindow& operator=(const AppWindow&) = delete;
 
     bool shouldClose() { return glfwWindowShouldClose(window); }
     VkExtent2D getExtent() { return { static_cast<uint32_t>(width), static_cast<uint32_t>(height) }; }

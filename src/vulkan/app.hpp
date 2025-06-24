@@ -20,7 +20,7 @@ public:
     void run();
 
 private:
-    Window window{1280, 720, "Vulkan"};
+    AppWindow window{1280, 720, "Vulkan"};
     Device device{window};
     Renderer renderer{window, device};
     std::unique_ptr<Pipeline> pipeline;

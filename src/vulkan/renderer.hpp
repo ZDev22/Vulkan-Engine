@@ -12,7 +12,7 @@
 class Renderer {
 public:
 
-    Renderer(Window& window, Device& device);
+    Renderer(AppWindow& window, Device& device);
     ~Renderer();
 
     Renderer(const Renderer&) = delete;
@@ -36,7 +36,7 @@ private:
     void freeCommandBuffers();
     void recreateSwapChain();
 
-    Window& window;
+    AppWindow& window;
     Device& device;
     std::unique_ptr<SwapChain> swapChain;
     std::vector<VkCommandBuffer> commandBuffers;

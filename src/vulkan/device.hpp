@@ -22,7 +22,7 @@ struct QueueFamilyIndices {
 class Device {
 public:
 
-    Device(Window& window);
+    Device(AppWindow& window);
     ~Device();
 
     
@@ -90,7 +90,7 @@ private:
     VkInstance instance;
     VkDebugUtilsMessengerEXT debugMessenger;
     VkPhysicalDevice physicalDevice = VK_NULL_HANDLE;
-    Window& window;
+    AppWindow& window;
     VkCommandPool commandPool;
 
     VkDevice device_;

@@ -16,7 +16,7 @@ uint32_t instanceCount;
 
 using namespace std;
 
-RenderSystem::RenderSystem(Device& device, Window& window, VkRenderPass renderPass, VkDescriptorSetLayout descriptorSetLayout, Global& global)
+RenderSystem::RenderSystem(Device& device, AppWindow& window, VkRenderPass renderPass, VkDescriptorSetLayout descriptorSetLayout, Global& global)
     : device(device), window(window), global(global), descriptorSetLayout(descriptorSetLayout) {
     createPipelineLayout();
     createPipeline(renderPass);

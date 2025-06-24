@@ -60,7 +60,7 @@ void Pipeline::loadSprites() {
     sprite.model = sharedModel;
     sprite.texture = sharedTexture.get();
 
-    for (int i = 0; i < 10000; i++) {
+    for (int i = 0; i < 1; i++) {
 
         sprite.translation = glm::vec2(0.f, 0.f);
 

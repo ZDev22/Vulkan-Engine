@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <iostream>
 
-Renderer::Renderer(Window& window, Device& device) : window{ window }, device{ device } {
+Renderer::Renderer(AppWindow& window, Device& device) : window{ window }, device{ device } {
     recreateSwapChain();
     createCommandBuffers();
 }

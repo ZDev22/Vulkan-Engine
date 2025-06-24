@@ -11,7 +11,7 @@
 
 class RenderSystem {
 public:
-    RenderSystem(Device& device, Window& window, VkRenderPass renderPass, VkDescriptorSetLayout descriptorSetLayout, Global& global);
+    RenderSystem(Device& device, AppWindow& window, VkRenderPass renderPass, VkDescriptorSetLayout descriptorSetLayout, Global& global);
     ~RenderSystem();
 
     RenderSystem(const RenderSystem&) = delete;
@@ -28,7 +28,7 @@ private:
     void createTextureArrayDescriptorSet();
 
     Device& device;
-    Window& window;
+    AppWindow& window;
     Global& global;
     std::unique_ptr<Pipeline> pipeline;
     VkPipelineLayout pipelineLayout;
