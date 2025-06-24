@@ -9,7 +9,7 @@
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "${workspaceFolder}/src",
-      "program": "${workspaceFolder}/build/main",
+      "program": "${workspaceFolder}/build/linux/main",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
@@ -28,7 +28,7 @@
       "stopAtEntry": false,
       "externalConsole": false,
       "cwd": "${workspaceFolder}/src",
-      "program": "${workspaceFolder}/build/main.exe",
+      "program": "${workspaceFolder}/build/windows/main.exe",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
