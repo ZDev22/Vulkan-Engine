@@ -28,6 +28,7 @@ private:
     static std::vector<char> readFile(const std::string& filepath);
     void createGraphicsPipeline(const std::string& vertFilepath, const std::string& fragFilepath, VkRenderPass renderPass);
     VkShaderModule createShaderModule(const std::vector<char>& code);
+    void setTexture(int textureID);
 
     Device& device;
     VkPipeline graphicsPipeline;
@@ -36,5 +37,6 @@ private:
     VkPipelineLayout pipelineLayout;
     VkDescriptorSetLayout descriptorSetLayout;
     VkDescriptorPool descriptorPool;
-    std::shared_ptr<Texture> sharedTexture;
+    std::vector<std::string> texturePaths;
+    std::unique_ptr<Texture> spriteTexture;
 };

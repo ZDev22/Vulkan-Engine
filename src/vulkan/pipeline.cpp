@@ -36,16 +36,21 @@ std::vector<char> Pipeline::readFile(const std::string& filepath) {
     return buffer;
 }
 
-void Pipeline::loadSprites() {
-    std::cout << "Starting sprite loading...\n";
-    std::vector<std::string> texturePaths = { "logo.jpg", "FlappyBird.png" };
-    sharedTexture = std::make_shared<Texture>(
+void Pipeline::setTexture(int textureID) {
+    spriteTexture = std::make_unique<Texture>(
         device,
-        texturePaths[0],
+        texturePaths[textureID],
         descriptorSetLayout,
         descriptorPool,
         *this
     );
+}
+
+void Pipeline::loadSprites() {
+    std::cout << "Starting sprite loading...\n";
+
+    texturePaths = { "FlappyBird.png", "logo.jpg" };
+
     std::vector<Model::Vertex> vertices = {
         {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
         {{0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
@@ -58,21 +63,31 @@ void Pipeline::loadSprites() {
 
     Sprite sprite;
     sprite.model = sharedModel;
-    sprite.texture = sharedTexture.get();
 
-    for (int i = 0; i < 1; i++) {
+    //Create sprites
 
-        sprite.translation = glm::vec2(0.f, 0.f);
+    sprite.translation = glm::vec2(-0.5f, 0.f);
+    sprite.scale = glm::vec2(.2f, .2f);
+    sprite.rotation = 0.f;
+    sprite.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+    sprite.speed = { randomNumber(-.3f, .3f), randomNumber(-.3f, .3f) };
+    sprite.textureIndex = 0;
+    setTexture(sprite.textureIndex);
+    sprite.texture = spriteTexture.get();
+    sprites.push_back(sprite);
 
-        sprite.scale = glm::vec2(.2f, .2f);
-        sprite.rotation = 0.f;
+    // sprite.translation = glm::vec2(0.f, 0.f);
+    // sprite.scale = glm::vec2(.4f, .4f);
+    // sprite.rotation = 90.f;
+    // sprite.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+    // sprite.speed = { randomNumber(-.3f, .3f), randomNumber(-.3f, .3f) };
+    // sprite.textureIndex = 1;
+    // setTexture(sprite.textureIndex);
+    // sprite.texture = spriteTexture.get();
+    // sprites.push_back(sprite);
 
-        sprite.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-        sprite.speed = { randomNumber(-.3f, .3f), randomNumber(-.3f, .3f) };
-        sprite.textureIndex = 1;
-
-        sprites.push_back(sprite);
-    }
+    //Create sprites
+    
     std::cout << "Sprites created: " << sprites.size() << std::endl;
 }
 
