@@ -68,7 +68,7 @@ void RenderSystem::initializeSpriteData() {
     }
 
     spriteData.resize(sprites.size());
-    transform(execution::par, sprites.begin(), sprites.end(), spriteData.begin(), [](const Sprite& sprite) {
+    transform(execution::seq, sprites.begin(), sprites.end(), spriteData.begin(), [](const Sprite& sprite) {
         return SpriteData{
             sprite.translation,
             sprite.scale,
