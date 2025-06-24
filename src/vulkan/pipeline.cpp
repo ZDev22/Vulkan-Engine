@@ -38,7 +38,7 @@ std::vector<char> Pipeline::readFile(const std::string& filepath) {
 
 void Pipeline::loadSprites() {
     std::cout << "Starting sprite loading...\n";
-    std::vector<std::string> texturePaths = { "logo.jpg" };
+    std::vector<std::string> texturePaths = { "logo.jpg", "FlappyBird.png" };
     sharedTexture = std::make_shared<Texture>(
         device,
         texturePaths[0],
@@ -69,7 +69,7 @@ void Pipeline::loadSprites() {
 
         sprite.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
         sprite.speed = { randomNumber(-.3f, .3f), randomNumber(-.3f, .3f) };
-        sprite.textureIndex = 0;
+        sprite.textureIndex = 1;
 
         sprites.push_back(sprite);
     }
