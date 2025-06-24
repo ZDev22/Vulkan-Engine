@@ -25,7 +25,7 @@ if(UNIX AND NOT APPLE)
 elseif(WIN32)
     set(VULKAN_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/src/deps/vulkan/includewindows)
     set(GLFW_INCLUDE_DIR ${GLFW_BASE_DIR}/glfwwindows/include)
-    set(GLFW_LIBRARY ${GLFW_BASE_DIR}/glfwwindows/lib-mingw/libglfw3.a) # <--- MinGW static library
+    set(GLFW_LIBRARY ${GLFW_BASE_DIR}/glfwwindows/lib-mingw/libglfw3.a)
 else()
     message(FATAL_ERROR "Unsupported platform for Vulkan or GLFW")
 endif()
