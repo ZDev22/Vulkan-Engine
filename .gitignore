@@ -1,0 +1,8 @@
+# Ignore everything in the build folder
+/build/*
+
+# But do NOT ignore main (Linux/macOS)
+/build/main
+
+# But do NOT ignore main.exe (Windows)
+/build/main.exe
