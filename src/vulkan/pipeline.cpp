@@ -65,16 +65,17 @@ void Pipeline::loadSprites() {
     sprite.model = sharedModel;
 
     //Create sprites
-
-    sprite.translation = glm::vec2(-0.5f, 0.f);
-    sprite.scale = glm::vec2(.2f, .2f);
-    sprite.rotation = 0.f;
-    sprite.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-    sprite.speed = { randomNumber(-.3f, .3f), randomNumber(-.3f, .3f) };
-    sprite.textureIndex = 0;
-    setTexture(sprite.textureIndex);
-    sprite.texture = spriteTexture.get();
-    sprites.push_back(sprite);
+    setTexture(0);
+    for (int i = 0; i < 1000; i++) {
+        sprite.translation = glm::vec2(-0.5f, 0.f);
+        sprite.scale = glm::vec2(.2f, .2f);
+        sprite.rotation = 0.f;
+        sprite.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+        sprite.speed = { randomNumber(-.3f, .3f), randomNumber(-.3f, .3f) };
+        sprite.textureIndex = 0;
+        sprite.texture = spriteTexture.get();
+        sprites.push_back(sprite);
+    }
 
     // sprite.translation = glm::vec2(0.f, 0.f);
     // sprite.scale = glm::vec2(.4f, .4f);
