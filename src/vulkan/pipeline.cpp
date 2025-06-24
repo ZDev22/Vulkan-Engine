@@ -60,11 +60,11 @@ void Pipeline::loadSprites() {
     sprite.model = sharedModel;
     sprite.texture = sharedTexture.get();
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 10000; i++) {
 
-        sprite.translation = glm::vec2(100.f, 0.f);
+        sprite.translation = glm::vec2(0.f, 0.f);
 
-        sprite.scale = glm::vec2(2, 2);
+        sprite.scale = glm::vec2(.2f, .2f);
         sprite.rotation = 0.f;
 
         sprite.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
