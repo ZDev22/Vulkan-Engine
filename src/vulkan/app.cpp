@@ -8,7 +8,6 @@
 
 using HighResClock = std::chrono::high_resolution_clock;
 static HighResClock::time_point lastTime;
-static float deltaTime = 0.0f;
 static float fps = 0.0f;
 static float timeAccumulator = 0.0f;
 
@@ -51,7 +50,7 @@ void App::run() {
         }
 
         glfwPollEvents();
-        renderSystem->updateSprites(deltaTime);
+        renderSystem->updateSprites();
 
         if (auto commandBuffer = renderer.beginFrame()) {
             renderer.beginSwapChainRenderPass(commandBuffer);

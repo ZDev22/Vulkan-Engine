@@ -10,6 +10,9 @@ struct Push {
 };
 
 extern std::vector<Sprite> sprites;
+extern std::vector<SpriteData> spriteData;
+
+extern float deltaTime;
 
 class Global {
 public:

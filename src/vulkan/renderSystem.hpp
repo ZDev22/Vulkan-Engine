@@ -19,7 +19,7 @@ public:
 
     void initialize();
     void renderSprites(VkCommandBuffer commandBuffer);
-    void updateSprites(float deltaTime);
+    void updateSprites();
 
 private:
     void createPipelineLayout();
@@ -36,5 +36,4 @@ private:
     std::unique_ptr<Buffer> spriteDataBuffer;
     VkDescriptorSet spriteDataDescriptorSet;
     VkDescriptorSet textureArrayDescriptorSet;
-    std::vector<SpriteData> spriteData;
 };

@@ -7,11 +7,6 @@
 #include <stdexcept>
 #include <iostream>
 
-double lastTime;
-double currentTime;
-double deltaTime;
-
-
 Renderer::Renderer(Window& window, Device& device) : window{ window }, device{ device } {
     recreateSwapChain();
     createCommandBuffers();

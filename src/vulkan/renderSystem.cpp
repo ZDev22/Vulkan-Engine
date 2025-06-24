@@ -1,4 +1,5 @@
 #include "renderSystem.hpp"
+#include "global.hpp"
 #include "../program/program.hpp"
 
 #include <stdexcept>
@@ -14,7 +15,6 @@ const uint32_t batchSize = 100;
 uint32_t instanceCount;
 
 using namespace std;
-
 
 RenderSystem::RenderSystem(Device& device, Window& window, VkRenderPass renderPass, VkDescriptorSetLayout descriptorSetLayout, Global& global)
     : device(device), window(window), global(global), descriptorSetLayout(descriptorSetLayout) {
@@ -91,8 +91,6 @@ void RenderSystem::initializeSpriteData() {
 
     spriteDataBuffer->map();
     spriteDataBuffer->writeToBuffer(spriteData.data(), bufferSize);
-
-    startProgram();
 }
 
 void RenderSystem::createTextureArrayDescriptorSet() {
@@ -179,11 +177,9 @@ void RenderSystem::renderSprites(VkCommandBuffer commandBuffer) {
     }
 }
 
-void RenderSystem::updateSprites(float deltaTime) {
+void RenderSystem::updateSprites() {
 
-    for_each(execution::par, spriteData.begin(), spriteData.end(), [deltaTime](auto& sprite) {
-        sprite._translation += sprite._speed * deltaTime;
-    });
+    tick();
 
     VkDeviceSize bufferSize = sizeof(SpriteData) * spriteData.size();
     spriteDataBuffer->writeToBuffer(spriteData.data(), bufferSize);
