@@ -1,3 +1,0 @@
-C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/CMakeFiles/main.dir
-C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/CMakeFiles/edit_cache.dir
-C:/Users/adamo_pk2pdts/OneDrive/Desktop/ZDev/Vulkan/build/CMakeFiles/rebuild_cache.dir
