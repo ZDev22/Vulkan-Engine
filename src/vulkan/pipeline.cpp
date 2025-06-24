@@ -62,13 +62,13 @@ void Pipeline::loadSprites() {
 
     for (int i = 0; i < 100; i++) {
 
-        sprite.translation = glm::vec2(0.f, 0.f);
+        sprite.translation = glm::vec2(100.f, 0.f);
 
-        sprite.scale = glm::vec2(.2f, .2f);
+        sprite.scale = glm::vec2(2, 2);
         sprite.rotation = 0.f;
 
         sprite.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-        sprite.speed = { randomNumber(-.01f, .01f), randomNumber(-.01f, .01f) };
+        sprite.speed = { randomNumber(-.3f, .3f), randomNumber(-.3f, .3f) };
         sprite.textureIndex = 0;
 
         sprites.push_back(sprite);

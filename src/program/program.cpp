@@ -1,13 +1,12 @@
 #include "program.hpp"
+#include "../main.hpp"
 #include "../vulkan/global.hpp"
 
-#include <iostream>
-#include <thread>
-#include <chrono>
-#include <execution>
+#include "../deps/glm/glm/glm.h"
 
 void tick() {
-    std::for_each(std::execution::par, spriteData.begin(), spriteData.end(), [](auto& sprite) {
+    for (auto& sprite : spriteData) {
         sprite._translation += sprite._speed * deltaTime;
-    });
+        sprite._scale += vec2(randomNumber(-.1f, .1f), randomNumber(-.1f, .1f));
+    }
 }
