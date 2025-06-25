@@ -7,7 +7,6 @@
 #include <array>
 #include <algorithm>
 #include <execution>
-#include <thread>
 
 #include <glm/gtc/matrix_transform.hpp>
 
@@ -67,17 +66,9 @@ void RenderSystem::initializeSpriteData() {
         return;
     }
 
-    spriteData.resize(sprites.size());
-    transform(execution::par, sprites.begin(), sprites.end(), spriteData.begin(), [](const Sprite& sprite) {
-        return SpriteData{
-            sprite.translation,
-            sprite.scale,
-            sprite.color,
-            sprite.speed,
-            sprite.textureIndex,
-            sprite.rotation
-        };
-    });
+    // spriteData.resize(sprites.size());
+    // cout << "Initializing...\n";
+    // spriteData = sprites;
 
     VkDeviceSize bufferSize = sizeof(SpriteData) * sprites.size();
     spriteDataBuffer = make_unique<Buffer>(
@@ -90,7 +81,7 @@ void RenderSystem::initializeSpriteData() {
     );
 
     spriteDataBuffer->map();
-    spriteDataBuffer->writeToBuffer(spriteData.data(), bufferSize);
+    spriteDataBuffer->writeToBuffer(sprites, bufferSize);
 }
 
 void RenderSystem::createTextureArrayDescriptorSet() {
