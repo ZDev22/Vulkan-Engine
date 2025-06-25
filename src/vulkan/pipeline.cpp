@@ -68,37 +68,17 @@ void Pipeline::loadSprites() {
     SpriteData spriteData;
 
     //Create sprites
-    setTexture(0);
-<<<<<<< HEAD
-
-    SpriteData spriteData;
-=======
->>>>>>> 8f63bf24a961c161c2b42e28ba25a93dc3536ad3
+    setTexture(1);
     for (int i = 0; i < 1; i++) {
-        spriteData.translation = glm::vec2(-0.5f, 0.f);
+        spriteData.translation = glm::vec2(-0.8f, -0.2f);
         spriteData.scale = glm::vec2(.2f, .2f);
         spriteData.rotation = 0.f;
         spriteData.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-        spriteData.speed = { randomNumber(-.3f, .3f), randomNumber(-.3f, .3f) };
         spriteData.textureIndex = 0;
-<<<<<<< HEAD
         sprite.texture = spriteTexture.get();
         sprites.push_back(spriteData);
         spriteCPU.push_back(sprite);
-=======
-        sprites.push_back(spriteData);
->>>>>>> 8f63bf24a961c161c2b42e28ba25a93dc3536ad3
     }
-
-    // sprite.translation = glm::vec2(0.f, 0.f);
-    // sprite.scale = glm::vec2(.4f, .4f);
-    // sprite.rotation = 90.f;
-    // sprite.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-    // sprite.speed = { randomNumber(-.3f, .3f), randomNumber(-.3f, .3f) };
-    // sprite.textureIndex = 1;
-    // setTexture(sprite.textureIndex);
-    // sprite.texture = spriteTexture.get();
-    // sprites.push_back(sprite);
 
     //Create sprites
     

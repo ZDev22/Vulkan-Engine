@@ -8,7 +8,6 @@ struct SpriteData {
     vec2 translation;
     vec2 scale;
     vec4 color;
-    vec2 speed;
 
     uint textureIndex;
     float rotation;

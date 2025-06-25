@@ -19,6 +19,7 @@ public:
     void resetWindowResizedFlag() { framebufferResized = false; }
     void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
     void waitEvents() { glfwWaitEvents(); }
+    GLFWwindow* getWindow() { return window; }
 
 private:
     void initWindow();

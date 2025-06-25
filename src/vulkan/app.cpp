@@ -23,6 +23,8 @@ App::App() {
     renderSystem = std::make_unique<RenderSystem>(
         device,
         window,
+        keyboard,
+        program,
         renderer.getSwapChainRenderPass(),
         pipeline->getDescriptorSetLayout(),
         *global

@@ -15,8 +15,8 @@ uint32_t instanceCount;
 
 using namespace std;
 
-RenderSystem::RenderSystem(Device& device, AppWindow& window, VkRenderPass renderPass, VkDescriptorSetLayout descriptorSetLayout, Global& global)
-    : device(device), window(window), global(global), descriptorSetLayout(descriptorSetLayout) {
+RenderSystem::RenderSystem(Device& device, AppWindow& window, Keyboard& keyboard, Program& program, VkRenderPass renderPass, VkDescriptorSetLayout descriptorSetLayout, Global& global)
+    : device(device), window(window), global(global), keyboard(keyboard), program(program), descriptorSetLayout(descriptorSetLayout) {
     createPipelineLayout();
     createPipeline(renderPass);
     cout << "RenderSystem created" << endl;
@@ -66,15 +66,7 @@ void RenderSystem::initializeSpriteData() {
         return;
     }
 
-<<<<<<< HEAD
     VkDeviceSize bufferSize = sizeof(SpriteData) * (sprites.size() + spriteCPU.size());
-=======
-    // spriteData.resize(sprites.size());
-    // cout << "Initializing...\n";
-    // spriteData = sprites;
-
-    VkDeviceSize bufferSize = sizeof(SpriteData) * sprites.size();
->>>>>>> 8f63bf24a961c161c2b42e28ba25a93dc3536ad3
     spriteDataBuffer = make_unique<Buffer>(
         device,
         bufferSize,
@@ -85,11 +77,7 @@ void RenderSystem::initializeSpriteData() {
     );
 
     spriteDataBuffer->map();
-<<<<<<< HEAD
     spriteDataBuffer->writeToBuffer(sprites.data(), bufferSize);
-=======
-    spriteDataBuffer->writeToBuffer(sprites, bufferSize);
->>>>>>> 8f63bf24a961c161c2b42e28ba25a93dc3536ad3
 }
 
 void RenderSystem::createTextureArrayDescriptorSet() {
@@ -144,6 +132,8 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     array<VkWriteDescriptorSet, 2> descriptorWrites = {bufferWrite, imageWrite};
     vkUpdateDescriptorSets(device.device(), descriptorWrites.size(), descriptorWrites.data(), 0, nullptr);
 
+    
+
     cout << "Combined descriptor set created: " << spriteDataDescriptorSet << endl;
 }
 
@@ -178,7 +168,7 @@ void RenderSystem::renderSprites(VkCommandBuffer commandBuffer) {
 
 void RenderSystem::updateSprites() {
 
-    tick();
+    program.tick();
 
     VkDeviceSize bufferSize = sizeof(SpriteData) * sprites.size();
     spriteDataBuffer->writeToBuffer(sprites.data(), bufferSize);

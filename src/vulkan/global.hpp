@@ -10,10 +10,7 @@ struct Push {
 };
 
 extern std::vector<SpriteData> sprites;
-<<<<<<< HEAD
 extern std::vector<Sprite> spriteCPU;
-=======
->>>>>>> 8f63bf24a961c161c2b42e28ba25a93dc3536ad3
 
 extern float deltaTime;
 

@@ -6,11 +6,20 @@
 
 #include <iostream>
 #include <string>
+#include "functions/keyboard.hpp"
 
-void tick() {
-    for (size_t d = 0; d < sprites.size(); d++) {
-        sprites[d].translation += sprites[d].speed * deltaTime;
-        //sprite._scale += glm::vec2(randomNumber(-.005f, .005f), randomNumber(-.005f, .005f));
-        //sprite._rotation += randomNumber(-.01f, .01f); 
-    }
+float speedY;
+
+Program::Program(Keyboard& keyboard)
+: keyboard(keyboard) {
+    // Currently no initialization to be seen
+}
+
+void Program::tick() {
+    speedY -= .1f;
+    sprites[0].translation.y += speedY * deltaTime;
+    sprites[0].rotation -= .1f;
+    if (keyboard.keyHit(GLFW_KEY_A)) {
+        std::cout << "true\n";
+    } 
 }

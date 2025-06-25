@@ -1,6 +1,15 @@
 #ifndef PROGRAM_HPP
 #define PROGRAM_HPP
 
-void tick();
+#include "functions/keyboard.hpp"
+
+class Program {
+public:
+    Program(Keyboard& keyboard);
+
+    void tick();
+private:
+    Keyboard& keyboard;
+};
 
 #endif

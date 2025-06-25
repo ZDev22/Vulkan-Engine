@@ -7,6 +7,9 @@
 #include "renderSystem.hpp"
 #include "global.hpp" 
 
+#include "../program/program.hpp"
+#include "../program/functions/keyboard.hpp"
+
 #include <memory>
 
 class App {
@@ -23,6 +26,8 @@ private:
     AppWindow window{1280, 720, "Vulkan"};
     Device device{window};
     Renderer renderer{window, device};
+    Keyboard keyboard{window};
+    Program program{keyboard};
     std::unique_ptr<Pipeline> pipeline;
     std::unique_ptr<Global> global; 
     std::unique_ptr<RenderSystem> renderSystem;

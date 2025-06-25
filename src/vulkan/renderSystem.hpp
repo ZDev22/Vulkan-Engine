@@ -4,14 +4,17 @@
 #include "pipeline.hpp"
 #include "global.hpp"
 #include "buffer.hpp"
-#include "sprite.hpp" 
+#include "sprite.hpp"
+
+#include "../program/program.hpp"
+#include "../program/functions/keyboard.hpp"
 
 #include <memory>
 #include <vector>
 
 class RenderSystem {
 public:
-    RenderSystem(Device& device, AppWindow& window, VkRenderPass renderPass, VkDescriptorSetLayout descriptorSetLayout, Global& global);
+    RenderSystem(Device& device, AppWindow& window, Keyboard& keyboard, Program& program, VkRenderPass renderPass, VkDescriptorSetLayout descriptorSetLayout, Global& global);
     ~RenderSystem();
 
     RenderSystem(const RenderSystem&) = delete;
@@ -30,6 +33,8 @@ private:
     Device& device;
     AppWindow& window;
     Global& global;
+    Keyboard& keyboard;
+    Program& program;
     std::unique_ptr<Pipeline> pipeline;
     VkPipelineLayout pipelineLayout;
     VkDescriptorSetLayout descriptorSetLayout;
