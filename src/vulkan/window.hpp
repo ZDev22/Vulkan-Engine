@@ -7,7 +7,7 @@
 
 class AppWindow {
 public:
-    AppWindow(int w, int h, std::string name);
+    AppWindow(int w, int h);
     ~AppWindow();
 
     AppWindow(const AppWindow&) = delete;
@@ -19,6 +19,7 @@ public:
     void resetWindowResizedFlag() { framebufferResized = false; }
     void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
     void waitEvents() { glfwWaitEvents(); }
+    void setWindowName(std::string name) { glfwSetWindowTitle(window, name.c_str()); }
     GLFWwindow* getWindow() { return window; }
 
 private:
@@ -28,6 +29,5 @@ private:
     int width;
     int height;
     bool framebufferResized = false;
-    std::string windowName;
     GLFWwindow* window;
 };

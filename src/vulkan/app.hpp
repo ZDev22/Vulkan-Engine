@@ -23,7 +23,7 @@ public:
     void run();
 
 private:
-    AppWindow window{1280, 720, "Vulkan"};
+    AppWindow window{1280, 720};
     Device device{window};
     Renderer renderer{window, device};
     Keyboard keyboard{window};

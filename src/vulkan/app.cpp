@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <chrono>
+#include <string>
 
 using HighResClock = std::chrono::high_resolution_clock;
 static HighResClock::time_point lastTime;
@@ -47,7 +48,8 @@ void App::run() {
         timeAccumulator += deltaTime;
 
         if (timeAccumulator >= 1.0f) {
-            std::cout << "FPS: " << fps << '\n';
+            //std::cout << "FPS: " << fps << '\n';
+            window.setWindowName("vulkan - " + std::to_string(fps));
             timeAccumulator = 0.0f;
         }
 
