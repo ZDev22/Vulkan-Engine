@@ -63,11 +63,17 @@ void Pipeline::loadSprites() {
 
     Sprite sprite;
     sprite.model = sharedModel;
+    sprite.texture = spriteTexture.get();
+
+    SpriteData spriteData;
 
     //Create sprites
     setTexture(0);
+<<<<<<< HEAD
 
     SpriteData spriteData;
+=======
+>>>>>>> 8f63bf24a961c161c2b42e28ba25a93dc3536ad3
     for (int i = 0; i < 1; i++) {
         spriteData.translation = glm::vec2(-0.5f, 0.f);
         spriteData.scale = glm::vec2(.2f, .2f);
@@ -75,9 +81,13 @@ void Pipeline::loadSprites() {
         spriteData.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
         spriteData.speed = { randomNumber(-.3f, .3f), randomNumber(-.3f, .3f) };
         spriteData.textureIndex = 0;
+<<<<<<< HEAD
         sprite.texture = spriteTexture.get();
         sprites.push_back(spriteData);
         spriteCPU.push_back(sprite);
+=======
+        sprites.push_back(spriteData);
+>>>>>>> 8f63bf24a961c161c2b42e28ba25a93dc3536ad3
     }
 
     // sprite.translation = glm::vec2(0.f, 0.f);

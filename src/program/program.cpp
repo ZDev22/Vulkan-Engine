@@ -4,6 +4,9 @@
 
 #include <glm/glm.hpp>
 
+#include <iostream>
+#include <string>
+
 void tick() {
     for (size_t d = 0; d < sprites.size(); d++) {
         sprites[d].translation += sprites[d].speed * deltaTime;
