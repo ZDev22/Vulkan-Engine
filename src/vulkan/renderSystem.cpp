@@ -67,19 +67,7 @@ void RenderSystem::initializeSpriteData() {
         return;
     }
 
-    spriteData.resize(sprites.size());
-    transform(execution::par, sprites.begin(), sprites.end(), spriteData.begin(), [](const Sprite& sprite) {
-        return SpriteData{
-            sprite.translation,
-            sprite.scale,
-            sprite.color,
-            sprite.speed,
-            sprite.textureIndex,
-            sprite.rotation
-        };
-    });
-
-    VkDeviceSize bufferSize = sizeof(SpriteData) * sprites.size();
+    VkDeviceSize bufferSize = sizeof(SpriteData) * (sprites.size() + spriteCPU.size());
     spriteDataBuffer = make_unique<Buffer>(
         device,
         bufferSize,
@@ -90,7 +78,7 @@ void RenderSystem::initializeSpriteData() {
     );
 
     spriteDataBuffer->map();
-    spriteDataBuffer->writeToBuffer(spriteData.data(), bufferSize);
+    spriteDataBuffer->writeToBuffer(sprites.data(), bufferSize);
 }
 
 void RenderSystem::createTextureArrayDescriptorSet() {
@@ -98,7 +86,7 @@ void RenderSystem::createTextureArrayDescriptorSet() {
         throw runtime_error("spriteDataBuffer is not initialized!");
     }
 
-    textureArrayDescriptorSet = sprites[0].texture->getDescriptorSet();
+    textureArrayDescriptorSet = spriteCPU[0].texture->getDescriptorSet();
     if (textureArrayDescriptorSet == VK_NULL_HANDLE) {
         throw runtime_error("Failed to get valid texture descriptor set");
     }
@@ -117,7 +105,7 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     VkDescriptorBufferInfo bufferInfo{};
     bufferInfo.buffer = spriteDataBuffer->getBuffer();
     bufferInfo.offset = 0;
-    bufferInfo.range = sizeof(SpriteData) * sprites.size();
+    bufferInfo.range = sizeof(SpriteData) * (sprites.size() + spriteCPU.size());
 
     VkWriteDescriptorSet bufferWrite{};
     bufferWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
@@ -130,8 +118,8 @@ void RenderSystem::createTextureArrayDescriptorSet() {
 
     VkDescriptorImageInfo imageInfo{};
     imageInfo.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
-    imageInfo.imageView = sprites[0].texture->getImageView();
-    imageInfo.sampler = sprites[0].texture->getSampler();
+    imageInfo.imageView = spriteCPU[0].texture->getImageView();
+    imageInfo.sampler = spriteCPU[0].texture->getSampler();
 
     VkWriteDescriptorSet imageWrite{};
     imageWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
@@ -149,14 +137,14 @@ void RenderSystem::createTextureArrayDescriptorSet() {
 }
 
 void RenderSystem::renderSprites(VkCommandBuffer commandBuffer) {
-    if (sprites.empty() || !sprites[0].model) {
+    if (sprites.empty() || !spriteCPU[0].model) {
         cerr << "No valid sprites or model to render" << endl;
         return;
     }
 
     global.setAspectRatio();
     pipeline->bind(commandBuffer);
-    auto model = sprites[0].model;
+    auto model = spriteCPU[0].model;
     model->bind(commandBuffer);
     vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline->getPipelineLayout(), 0, 1, &spriteDataDescriptorSet, 0, nullptr);
 
@@ -181,6 +169,6 @@ void RenderSystem::updateSprites() {
 
     tick();
 
-    VkDeviceSize bufferSize = sizeof(SpriteData) * spriteData.size();
-    spriteDataBuffer->writeToBuffer(spriteData.data(), bufferSize);
+    VkDeviceSize bufferSize = sizeof(SpriteData) * sprites.size();
+    spriteDataBuffer->writeToBuffer(sprites.data(), bufferSize);
 }

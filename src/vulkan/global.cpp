@@ -1,6 +1,6 @@
 #include "global.hpp"
 
-std::vector<Sprite> sprites;
-std::vector<SpriteData> spriteData;
+std::vector<SpriteData> sprites;
+std::vector<Sprite> spriteCPU;
 
 float deltaTime = .0f;

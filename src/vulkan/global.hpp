@@ -9,8 +9,8 @@ struct Push {
     glm::mat4 projection;
 };
 
-extern std::vector<Sprite> sprites;
-extern std::vector<SpriteData> spriteData;
+extern std::vector<SpriteData> sprites;
+extern std::vector<Sprite> spriteCPU;
 
 extern float deltaTime;
 
