@@ -486,7 +486,7 @@ uint32_t Device::findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags prope
     throw std::runtime_error("[Device] failed to find suitable memory type!");
 }
 
-void Device::createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory) {
+VkResult Device::createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer& buffer, VkDeviceMemory& bufferMemory) {
     cout << "[Device] Creating buffer, size = " << size << endl;
     VkBufferCreateInfo bufferInfo{};
     bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
@@ -494,8 +494,9 @@ void Device::createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryP
     bufferInfo.usage = usage;
     bufferInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
 
-    if (vkCreateBuffer(device_, &bufferInfo, nullptr, &buffer) != VK_SUCCESS) {
-        throw std::runtime_error("[Device] failed to create buffer!");
+    VkResult result = vkCreateBuffer(device_, &bufferInfo, nullptr, &buffer);
+    if (result != VK_SUCCESS) {
+        throw std::runtime_error("[Device] failed to create buffer! VkResult: " + std::to_string(result));
     }
     cout << "[Device] Buffer created.\n";
 
@@ -508,13 +509,22 @@ void Device::createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryP
     allocInfo.allocationSize = memRequirements.size;
     allocInfo.memoryTypeIndex = findMemoryType(memRequirements.memoryTypeBits, properties);
 
-    if (vkAllocateMemory(device_, &allocInfo, nullptr, &bufferMemory) != VK_SUCCESS) {
-        throw std::runtime_error("[Device] failed to allocate buffer memory!");
+    result = vkAllocateMemory(device_, &allocInfo, nullptr, &bufferMemory);
+    if (result != VK_SUCCESS) {
+        vkDestroyBuffer(device_, buffer, nullptr);
+        throw std::runtime_error("[Device] failed to allocate buffer memory! VkResult: " + std::to_string(result));
     }
     cout << "[Device] Buffer memory allocated.\n";
 
-    vkBindBufferMemory(device_, buffer, bufferMemory, 0);
+    result = vkBindBufferMemory(device_, buffer, bufferMemory, 0);
+    if (result != VK_SUCCESS) {
+        vkDestroyBuffer(device_, buffer, nullptr);
+        vkFreeMemory(device_, bufferMemory, nullptr);
+        throw std::runtime_error("[Device] failed to bind buffer memory! VkResult: " + std::to_string(result));
+    }
     cout << "[Device] Buffer memory bound.\n";
+
+    return VK_SUCCESS;
 }
 
 VkCommandBuffer Device::beginSingleTimeCommands() {
@@ -578,15 +588,16 @@ void Device::copyBufferToImage(VkBuffer buffer, VkImage image, uint32_t width, u
     region.imageSubresource.layerCount = layerCount;
     region.imageOffset = { 0, 0, 0 };
     region.imageExtent = { width, height, 1 };
-    vkCmdCopyBufferToImage(commandBuffer, buffer, image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &region); 
+    vkCmdCopyBufferToImage(commandBuffer, buffer, image, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &region);
     endSingleTimeCommands(commandBuffer);
     cout << "[Device] copyBufferToImage complete\n";
 }
 
-void Device::createImageWithInfo(const VkImageCreateInfo& imageInfo, VkMemoryPropertyFlags properties, VkImage& image, VkDeviceMemory& imageMemory) {
+VkResult Device::createImageWithInfo(const VkImageCreateInfo& imageInfo, VkMemoryPropertyFlags properties, VkImage& image, VkDeviceMemory& imageMemory) {
     cout << "[Device] createImageWithInfo\n";
-    if (vkCreateImage(device_, &imageInfo, nullptr, &image) != VK_SUCCESS) {
-        throw std::runtime_error("[Device] failed to create image!");
+    VkResult result = vkCreateImage(device_, &imageInfo, nullptr, &image);
+    if (result != VK_SUCCESS) {
+        throw std::runtime_error("[Device] failed to create image! VkResult: " + std::to_string(result));
     }
     cout << "[Device] Image created.\n";
 
@@ -598,14 +609,21 @@ void Device::createImageWithInfo(const VkImageCreateInfo& imageInfo, VkMemoryPro
     allocInfo.allocationSize = memRequirements.size;
     allocInfo.memoryTypeIndex = findMemoryType(memRequirements.memoryTypeBits, properties);
 
-    if (vkAllocateMemory(device_, &allocInfo, nullptr, &imageMemory) != VK_SUCCESS) {
-        throw std::runtime_error("[Device] failed to allocate image memory!");
+    result = vkAllocateMemory(device_, &allocInfo, nullptr, &imageMemory);
+    if (result != VK_SUCCESS) {
+        vkDestroyImage(device_, image, nullptr);
+        throw std::runtime_error("[Device] failed to allocate image memory! VkResult: " + std::to_string(result));
     }
 
-    if (vkBindImageMemory(device_, image, imageMemory, 0) != VK_SUCCESS) {
-        throw std::runtime_error("[Device] failed to bind image memory!");
+    result = vkBindImageMemory(device_, image, imageMemory, 0);
+    if (result != VK_SUCCESS) {
+        vkDestroyImage(device_, image, nullptr);
+        vkFreeMemory(device_, imageMemory, nullptr);
+        throw std::runtime_error("[Device] failed to bind image memory! VkResult: " + std::to_string(result));
     }
     cout << "[Device] Image memory allocated and bound.\n";
+
+    return VK_SUCCESS;
 }
 
 void Device::populateDebugMessengerCreateInfo(VkDebugUtilsMessengerCreateInfoEXT& createInfo) {

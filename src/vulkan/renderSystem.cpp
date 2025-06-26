@@ -61,12 +61,8 @@ void RenderSystem::createPipeline(VkRenderPass renderPass) {
 }
 
 void RenderSystem::initializeSpriteData() {
-    if (sprites.empty()) {
-        cerr << "Error: No sprites to initialize.\n";
-        return;
-    }
 
-    VkDeviceSize bufferSize = sizeof(SpriteData) * (sprites.size() + spriteCPU.size());
+    VkDeviceSize bufferSize = sizeof(SpriteData) * sprites.size();
     spriteDataBuffer = make_unique<Buffer>(
         device,
         bufferSize,
@@ -89,7 +85,7 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     if (textureArrayDescriptorSet == VK_NULL_HANDLE) {
         throw runtime_error("Failed to get valid texture descriptor set");
     }
-    cout << "Using texture descriptor set: " << textureArrayDescriptorSet << endl;
+    cout << "Using texture array descriptor set: " << textureArrayDescriptorSet << endl;
 
     VkDescriptorSetAllocateInfo allocInfo{};
     allocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
@@ -126,13 +122,11 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     imageWrite.dstBinding = 1;
     imageWrite.dstArrayElement = 0;
     imageWrite.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-    imageWrite.descriptorCount = 1;
+    imageWrite.descriptorCount = spriteCPU[0].texture->getIsArray() ? spriteCPU[0].texture->getArrayLayers() : 1;
     imageWrite.pImageInfo = &imageInfo;
 
     array<VkWriteDescriptorSet, 2> descriptorWrites = {bufferWrite, imageWrite};
     vkUpdateDescriptorSets(device.device(), descriptorWrites.size(), descriptorWrites.data(), 0, nullptr);
-
-    
 
     cout << "Combined descriptor set created: " << spriteDataDescriptorSet << endl;
 }

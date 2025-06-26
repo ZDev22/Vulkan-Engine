@@ -34,5 +34,5 @@ void main() {
 
     fragColor = sprite.color;
     fragTexCoord = inTexCoord;
-    //textureId = sprite.textureIndex;
+    textureId = sprite.textureIndex;
 }

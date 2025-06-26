@@ -2,11 +2,13 @@
 #include "pipeline.hpp"
 
 #define STB_IMAGE_IMPLEMENTATION
+#define STBI_ASSERT(x)
 #include "stb_image.h"
 
 #include <stdexcept>
 #include <cstring>
 #include <iostream>
+#include <filesystem>
 
 Texture::Texture(Device& device, const std::string& filepath, VkDescriptorSetLayout descriptorSetLayout,
     VkDescriptorPool descriptorPool, Pipeline& pipeline)
@@ -131,102 +133,183 @@ Texture::~Texture() {
 }
 
 void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
-    arrayLayers = static_cast<uint32_t>(filepaths.size());
-    std::vector<stbi_uc*> pixelsArray(arrayLayers);
-    int texWidth = 0, texHeight = 0, texChannels = 0;
+    // Temporary Vulkan resources to track for cleanup on failure
+    VkBuffer stagingBuffer = VK_NULL_HANDLE;
+    VkDeviceMemory stagingBufferMemory = VK_NULL_HANDLE;
+    bool stagingBufferCreated = false;
 
-    for (uint32_t i = 0; i < arrayLayers; ++i) {
-        stbi_set_flip_vertically_on_load(true);
-        int width, height, channels;
-        pixelsArray[i] = stbi_load(filepaths[i].c_str(), &width, &height, &channels, STBI_rgb_alpha);
-        if (!pixelsArray[i]) {
-            throw std::runtime_error("failed to load texture image: " + filepaths[i]);
+    try {
+        arrayLayers = static_cast<uint32_t>(filepaths.size());
+        if (arrayLayers == 0) {
+            throw std::runtime_error("No texture file paths provided!");
         }
-        if (i == 0) {
-            texWidth = width;
-            texHeight = height;
-            texChannels = channels;
+        if (arrayLayers > device.properties.limits.maxImageArrayLayers) {
+            throw std::runtime_error("Texture array layers (" + std::to_string(arrayLayers) + 
+                                    ") exceed device limit (" + std::to_string(device.properties.limits.maxImageArrayLayers) + ")");
         }
-        else if (width != texWidth || height != texHeight) {
-            throw std::runtime_error("texture array requires same dimensions for all images");
+
+        std::vector<stbi_uc*> pixelsArray(arrayLayers);
+        int texWidth = 0, texHeight = 0;
+
+        for (uint32_t i = 0; i < arrayLayers; ++i) {
+            std::string absolutePath = std::filesystem::absolute(filepaths[i]).string();
+            std::cout << "Loading texture: " << absolutePath << std::endl;
+            stbi_set_flip_vertically_on_load(true);
+            int width = 0, height = 0, channels = 0;
+            pixelsArray[i] = stbi_load(absolutePath.c_str(), &width, &height, &channels, STBI_rgb_alpha);
+
+            if (!pixelsArray[i] || width <= 0 || height <= 0) {
+                std::cerr << "Failed to load or invalid texture: " << absolutePath << std::endl;
+                for (uint32_t j = 0; j <= i; ++j) {
+                    stbi_image_free(pixelsArray[j]);
+                }
+                throw std::runtime_error("Failed to load or invalid texture: " + absolutePath);
+            }
+
+            std::cout << "Loaded texture: " << absolutePath << ", Width: " << width 
+                      << ", Height: " << height << ", Channels: " << channels << std::endl;
+
+            if (i == 0) {
+                texWidth = width;
+                texHeight = height;
+            } else if (width != texWidth || height != texHeight) {
+                std::cerr << "Texture dimension mismatch for " << absolutePath 
+                          << ": expected " << texWidth << "x" << texHeight 
+                          << ", got " << width << "x" << height << std::endl;
+                for (uint32_t j = 0; j <= i; ++j) {
+                    stbi_image_free(pixelsArray[j]);
+                }
+                throw std::runtime_error("Texture array requires same dimensions for all images");
+            }
         }
-    }
 
-    VkDeviceSize imageSize = texWidth * texHeight * 4 * arrayLayers;
-    imageFormat = VK_FORMAT_R8G8B8A8_SRGB;
+        VkDeviceSize imageSize = static_cast<VkDeviceSize>(texWidth) * texHeight * 4 * arrayLayers;
+        if (imageSize == 0) {
+            for (uint32_t i = 0; i < arrayLayers; ++i) {
+                stbi_image_free(pixelsArray[i]);
+            }
+            throw std::runtime_error("Calculated image size is zero!");
+        }
 
-    VkBuffer stagingBuffer;
-    VkDeviceMemory stagingBufferMemory;
-    device.createBuffer(imageSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
-        VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
-        stagingBuffer, stagingBufferMemory);
+        imageFormat = VK_FORMAT_R8G8B8A8_SRGB;
 
-    void* data;
-    vkMapMemory(device.device(), stagingBufferMemory, 0, imageSize, 0, &data);
-    for (uint32_t i = 0; i < arrayLayers; ++i) {
-        memcpy(static_cast<char*>(data) + i * texWidth * texHeight * 4, pixelsArray[i],
-            static_cast<size_t>(texWidth * texHeight * 4));
-        stbi_image_free(pixelsArray[i]);
-    }
-    vkUnmapMemory(device.device(), stagingBufferMemory);
+        VkResult result = device.createBuffer(imageSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
+            VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
+            stagingBuffer, stagingBufferMemory);
+        if (result != VK_SUCCESS) {
+            for (uint32_t i = 0; i < arrayLayers; ++i) {
+                stbi_image_free(pixelsArray[i]);
+            }
+            throw std::runtime_error("Failed to create staging buffer: VkResult " + std::to_string(result));
+        }
+        stagingBufferCreated = true;
 
-    VkImageCreateInfo imageInfo{};
-    imageInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
-    imageInfo.imageType = VK_IMAGE_TYPE_2D;
-    imageInfo.extent.width = static_cast<uint32_t>(texWidth);
-    imageInfo.extent.height = static_cast<uint32_t>(texHeight);
-    imageInfo.extent.depth = 1;
-    imageInfo.mipLevels = 1;
-    imageInfo.arrayLayers = arrayLayers;
-    imageInfo.format = imageFormat;
-    imageInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
-    imageInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
-    imageInfo.usage = VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;
-    imageInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
-    imageInfo.samples = VK_SAMPLE_COUNT_1_BIT;
+        void* data;
+        result = vkMapMemory(device.device(), stagingBufferMemory, 0, imageSize, 0, &data);
+        if (result != VK_SUCCESS) {
+            for (uint32_t i = 0; i < arrayLayers; ++i) {
+                stbi_image_free(pixelsArray[i]);
+            }
+            vkDestroyBuffer(device.device(), stagingBuffer, nullptr);
+            vkFreeMemory(device.device(), stagingBufferMemory, nullptr);
+            throw std::runtime_error("Failed to map staging buffer memory: VkResult " + std::to_string(result));
+        }
 
-    device.createImageWithInfo(imageInfo, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, image, imageMemory);
+        for (uint32_t i = 0; i < arrayLayers; ++i) {
+            size_t expectedSize = static_cast<size_t>(texWidth) * texHeight * 4;
+            memcpy(static_cast<char*>(data) + i * expectedSize, pixelsArray[i], expectedSize);
+            stbi_image_free(pixelsArray[i]);
+        }
+        vkUnmapMemory(device.device(), stagingBufferMemory);
 
-    transitionImageLayout(VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
-    device.copyBufferToImage(stagingBuffer, image, static_cast<uint32_t>(texWidth), static_cast<uint32_t>(texHeight), arrayLayers);
+        VkImageCreateInfo imageInfo{};
+        imageInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
+        imageInfo.imageType = VK_IMAGE_TYPE_2D;
+        imageInfo.extent.width = static_cast<uint32_t>(texWidth);
+        imageInfo.extent.height = static_cast<uint32_t>(texHeight);
+        imageInfo.extent.depth = 1;
+        imageInfo.mipLevels = 1;
+        imageInfo.arrayLayers = arrayLayers;
+        imageInfo.format = imageFormat;
+        imageInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
+        imageInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+        imageInfo.usage = VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT;
+        imageInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
+        imageInfo.samples = VK_SAMPLE_COUNT_1_BIT;
 
-    transitionImageLayout(VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
+        result = device.createImageWithInfo(imageInfo, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, image, imageMemory);
+        if (result != VK_SUCCESS) {
+            vkDestroyBuffer(device.device(), stagingBuffer, nullptr);
+            vkFreeMemory(device.device(), stagingBufferMemory, nullptr);
+            throw std::runtime_error("Failed to create image: VkResult " + std::to_string(result));
+        }
 
-    vkDestroyBuffer(device.device(), stagingBuffer, nullptr);
-    vkFreeMemory(device.device(), stagingBufferMemory, nullptr);
+        transitionImageLayout(VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL);
+        device.copyBufferToImage(stagingBuffer, image, static_cast<uint32_t>(texWidth), static_cast<uint32_t>(texHeight), arrayLayers);
+        transitionImageLayout(VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
 
-    VkImageViewCreateInfo viewInfo{};
-    viewInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
-    viewInfo.image = image;
-    viewInfo.viewType = VK_IMAGE_VIEW_TYPE_2D_ARRAY;
-    viewInfo.format = imageFormat;
-    viewInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
-    viewInfo.subresourceRange.baseMipLevel = 0;
-    viewInfo.subresourceRange.levelCount = 1;
-    viewInfo.subresourceRange.baseArrayLayer = 0;
-    viewInfo.subresourceRange.layerCount = arrayLayers;
+        vkDestroyBuffer(device.device(), stagingBuffer, nullptr);
+        vkFreeMemory(device.device(), stagingBufferMemory, nullptr);
+        stagingBufferCreated = false;
 
-    if (vkCreateImageView(device.device(), &viewInfo, nullptr, &imageView) != VK_SUCCESS) {
-        throw std::runtime_error("failed to create texture array image view!");
-    }
+        VkImageViewCreateInfo viewInfo{};
+        viewInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+        viewInfo.image = image;
+        viewInfo.viewType = VK_IMAGE_VIEW_TYPE_2D_ARRAY;
+        viewInfo.format = imageFormat;
+        viewInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
+        viewInfo.subresourceRange.baseMipLevel = 0;
+        viewInfo.subresourceRange.levelCount = 1;
+        viewInfo.subresourceRange.baseArrayLayer = 0;
+        viewInfo.subresourceRange.layerCount = arrayLayers;
 
-    VkSamplerCreateInfo samplerInfo{};
-    samplerInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
-    samplerInfo.magFilter = VK_FILTER_LINEAR;
-    samplerInfo.minFilter = VK_FILTER_LINEAR;
-    samplerInfo.addressModeU = VK_SAMPLER_ADDRESS_MODE_REPEAT;
-    samplerInfo.addressModeV = VK_SAMPLER_ADDRESS_MODE_REPEAT;
-    samplerInfo.addressModeW = VK_SAMPLER_ADDRESS_MODE_REPEAT;
-    samplerInfo.anisotropyEnable = VK_TRUE;
-    samplerInfo.maxAnisotropy = device.properties.limits.maxSamplerAnisotropy;
-    samplerInfo.borderColor = VK_BORDER_COLOR_INT_OPAQUE_BLACK;
-    samplerInfo.unnormalizedCoordinates = VK_FALSE;
-    samplerInfo.compareEnable = VK_FALSE;
-    samplerInfo.compareOp = VK_COMPARE_OP_ALWAYS;
-    samplerInfo.mipmapMode = VK_SAMPLER_MIPMAP_MODE_LINEAR;
+        if (vkCreateImageView(device.device(), &viewInfo, nullptr, &imageView) != VK_SUCCESS) {
+            throw std::runtime_error("Failed to create texture array image view!");
+        }
 
-    if (vkCreateSampler(device.device(), &samplerInfo, nullptr, &sampler) != VK_SUCCESS) {
-        throw std::runtime_error("failed to create texture sampler!");
+        VkSamplerCreateInfo samplerInfo{};
+        samplerInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
+        samplerInfo.magFilter = VK_FILTER_LINEAR;
+        samplerInfo.minFilter = VK_FILTER_LINEAR;
+        samplerInfo.addressModeU = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+        samplerInfo.addressModeV = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+        samplerInfo.addressModeW = VK_SAMPLER_ADDRESS_MODE_REPEAT;
+        samplerInfo.anisotropyEnable = VK_TRUE;
+        samplerInfo.maxAnisotropy = device.properties.limits.maxSamplerAnisotropy;
+        samplerInfo.borderColor = VK_BORDER_COLOR_INT_OPAQUE_BLACK;
+        samplerInfo.unnormalizedCoordinates = VK_FALSE;
+        samplerInfo.compareEnable = VK_FALSE;
+        samplerInfo.compareOp = VK_COMPARE_OP_ALWAYS;
+        samplerInfo.mipmapMode = VK_SAMPLER_MIPMAP_MODE_LINEAR;
+
+        if (vkCreateSampler(device.device(), &samplerInfo, nullptr, &sampler) != VK_SUCCESS) {
+            throw std::runtime_error("Failed to create texture sampler!");
+        }
+
+        isArray = true;
+
+    } catch (const std::exception& e) {
+        std::cerr << "Error in createTextureArray: " << e.what() << std::endl;
+
+        // Vulkan resource cleanup
+        if (stagingBufferCreated) {
+            vkDestroyBuffer(device.device(), stagingBuffer, nullptr);
+            vkFreeMemory(device.device(), stagingBufferMemory, nullptr);
+        }
+        if (sampler != VK_NULL_HANDLE) {
+            vkDestroySampler(device.device(), sampler, nullptr);
+        }
+        if (imageView != VK_NULL_HANDLE) {
+            vkDestroyImageView(device.device(), imageView, nullptr);
+        }
+        if (image != VK_NULL_HANDLE) {
+            vkDestroyImage(device.device(), image, nullptr);
+        }
+        if (imageMemory != VK_NULL_HANDLE) {
+            vkFreeMemory(device.device(), imageMemory, nullptr);
+        }
+
+        throw; // Re-throw after cleanup
     }
 }
 

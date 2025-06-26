@@ -2,9 +2,10 @@
 #include "global.hpp"
 #include "../main.hpp"
 
-#include <fstream>
+#include <filesystem>
 #include <stdexcept>
 #include <iostream>
+#include <fstream>
 #include <cassert>
 #include <random>
 
@@ -36,10 +37,10 @@ std::vector<char> Pipeline::readFile(const std::string& filepath) {
     return buffer;
 }
 
-void Pipeline::setTexture(int textureID) {
+void Pipeline::setTexture(const std::vector<std::string>& texturePaths) {
     spriteTexture = std::make_unique<Texture>(
         device,
-        texturePaths[textureID],
+        texturePaths,
         descriptorSetLayout,
         descriptorPool,
         *this
@@ -49,7 +50,17 @@ void Pipeline::setTexture(int textureID) {
 void Pipeline::loadSprites() {
     std::cout << "Starting sprite loading...\n";
 
-    texturePaths = { "FlappyBird.png", "logo.jpg" };
+    texturePaths = {
+        std::filesystem::absolute("FlappyBird.png").string(),
+        std::filesystem::absolute("logo.jpg").string()
+    };
+    for (const auto& path : texturePaths) {
+        std::cout << "Texture path: " << path << std::endl;
+        if (!std::filesystem::exists(path)) {
+            std::cerr << "Texture file not found: " << path << std::endl;
+            throw std::runtime_error("Texture file not found: " + path);
+        }
+    }
 
     std::vector<Model::Vertex> vertices = {
         {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
@@ -60,6 +71,9 @@ void Pipeline::loadSprites() {
     std::vector<uint32_t> indices = { 0, 1, 2, 2, 3, 0 };
     auto sharedModel = std::make_shared<Model>(device, vertices, indices);
     sprites.clear();
+    spriteCPU.clear();
+
+    setTexture(texturePaths);
 
     Sprite sprite;
     sprite.model = sharedModel;
@@ -67,21 +81,17 @@ void Pipeline::loadSprites() {
 
     SpriteData spriteData;
 
-    //Create sprites
-    for (int i = 0; i < 1; i++) {
-        spriteData.translation = glm::vec2(i / 5, i / 5);
-        spriteData.scale = glm::vec2(.2f, .2f);
+    // Create sprites
+    for (size_t i = 0; i < texturePaths.size(); i++) {
+        spriteData.translation = glm::vec2(static_cast<float>(i) / 5.0f, static_cast<float>(i) / 5.0f);
+        spriteData.scale = glm::vec2(0.2f, 0.2f);
         spriteData.rotation = randomNumber(0.f, 360.f);
         spriteData.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-        spriteData.textureIndex = i;
-        setTexture(i);
-        sprite.texture = spriteTexture.get();
+        spriteData.textureIndex = static_cast<uint32_t>(i); // Assign texture index
         sprites.push_back(spriteData);
         spriteCPU.push_back(sprite);
     }
 
-    //Create sprites
-    
     std::cout << "Sprites created: " << sprites.size() << std::endl;
 }
 
@@ -173,7 +183,7 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     bindings[0].stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
     bindings[1].binding = 1;
     bindings[1].descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-    bindings[1].descriptorCount = 1;
+    bindings[1].descriptorCount = static_cast<uint32_t>(texturePaths.size());
     bindings[1].stageFlags = VK_SHADER_STAGE_FRAGMENT_BIT;
 
     VkDescriptorSetLayoutCreateInfo layoutInfo{};
@@ -204,7 +214,7 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
 
     VkDescriptorPoolSize poolSizes[2] = {};
     poolSizes[0].type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-    poolSizes[0].descriptorCount = 1;
+    poolSizes[0].descriptorCount = static_cast<uint32_t>(texturePaths.size()); // Support multiple textures
     poolSizes[1].type = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER;
     poolSizes[1].descriptorCount = 1;
 
