@@ -3,7 +3,7 @@
 #include <string>
 
 #include <vulkan/vulkan.h>
-#include <GLFW/glfw3.h>
+#include "../deps/glfw/GLFW/glfw3.h"
 
 class AppWindow {
 public:

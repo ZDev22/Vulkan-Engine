@@ -20,7 +20,7 @@ void Program::tick() {
     sprites[0].translation.y += speedY * deltaTime;
     sprites[0].rotation -= .1f;
     
-    keyboard.keyHit(GLFW_KEY_A)
-    keyboard.keyReleased(GLFW_KEY_A)
+    keyboard.keyHit(GLFW_KEY_A);
+    keyboard.keyReleased(GLFW_KEY_A);
     keyboard.resetKeys();
 }

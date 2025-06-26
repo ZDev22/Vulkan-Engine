@@ -8,7 +8,7 @@
 #include <random>
 #include <string>
 
-#include <GLFW/glfw3.h>
+#include <deps/glfw/GLFW/glfw3.h>
 
 short scene = 1;
 
