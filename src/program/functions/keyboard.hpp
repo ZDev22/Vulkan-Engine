@@ -19,23 +19,19 @@ public:
 
     unsigned char updateKeyState(int key) {
         auto keyState = keyIndexMap.find(key);
-        if (keyState == keyIndexMap.end()) { return 0; } // Handle invalid key
 
         size_t index = keyState->second;
-        size_t prevIndex = index + 122;
 
-        if (keys[prevIndex] == 0) {
-            bool isPressed = glfwGetKey(window, key) == GLFW_PRESS;
-            if (isPressed && keys[index] == 0) {
-                keys[index] = 3; // Just pressed
-            } else if (isPressed && keys[index] >= 3) {
-                keys[index] = 4; // Held
-            } else if (!isPressed && keys[index] >= 3) {
-                keys[index] = 1; // Just released
-            } else if (!isPressed) {
-                keys[index] = 0; // Not pressed
+        if (keys[index + 122] == 0) {
+            if (glfwGetKey(window, key) == GLFW_PRESS) {
+                if (keys[index] == 0) { keys[index] = 3; }
+                else { keys[index] = 3; }
             }
-            keys[prevIndex] = 1; // Mark as processed this frame
+            else {
+                if (keys[index] >= 3) { keys[index] = 1; }
+                else { keys[index] = 0; }
+            }
+            keys[index + 122] = 1;
         }
         return keys[index];
     }
