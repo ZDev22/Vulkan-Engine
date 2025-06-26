@@ -25,7 +25,7 @@ public:
         if (keys[index + 122] == 0) {
             if (glfwGetKey(window, key) == GLFW_PRESS) {
                 if (keys[index] == 0) { keys[index] = 3; }
-                else { keys[index] = 3; }
+                else { keys[index] = 4; }
             }
             else {
                 if (keys[index] >= 3) { keys[index] = 1; }
