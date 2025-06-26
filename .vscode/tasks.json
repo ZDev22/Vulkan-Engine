@@ -4,7 +4,7 @@
     {
       "label": "build all cpp files (Linux)",
       "type": "shell",
-      "command": "make",
+      "command": "ninja",
       "args": ["-j8"],
       "group": {
         "kind": "build",

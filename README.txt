@@ -8,3 +8,11 @@ Exact setup is unknown as I have not done much testing, but if you have a C++ co
 
 
 Still in development! Shared so you guys can look at my code!
+
+
+
+-------------------COMMANDS-----------------
+
+CMAKE: cmake -G "ninja" ../..
+MAKE: ninja
+Get the latest github changes: git fetch origin
