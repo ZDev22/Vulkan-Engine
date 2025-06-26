@@ -68,13 +68,13 @@ void Pipeline::loadSprites() {
     SpriteData spriteData;
 
     //Create sprites
-    setTexture(0);
     for (int i = 0; i < 1; i++) {
-        spriteData.translation = glm::vec2(-0.8f, -0.2f);
+        spriteData.translation = glm::vec2(i / 5, i / 5);
         spriteData.scale = glm::vec2(.2f, .2f);
-        spriteData.rotation = 0.f;
+        spriteData.rotation = randomNumber(0.f, 360.f);
         spriteData.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-        spriteData.textureIndex = 0;
+        spriteData.textureIndex = i;
+        setTexture(i);
         sprite.texture = spriteTexture.get();
         sprites.push_back(spriteData);
         spriteCPU.push_back(sprite);
