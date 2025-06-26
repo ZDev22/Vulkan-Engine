@@ -68,7 +68,7 @@ void Pipeline::loadSprites() {
     SpriteData spriteData;
 
     //Create sprites
-    setTexture(1);
+    setTexture(0);
     for (int i = 0; i < 1; i++) {
         spriteData.translation = glm::vec2(-0.8f, -0.2f);
         spriteData.scale = glm::vec2(.2f, .2f);

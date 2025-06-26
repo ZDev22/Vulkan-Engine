@@ -8,7 +8,7 @@
 #include <string>
 #include "functions/keyboard.hpp"
 
-float speedY;
+float speedY = 0.f;
 
 Program::Program(Keyboard& keyboard)
 : keyboard(keyboard) {
@@ -16,11 +16,16 @@ Program::Program(Keyboard& keyboard)
 }
 
 void Program::tick() {
-    speedY -= .1f;
+    speedY += 2.9f * deltaTime;
     sprites[0].translation.y += speedY * deltaTime;
     sprites[0].rotation -= .1f;
     
-    keyboard.keyHit(GLFW_KEY_A);
-    keyboard.keyReleased(GLFW_KEY_A);
+    if (keyboard.keyHit(GLFW_KEY_SPACE)) {
+        speedY = -1.5f;
+        sprites[0].rotation = -25.f;
+    }
+
+
+    //Reset stuff for next frame
     keyboard.resetKeys();
 }
