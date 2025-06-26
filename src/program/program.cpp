@@ -19,7 +19,11 @@ void Program::tick() {
     speedY -= .1f;
     sprites[0].translation.y += speedY * deltaTime;
     sprites[0].rotation -= .1f;
-    if (keyboard.keyPressed(GLFW_KEY_A)) {
+    if (keyboard.keyHit(GLFW_KEY_A)) {
         std::cout << "true\n";
-    } 
+    }
+    if (keyboard.keyReleased(GLFW_KEY_A)) {
+        std::cout << "true\n";
+    }
+    keyboard.resetKeys();
 }

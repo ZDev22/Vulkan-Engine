@@ -45,13 +45,7 @@ void App::run() {
         lastTime = currentTime;
 
         fps = 1.0f / deltaTime;
-        timeAccumulator += deltaTime;
-
-        if (timeAccumulator >= 1.0f) {
-            //std::cout << "FPS: " << fps << '\n';
-            window.setWindowName("vulkan - " + std::to_string(fps));
-            timeAccumulator = 0.0f;
-        }
+        window.setWindowName("vulkan - " + std::to_string(fps));
 
         glfwPollEvents();
         renderSystem->updateSprites();
