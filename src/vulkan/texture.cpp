@@ -148,20 +148,38 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
                                     ") exceed device limit (" + std::to_string(device.properties.limits.maxImageArrayLayers) + ")");
         }
 
-        std::vector<stbi_uc*> pixelsArray(arrayLayers);
+        std::vector<stbi_uc*> pixelsArray(arrayLayers, nullptr);
+        std::vector<bool> padded(arrayLayers, false);
         int texWidth = 0, texHeight = 0;
+
+        // First pass: find max width/height
+        int maxWidth = 0, maxHeight = 0;
+        for (const auto& filepath : filepaths) {
+            int width = 0, height = 0, channels = 0;
+            if (!stbi_info(filepath.c_str(), &width, &height, &channels)) {
+                throw std::runtime_error("Failed to query image info: " + filepath);
+            }
+            if (width > maxWidth) maxWidth = width;
+            if (height > maxHeight) maxHeight = height;
+        }
 
         for (uint32_t i = 0; i < arrayLayers; ++i) {
             std::string absolutePath = std::filesystem::absolute(filepaths[i]).string();
             std::cout << "Loading texture: " << absolutePath << std::endl;
             stbi_set_flip_vertically_on_load(true);
             int width = 0, height = 0, channels = 0;
-            pixelsArray[i] = stbi_load(absolutePath.c_str(), &width, &height, &channels, STBI_rgb_alpha);
+            stbi_uc* loaded = stbi_load(absolutePath.c_str(), &width, &height, &channels, STBI_rgb_alpha);
 
-            if (!pixelsArray[i] || width <= 0 || height <= 0) {
+            if (!loaded || width <= 0 || height <= 0) {
                 std::cerr << "Failed to load or invalid texture: " << absolutePath << std::endl;
-                for (uint32_t j = 0; j <= i; ++j) {
-                    stbi_image_free(pixelsArray[j]);
+                // Free only previously loaded images!
+                for (uint32_t j = 0; j < i; ++j) {
+                    if (pixelsArray[j]) {
+                        if (padded[j])
+                            delete[] pixelsArray[j];
+                        else
+                            stbi_image_free(pixelsArray[j]);
+                    }
                 }
                 throw std::runtime_error("Failed to load or invalid texture: " + absolutePath);
             }
@@ -170,23 +188,38 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
                       << ", Height: " << height << ", Channels: " << channels << std::endl;
 
             if (i == 0) {
-                texWidth = width;
-                texHeight = height;
-            } else if (width != texWidth || height != texHeight) {
-                std::cerr << "Texture dimension mismatch for " << absolutePath 
-                          << ": expected " << texWidth << "x" << texHeight 
-                          << ", got " << width << "x" << height << std::endl;
-                for (uint32_t j = 0; j <= i; ++j) {
-                    stbi_image_free(pixelsArray[j]);
+                texWidth = maxWidth;
+                texHeight = maxHeight;
+            }
+
+            if (width == maxWidth && height == maxHeight) {
+                pixelsArray[i] = loaded;
+            } else {
+                // Pad to maxWidth/maxHeight with transparent pixels (0,0,0,0)
+                stbi_uc* paddedPixels = new stbi_uc[maxWidth * maxHeight * 4]();
+                for (int row = 0; row < height; ++row) {
+                    memcpy(
+                        paddedPixels + row * maxWidth * 4,
+                        loaded + row * width * 4,
+                        width * 4
+                    );
                 }
-                throw std::runtime_error("Texture array requires same dimensions for all images");
+                pixelsArray[i] = paddedPixels;
+                padded[i] = true;
+                stbi_image_free(loaded);
+                std::cout << "Padded texture: " << absolutePath << " to " << maxWidth << "x" << maxHeight << std::endl;
             }
         }
 
         VkDeviceSize imageSize = static_cast<VkDeviceSize>(texWidth) * texHeight * 4 * arrayLayers;
         if (imageSize == 0) {
             for (uint32_t i = 0; i < arrayLayers; ++i) {
-                stbi_image_free(pixelsArray[i]);
+                if (pixelsArray[i]) {
+                    if (padded[i])
+                        delete[] pixelsArray[i];
+                    else
+                        stbi_image_free(pixelsArray[i]);
+                }
             }
             throw std::runtime_error("Calculated image size is zero!");
         }
@@ -198,7 +231,12 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
             stagingBuffer, stagingBufferMemory);
         if (result != VK_SUCCESS) {
             for (uint32_t i = 0; i < arrayLayers; ++i) {
-                stbi_image_free(pixelsArray[i]);
+                if (pixelsArray[i]) {
+                    if (padded[i])
+                        delete[] pixelsArray[i];
+                    else
+                        stbi_image_free(pixelsArray[i]);
+                }
             }
             throw std::runtime_error("Failed to create staging buffer: VkResult " + std::to_string(result));
         }
@@ -208,7 +246,12 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
         result = vkMapMemory(device.device(), stagingBufferMemory, 0, imageSize, 0, &data);
         if (result != VK_SUCCESS) {
             for (uint32_t i = 0; i < arrayLayers; ++i) {
-                stbi_image_free(pixelsArray[i]);
+                if (pixelsArray[i]) {
+                    if (padded[i])
+                        delete[] pixelsArray[i];
+                    else
+                        stbi_image_free(pixelsArray[i]);
+                }
             }
             vkDestroyBuffer(device.device(), stagingBuffer, nullptr);
             vkFreeMemory(device.device(), stagingBufferMemory, nullptr);
@@ -218,7 +261,14 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
         for (uint32_t i = 0; i < arrayLayers; ++i) {
             size_t expectedSize = static_cast<size_t>(texWidth) * texHeight * 4;
             memcpy(static_cast<char*>(data) + i * expectedSize, pixelsArray[i], expectedSize);
-            stbi_image_free(pixelsArray[i]);
+            // Free memory
+            if (pixelsArray[i]) {
+                if (padded[i])
+                    delete[] pixelsArray[i];
+                else
+                    stbi_image_free(pixelsArray[i]);
+                pixelsArray[i] = nullptr;
+            }
         }
         vkUnmapMemory(device.device(), stagingBufferMemory);
 
