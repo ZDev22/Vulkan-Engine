@@ -9,7 +9,7 @@
 
 using HighResClock = std::chrono::high_resolution_clock;
 static HighResClock::time_point lastTime;
-static float fps = 0.0f;
+static uint32_t fps;
 static float timeAccumulator = 0.0f;
 
 App::App() {
@@ -44,7 +44,7 @@ void App::run() {
         deltaTime = elapsed.count();
         lastTime = currentTime;
 
-        fps = 1.0f / deltaTime;
+        fps = 1 / deltaTime;
         window.setWindowName("vulkan - " + std::to_string(fps));
 
         glfwPollEvents();
