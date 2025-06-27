@@ -61,7 +61,6 @@ void RenderSystem::createPipeline(VkRenderPass renderPass) {
 }
 
 void RenderSystem::initializeSpriteData() {
-
     VkDeviceSize bufferSize = sizeof(SpriteData) * sprites.size();
     spriteDataBuffer = make_unique<Buffer>(
         device,
@@ -78,14 +77,8 @@ void RenderSystem::initializeSpriteData() {
 
 void RenderSystem::createTextureArrayDescriptorSet() {
     if (!spriteDataBuffer) {
-        throw runtime_error("spriteDataBuffer is not initialized!");
+        throw std::runtime_error("spriteDataBuffer is not initialized!");
     }
-
-    textureArrayDescriptorSet = spriteCPU[0].texture->getDescriptorSet();
-    if (textureArrayDescriptorSet == VK_NULL_HANDLE) {
-        throw runtime_error("Failed to get valid texture descriptor set");
-    }
-    cout << "Using texture array descriptor set: " << textureArrayDescriptorSet << endl;
 
     VkDescriptorSetAllocateInfo allocInfo{};
     allocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
@@ -94,7 +87,7 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     allocInfo.pSetLayouts = &descriptorSetLayout;
 
     if (vkAllocateDescriptorSets(device.device(), &allocInfo, &spriteDataDescriptorSet) != VK_SUCCESS) {
-        throw runtime_error("failed to allocate descriptor set!");
+        throw std::runtime_error("failed to allocate descriptor set!");
     }
 
     VkDescriptorBufferInfo bufferInfo{};
@@ -112,12 +105,16 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     bufferWrite.pBufferInfo = &bufferInfo;
 
     std::vector<VkDescriptorImageInfo> imageInfos;
+    imageInfos.reserve(spriteCPU.size());
 
-    for (uint32_t i = 0; i < imageCount; ++i) {
+    for (const auto& sprite : spriteCPU) {
         VkDescriptorImageInfo info{};
         info.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
-        info.imageView = spriteCPU[i].texture->getImageView();
-        info.sampler = spriteCPU[i].texture->getSampler();
+        info.imageView = sprite.texture->getImageView();
+        info.sampler = sprite.texture->getSampler();
+        if (info.imageView == VK_NULL_HANDLE || info.sampler == VK_NULL_HANDLE) {
+            throw std::runtime_error("Invalid image view or sampler for sprite texture!");
+        }
         imageInfos.push_back(info);
     }
 
@@ -127,46 +124,51 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     imageWrite.dstBinding = 1;
     imageWrite.dstArrayElement = 0;
     imageWrite.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-    imageWrite.descriptorCount = imageCount;
+    imageWrite.descriptorCount = static_cast<uint32_t>(imageInfos.size());
     imageWrite.pImageInfo = imageInfos.data();
 
-    array<VkWriteDescriptorSet, 2> descriptorWrites = {bufferWrite, imageWrite};
+    std::array<VkWriteDescriptorSet, 2> descriptorWrites = {bufferWrite, imageWrite};
     vkUpdateDescriptorSets(device.device(), descriptorWrites.size(), descriptorWrites.data(), 0, nullptr);
 
-    cout << "Combined descriptor set created: " << spriteDataDescriptorSet << endl;
+    std::cout << "Combined descriptor set created: " << spriteDataDescriptorSet << " with " << imageInfos.size() << " textures" << std::endl;
 }
 
 void RenderSystem::renderSprites(VkCommandBuffer commandBuffer) {
-    if (sprites.empty() || !spriteCPU[0].model) {
-        cerr << "No valid sprites or model to render" << endl;
-        return;
-    }
-
     global.setAspectRatio();
     pipeline->bind(commandBuffer);
-    auto model = spriteCPU[0].model;
-    model->bind(commandBuffer);
+
+    // Bind the descriptor set once, as it contains all textures
     vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline->getPipelineLayout(), 0, 1, &spriteDataDescriptorSet, 0, nullptr);
 
     Push push{};
-    
     push.projection = glm::ortho(
-        -1.0f, 1.0f,  
-        -1.0f, 1.0f,  
-        -1.0f, 1.0f   
+        -1.0f, 1.0f,
+        -1.0f, 1.0f,
+        -1.0f, 1.0f
     );
 
     vkCmdPushConstants(commandBuffer, pipeline->getPipelineLayout(), VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(Push), &push);
 
     uint32_t spriteCount = static_cast<uint32_t>(sprites.size());
+    // Ensure spriteCPU and sprites are aligned
+    if (spriteCount > spriteCPU.size()) {
+        throw std::runtime_error("Mismatch between sprites and spriteCPU arrays!");
+    }
+
+    // Each sprite has a unique model, so bind and draw individually
     for (uint32_t i = 0; i < spriteCount; i += batchSize) {
-        instanceCount = min(batchSize, spriteCount - i);
-        model->draw(commandBuffer, instanceCount);
+        uint32_t batchEnd = min(i + batchSize, spriteCount);
+        for (uint32_t j = i; j < batchEnd; ++j) {
+            if (!spriteCPU[j].model) {
+                throw std::runtime_error("Invalid model for sprite " + std::to_string(j));
+            }
+            spriteCPU[j].model->bind(commandBuffer);
+            spriteCPU[j].model->draw(commandBuffer, 1); // Draw one instance per sprite
+        }
     }
 }
 
 void RenderSystem::updateSprites() {
-
     program.tick();
 
     VkDeviceSize bufferSize = sizeof(SpriteData) * sprites.size();
