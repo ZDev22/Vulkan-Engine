@@ -92,6 +92,8 @@ void Pipeline::loadSprites() {
         spriteCPU.push_back(sprite);
     }
 
+    imageCount = texturePaths.size();
+
     std::cout << "Sprites created: " << sprites.size() << std::endl;
 }
 

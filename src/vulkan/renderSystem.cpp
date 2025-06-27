@@ -111,10 +111,15 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     bufferWrite.descriptorCount = 1;
     bufferWrite.pBufferInfo = &bufferInfo;
 
-    VkDescriptorImageInfo imageInfo{};
-    imageInfo.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
-    imageInfo.imageView = spriteCPU[0].texture->getImageView();
-    imageInfo.sampler = spriteCPU[0].texture->getSampler();
+    std::vector<VkDescriptorImageInfo> imageInfos;
+
+    for (uint32_t i = 0; i < imageCount; ++i) {
+        VkDescriptorImageInfo info{};
+        info.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
+        info.imageView = spriteCPU[i].texture->getImageView();
+        info.sampler = spriteCPU[i].texture->getSampler();
+        imageInfos.push_back(info);
+    }
 
     VkWriteDescriptorSet imageWrite{};
     imageWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
@@ -122,8 +127,8 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     imageWrite.dstBinding = 1;
     imageWrite.dstArrayElement = 0;
     imageWrite.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-    imageWrite.descriptorCount = spriteCPU[0].texture->getIsArray() ? spriteCPU[0].texture->getArrayLayers() : 1;
-    imageWrite.pImageInfo = &imageInfo;
+    imageWrite.descriptorCount = imageCount;
+    imageWrite.pImageInfo = imageInfos.data();
 
     array<VkWriteDescriptorSet, 2> descriptorWrites = {bufferWrite, imageWrite};
     vkUpdateDescriptorSets(device.device(), descriptorWrites.size(), descriptorWrites.data(), 0, nullptr);

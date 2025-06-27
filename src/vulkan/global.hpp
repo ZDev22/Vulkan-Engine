@@ -14,6 +14,8 @@ extern std::vector<Sprite> spriteCPU;
 
 extern float deltaTime;
 
+extern uint16_t imageCount;
+
 class Global {
 public:
     Global(AppWindow& window) : window(window), aspectRatio(1.0f) {
