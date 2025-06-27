@@ -19,7 +19,6 @@ public:
     Texture(const Texture&) = delete;
     Texture& operator=(const Texture&) = delete;
 
-    VkDescriptorSet getDescriptorSet() { return descriptorSet; }
     VkImageView getImageView() { return imageView; }
     VkSampler getSampler() { return sampler; }
     VkImageLayout getImageLayout() { return imageLayout; }
@@ -27,7 +26,6 @@ public:
     uint32_t getArrayLayers() const { return arrayLayers; }
 
 private:
-    void createDescriptorSet(VkDescriptorSetLayout descriptorSetLayout, VkDescriptorPool descriptorPool);
     void transitionImageLayout(VkImageLayout oldLayout, VkImageLayout newLayout);
     void createTextureArray(const std::vector<std::string>& filepaths);
 
@@ -38,7 +36,6 @@ private:
     VkDeviceMemory imageMemory;
     VkImageView imageView;
     VkSampler sampler;
-    VkDescriptorSet descriptorSet;
     VkFormat imageFormat;
     bool isArray{ false };
     uint32_t arrayLayers{ 1 };

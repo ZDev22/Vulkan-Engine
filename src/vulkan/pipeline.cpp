@@ -62,39 +62,52 @@ void Pipeline::loadSprites() {
         }
     }
 
-    std::vector<Model::Vertex> vertices = {
-        {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
-        {{0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
-        {{0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},
-        {{-0.5f, 0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, 1.0f}}
+    // Define different vertex data for different sprite shapes
+    std::vector<std::vector<Model::Vertex>> vertexSets = {
+        // Sprite 1: Square
+        {
+            {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
+            {{0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
+            {{0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}, {1.0f, 1.0f}},
+            {{-0.5f, 0.5f}, {1.0f, 1.0f, 1.0f}, {0.0f, 1.0f}}
+        },
+        // Sprite 2: Triangle
+        {
+            {{0.0f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.5f, 0.0f}},
+            {{0.5f, 0.5f}, {0.0f, 1.0f, 0.0f}, {1.0f, 1.0f}},
+            {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}, {0.0f, 1.0f}}
+        }
     };
-    std::vector<uint32_t> indices = { 0, 1, 2, 2, 3, 0 };
-    auto sharedModel = std::make_shared<Model>(device, vertices, indices);
+    std::vector<std::vector<uint32_t>> indexSets = {
+        {0, 1, 2, 2, 3, 0}, // Square indices
+        {0, 1, 2}           // Triangle indices
+    };
+
     sprites.clear();
     spriteCPU.clear();
 
     setTexture(texturePaths);
 
-    Sprite sprite;
-    sprite.model = sharedModel;
-    sprite.texture = spriteTexture.get();
-
-    SpriteData spriteData;
-
-    // Create sprites
+    // Create sprites with unique models
     for (size_t i = 0; i < texturePaths.size(); i++) {
+        auto model = std::make_shared<Model>(device, vertexSets[i % vertexSets.size()], indexSets[i % indexSets.size()]);
+        Sprite sprite;
+        sprite.model = model;
+        sprite.texture = spriteTexture.get();
+
+        SpriteData spriteData;
         spriteData.translation = glm::vec2(static_cast<float>(i) / 5.0f, static_cast<float>(i) / 5.0f);
         spriteData.scale = glm::vec2(0.2f, 0.2f);
         spriteData.rotation = randomNumber(0.f, 360.f);
         spriteData.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-        spriteData.textureIndex = static_cast<uint32_t>(i); // Assign texture index
+        spriteData.textureIndex = static_cast<uint32_t>(i);
+
         sprites.push_back(spriteData);
         spriteCPU.push_back(sprite);
     }
 
     imageCount = texturePaths.size();
-
-    std::cout << "Sprites created: " << sprites.size() << std::endl;
+    std::cout << "Sprites created: " << sprites.size() << " with unique models" << std::endl;
 }
 
 void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std::string& fragFilepath, VkRenderPass renderPass) {
@@ -125,7 +138,6 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     inputAssembly.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
     inputAssembly.primitiveRestartEnable = VK_FALSE;
 
-    
     VkPipelineViewportStateCreateInfo viewportState{};
     viewportState.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
     viewportState.viewportCount = 1;
@@ -162,7 +174,6 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     colorBlending.attachmentCount = 1;
     colorBlending.pAttachments = &colorBlendAttachment;
 
-    
     VkPipelineDepthStencilStateCreateInfo depthStencil{};
     depthStencil.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
     depthStencil.depthTestEnable = VK_FALSE;
@@ -171,7 +182,6 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     depthStencil.depthBoundsTestEnable = VK_FALSE;
     depthStencil.stencilTestEnable = VK_FALSE;
 
-    
     std::vector<VkDynamicState> dynamicStates = { VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR };
     VkPipelineDynamicStateCreateInfo dynamicState{};
     dynamicState.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
@@ -216,7 +226,7 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
 
     VkDescriptorPoolSize poolSizes[2] = {};
     poolSizes[0].type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-    poolSizes[0].descriptorCount = static_cast<uint32_t>(texturePaths.size()); // Support multiple textures
+    poolSizes[0].descriptorCount = static_cast<uint32_t>(texturePaths.size());
     poolSizes[1].type = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER;
     poolSizes[1].descriptorCount = 1;
 
@@ -242,7 +252,7 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     pipelineInfo.pMultisampleState = &multisampling;
     pipelineInfo.pDepthStencilState = &depthStencil;
     pipelineInfo.pColorBlendState = &colorBlending;
-    pipelineInfo.pDynamicState = &dynamicState; 
+    pipelineInfo.pDynamicState = &dynamicState;
     pipelineInfo.layout = pipelineLayout;
     pipelineInfo.renderPass = renderPass;
     pipelineInfo.subpass = 0;

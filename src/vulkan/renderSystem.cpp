@@ -26,6 +26,7 @@ RenderSystem::~RenderSystem() {
     if (spriteDataBuffer) {
         spriteDataBuffer->unmap();
     }
+    vkDestroyPipelineLayout(device.device(), pipelineLayout, nullptr);
 }
 
 void RenderSystem::initialize() {
@@ -93,7 +94,7 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     VkDescriptorBufferInfo bufferInfo{};
     bufferInfo.buffer = spriteDataBuffer->getBuffer();
     bufferInfo.offset = 0;
-    bufferInfo.range = sizeof(SpriteData) * (sprites.size() + spriteCPU.size());
+    bufferInfo.range = sizeof(SpriteData) * sprites.size();
 
     VkWriteDescriptorSet bufferWrite{};
     bufferWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
@@ -105,7 +106,7 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     bufferWrite.pBufferInfo = &bufferInfo;
 
     std::vector<VkDescriptorImageInfo> imageInfos;
-    imageInfos.reserve(spriteCPU.size());
+    imageInfos.reserve(sprites.size());
 
     for (const auto& sprite : spriteCPU) {
         VkDescriptorImageInfo info{};
@@ -137,12 +138,12 @@ void RenderSystem::renderSprites(VkCommandBuffer commandBuffer) {
     global.setAspectRatio();
     pipeline->bind(commandBuffer);
 
-    // Bind the descriptor set once, as it contains all textures
+    // Bind the descriptor set once for the texture array
     vkCmdBindDescriptorSets(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, pipeline->getPipelineLayout(), 0, 1, &spriteDataDescriptorSet, 0, nullptr);
 
     Push push{};
     push.projection = glm::ortho(
-        -1.0f, 1.0f,
+        -global.getAspectRatio(), global.getAspectRatio(),
         -1.0f, 1.0f,
         -1.0f, 1.0f
     );
@@ -150,21 +151,17 @@ void RenderSystem::renderSprites(VkCommandBuffer commandBuffer) {
     vkCmdPushConstants(commandBuffer, pipeline->getPipelineLayout(), VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 0, sizeof(Push), &push);
 
     uint32_t spriteCount = static_cast<uint32_t>(sprites.size());
-    // Ensure spriteCPU and sprites are aligned
     if (spriteCount > spriteCPU.size()) {
         throw std::runtime_error("Mismatch between sprites and spriteCPU arrays!");
     }
 
-    // Each sprite has a unique model, so bind and draw individually
-    for (uint32_t i = 0; i < spriteCount; i += batchSize) {
-        uint32_t batchEnd = min(i + batchSize, spriteCount);
-        for (uint32_t j = i; j < batchEnd; ++j) {
-            if (!spriteCPU[j].model) {
-                throw std::runtime_error("Invalid model for sprite " + std::to_string(j));
-            }
-            spriteCPU[j].model->bind(commandBuffer);
-            spriteCPU[j].model->draw(commandBuffer, 1); // Draw one instance per sprite
+    // Render each sprite with its own model
+    for (uint32_t i = 0; i < spriteCount; ++i) {
+        if (!spriteCPU[i].model) {
+            throw std::runtime_error("Invalid model for sprite " + std::to_string(i));
         }
+        spriteCPU[i].model->bind(commandBuffer);
+        spriteCPU[i].model->draw(commandBuffer, 1);
     }
 }
 

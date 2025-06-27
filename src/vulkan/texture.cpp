@@ -99,8 +99,6 @@ Texture::Texture(Device& device, const std::string& filepath, VkDescriptorSetLay
     if (vkCreateSampler(device.device(), &samplerInfo, nullptr, &sampler) != VK_SUCCESS) {
         throw std::runtime_error("failed to create texture sampler!");
     }
-
-    createDescriptorSet(descriptorSetLayout, descriptorPool);
 }
 
 Texture::Texture(Device& device, const std::vector<std::string>& filepaths, VkDescriptorSetLayout descriptorSetLayout,
@@ -109,7 +107,6 @@ Texture::Texture(Device& device, const std::vector<std::string>& filepaths, VkDe
     image(VK_NULL_HANDLE), imageMemory(VK_NULL_HANDLE), imageView(VK_NULL_HANDLE),
     sampler(VK_NULL_HANDLE), descriptorSet(VK_NULL_HANDLE), isArray(true) {
     createTextureArray(filepaths);
-    createDescriptorSet(descriptorSetLayout, descriptorPool);
 }
 
 Texture::~Texture() {
@@ -133,7 +130,6 @@ Texture::~Texture() {
 }
 
 void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
-    // Temporary Vulkan resources to track for cleanup on failure
     VkBuffer stagingBuffer = VK_NULL_HANDLE;
     VkDeviceMemory stagingBufferMemory = VK_NULL_HANDLE;
     bool stagingBufferCreated = false;
@@ -152,7 +148,6 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
         std::vector<bool> padded(arrayLayers, false);
         int texWidth = 0, texHeight = 0;
 
-        // First pass: find max width/height
         int maxWidth = 0, maxHeight = 0;
         for (const auto& filepath : filepaths) {
             int width = 0, height = 0, channels = 0;
@@ -172,7 +167,6 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
 
             if (!loaded || width <= 0 || height <= 0) {
                 std::cerr << "Failed to load or invalid texture: " << absolutePath << std::endl;
-                // Free only previously loaded images!
                 for (uint32_t j = 0; j < i; ++j) {
                     if (pixelsArray[j]) {
                         if (padded[j])
@@ -195,7 +189,6 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
             if (width == maxWidth && height == maxHeight) {
                 pixelsArray[i] = loaded;
             } else {
-                // Pad to maxWidth/maxHeight with transparent pixels (0,0,0,0)
                 stbi_uc* paddedPixels = new stbi_uc[maxWidth * maxHeight * 4]();
                 for (int row = 0; row < height; ++row) {
                     memcpy(
@@ -261,7 +254,6 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
         for (uint32_t i = 0; i < arrayLayers; ++i) {
             size_t expectedSize = static_cast<size_t>(texWidth) * texHeight * 4;
             memcpy(static_cast<char*>(data) + i * expectedSize, pixelsArray[i], expectedSize);
-            // Free memory
             if (pixelsArray[i]) {
                 if (padded[i])
                     delete[] pixelsArray[i];
@@ -340,8 +332,6 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
 
     } catch (const std::exception& e) {
         std::cerr << "Error in createTextureArray: " << e.what() << std::endl;
-
-        // Vulkan resource cleanup
         if (stagingBufferCreated) {
             vkDestroyBuffer(device.device(), stagingBuffer, nullptr);
             vkFreeMemory(device.device(), stagingBufferMemory, nullptr);
@@ -353,43 +343,13 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
             vkDestroyImageView(device.device(), imageView, nullptr);
         }
         if (image != VK_NULL_HANDLE) {
-            vkDestroyImage(device.device(), image, nullptr);
+            vkDestroyImage(device.image, nullptr);
         }
         if (imageMemory != VK_NULL_HANDLE) {
             vkFreeMemory(device.device(), imageMemory, nullptr);
         }
-
-        throw; // Re-throw after cleanup
+        throw;
     }
-}
-
-void Texture::createDescriptorSet(VkDescriptorSetLayout descriptorSetLayout, VkDescriptorPool descriptorPool) {
-    VkDescriptorSetAllocateInfo allocInfo{};
-    allocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
-    allocInfo.descriptorPool = descriptorPool;
-    allocInfo.descriptorSetCount = 1;
-    allocInfo.pSetLayouts = &descriptorSetLayout;
-
-    if (vkAllocateDescriptorSets(device.device(), &allocInfo, &descriptorSet) != VK_SUCCESS) {
-        throw std::runtime_error("failed to allocate descriptor sets!");
-    }
-    std::cout << "Texture descriptor set allocated: " << descriptorSet << std::endl;
-
-    VkDescriptorImageInfo imageInfo{};
-    imageInfo.imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
-    imageInfo.imageView = imageView;
-    imageInfo.sampler = sampler;
-
-    VkWriteDescriptorSet descriptorWrite{};
-    descriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
-    descriptorWrite.dstSet = descriptorSet;
-    descriptorWrite.dstBinding = 1; 
-    descriptorWrite.dstArrayElement = 0;
-    descriptorWrite.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-    descriptorWrite.descriptorCount = 1;
-    descriptorWrite.pImageInfo = &imageInfo;
-
-    vkUpdateDescriptorSets(device.device(), 1, &descriptorWrite, 0, nullptr);
 }
 
 void Texture::transitionImageLayout(VkImageLayout oldLayout, VkImageLayout newLayout) {
@@ -414,18 +374,14 @@ void Texture::transitionImageLayout(VkImageLayout oldLayout, VkImageLayout newLa
     if (oldLayout == VK_IMAGE_LAYOUT_UNDEFINED && newLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL) {
         barrier.srcAccessMask = 0;
         barrier.dstAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
-
         sourceStage = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
         destinationStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
-    }
-    else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) {
+    } else if (oldLayout == VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL && newLayout == VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL) {
         barrier.srcAccessMask = VK_ACCESS_TRANSFER_WRITE_BIT;
         barrier.dstAccessMask = VK_ACCESS_SHADER_READ_BIT;
-
         sourceStage = VK_PIPELINE_STAGE_TRANSFER_BIT;
         destinationStage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT;
-    }
-    else {
+    } else {
         throw std::invalid_argument("unsupported layout transition!");
     }
 
