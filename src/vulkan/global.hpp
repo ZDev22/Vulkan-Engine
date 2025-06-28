@@ -7,6 +7,7 @@
 
 struct Push {
     glm::mat4 projection;
+    uint32_t textureIndex;
 };
 
 extern std::vector<SpriteData> sprites;

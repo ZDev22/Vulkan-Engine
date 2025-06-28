@@ -9,7 +9,7 @@
 
 using HighResClock = std::chrono::high_resolution_clock;
 static HighResClock::time_point lastTime;
-static float fps = 0.0f;
+static uint32_t fps = 0;
 static float timeAccumulator = 0.0f;
 
 App::App() {

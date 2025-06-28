@@ -18,6 +18,7 @@ struct Sprite {
 
     // uint32_t textureIndex;
     // float rotation;
+    uint32_t textureIndex;
 };
 
 struct alignas(16) SpriteData {

@@ -37,7 +37,7 @@ std::vector<char> Pipeline::readFile(const std::string& filepath) {
 }
 
 void Pipeline::setTexture(int textureID) {
-    spriteTexture = std::make_unique<Texture>(
+    spriteTextures[textureID] = std::make_unique<Texture>(
         device,
         texturePaths[textureID],
         descriptorSetLayout,
@@ -49,8 +49,6 @@ void Pipeline::setTexture(int textureID) {
 void Pipeline::loadSprites() {
     std::cout << "Starting sprite loading...\n";
 
-    texturePaths = { "FlappyBird.png", "logo.jpg" };
-
     std::vector<Model::Vertex> vertices = {
         {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
         {{0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}, {1.0f, 0.0f}},
@@ -59,29 +57,29 @@ void Pipeline::loadSprites() {
     };
     std::vector<uint32_t> indices = { 0, 1, 2, 2, 3, 0 };
     auto sharedModel = std::make_shared<Model>(device, vertices, indices);
+
     sprites.clear();
+    spriteCPU.clear();
 
-    Sprite sprite;
-    sprite.model = sharedModel;
-    sprite.texture = spriteTexture.get();
+    for (size_t i = 0; i < texturePaths.size(); ++i) {
+        Sprite sprite;
+        sprite.model = sharedModel;
 
-    SpriteData spriteData;
+        // Each texture gets its own descriptor set
+        auto texture = std::make_unique<Texture>(device, texturePaths[i], descriptorSetLayout, descriptorPool, *this);
+        sprite.texture = texture.get();
 
-    //Create sprites
-    for (int i = 0; i < 1; i++) {
-        spriteData.translation = glm::vec2(i / 5, i / 5);
+        SpriteData spriteData;
+        spriteData.translation = glm::vec2(i * 0.5f, i * 0.5f);
         spriteData.scale = glm::vec2(.2f, .2f);
-        spriteData.rotation = randomNumber(0.f, 360.f);
-        spriteData.color = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-        spriteData.textureIndex = i;
-        setTexture(i);
-        sprite.texture = spriteTexture.get();
+        spriteData.rotation = 0.0f;
+        spriteData.color = glm::vec4(1.0f);
+
         sprites.push_back(spriteData);
         spriteCPU.push_back(sprite);
+        spriteTextures.push_back(std::move(texture));
     }
 
-    //Create sprites
-    
     std::cout << "Sprites created: " << sprites.size() << std::endl;
 }
 
@@ -166,20 +164,16 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     dynamicState.dynamicStateCount = static_cast<uint32_t>(dynamicStates.size());
     dynamicState.pDynamicStates = dynamicStates.data();
 
-    VkDescriptorSetLayoutBinding bindings[2] = {};
-    bindings[0].binding = 0;
-    bindings[0].descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER;
-    bindings[0].descriptorCount = 1;
-    bindings[0].stageFlags = VK_SHADER_STAGE_VERTEX_BIT;
-    bindings[1].binding = 1;
-    bindings[1].descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-    bindings[1].descriptorCount = 1;
-    bindings[1].stageFlags = VK_SHADER_STAGE_FRAGMENT_BIT;
+    VkDescriptorSetLayoutBinding binding{};
+    binding.binding = 0;
+    binding.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
+    binding.descriptorCount = 1;
+    binding.stageFlags = VK_SHADER_STAGE_FRAGMENT_BIT;
 
     VkDescriptorSetLayoutCreateInfo layoutInfo{};
     layoutInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
-    layoutInfo.bindingCount = 2;
-    layoutInfo.pBindings = bindings;
+    layoutInfo.bindingCount = 1;
+    layoutInfo.pBindings = &binding;
 
     if (vkCreateDescriptorSetLayout(device.device(), &layoutInfo, nullptr, &descriptorSetLayout) != VK_SUCCESS) {
         throw std::runtime_error("failed to create descriptor set layout!");
@@ -202,17 +196,15 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     }
     std::cout << "Pipeline layout created with descriptor set layout: " << descriptorSetLayout << std::endl;
 
-    VkDescriptorPoolSize poolSizes[2] = {};
-    poolSizes[0].type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-    poolSizes[0].descriptorCount = 1;
-    poolSizes[1].type = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER;
-    poolSizes[1].descriptorCount = 1;
+    VkDescriptorPoolSize poolSize{};
+    poolSize.type = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
+    poolSize.descriptorCount = texturePaths.size();
 
     VkDescriptorPoolCreateInfo poolInfo{};
     poolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
-    poolInfo.poolSizeCount = 2;
-    poolInfo.pPoolSizes = poolSizes;
-    poolInfo.maxSets = 1;
+    poolInfo.poolSizeCount = 1;
+    poolInfo.pPoolSizes = &poolSize;
+    poolInfo.maxSets = texturePaths.size();
 
     if (vkCreateDescriptorPool(device.device(), &poolInfo, nullptr, &descriptorPool) != VK_SUCCESS) {
         throw std::runtime_error("failed to create descriptor pool!");

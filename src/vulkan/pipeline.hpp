@@ -37,6 +37,7 @@ private:
     VkPipelineLayout pipelineLayout;
     VkDescriptorSetLayout descriptorSetLayout;
     VkDescriptorPool descriptorPool;
-    std::vector<std::string> texturePaths;
-    std::unique_ptr<Texture> spriteTexture;
+
+    std::vector<std::string> texturePaths = { "FlappyBird.png", "logo.jpg" };
+    std::vector<std::unique_ptr<Texture>> spriteTextures;
 };

@@ -8,8 +8,6 @@ struct SpriteData {
     vec2 translation;
     vec2 scale;
     vec4 color;
-
-    uint textureIndex;
     float rotation;
 };
 
@@ -19,7 +17,6 @@ layout(std140, binding = 0) readonly buffer SpriteDataBuffer {
 
 layout(location = 0) out vec4 fragColor;
 layout(location = 1) out vec2 fragTexCoord;
-layout(location = 2) flat out uint textureId;
 
 void main() {
     SpriteData sprite = sprites[gl_InstanceIndex];
@@ -34,5 +31,4 @@ void main() {
 
     fragColor = sprite.color;
     fragTexCoord = inTexCoord;
-    //textureId = sprite.textureIndex;
 }

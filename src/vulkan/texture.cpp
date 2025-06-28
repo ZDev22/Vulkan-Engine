@@ -7,14 +7,16 @@
 #include <stdexcept>
 #include <cstring>
 #include <iostream>
+#include <unordered_map>
 
 Texture::Texture(Device& device, const std::string& filepath, VkDescriptorSetLayout descriptorSetLayout,
     VkDescriptorPool descriptorPool, Pipeline& pipeline)
     : device(device), pipeline(pipeline), imageLayout(VK_IMAGE_LAYOUT_UNDEFINED),
     image(VK_NULL_HANDLE), imageMemory(VK_NULL_HANDLE), imageView(VK_NULL_HANDLE),
     sampler(VK_NULL_HANDLE), descriptorSet(VK_NULL_HANDLE), isArray(false), arrayLayers(1) {
+
     int texWidth, texHeight, texChannels;
-    
+
     stbi_uc* pixels = stbi_load(filepath.c_str(), &texWidth, &texHeight, &texChannels, STBI_rgb_alpha);
     if (!pixels) {
         throw std::runtime_error("failed to load texture image: " + filepath);
@@ -106,6 +108,7 @@ Texture::Texture(Device& device, const std::vector<std::string>& filepaths, VkDe
     : device(device), pipeline(pipeline), imageLayout(VK_IMAGE_LAYOUT_UNDEFINED),
     image(VK_NULL_HANDLE), imageMemory(VK_NULL_HANDLE), imageView(VK_NULL_HANDLE),
     sampler(VK_NULL_HANDLE), descriptorSet(VK_NULL_HANDLE), isArray(true) {
+
     createTextureArray(filepaths);
     createDescriptorSet(descriptorSetLayout, descriptorPool);
 }
@@ -250,7 +253,7 @@ void Texture::createDescriptorSet(VkDescriptorSetLayout descriptorSetLayout, VkD
     VkWriteDescriptorSet descriptorWrite{};
     descriptorWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
     descriptorWrite.dstSet = descriptorSet;
-    descriptorWrite.dstBinding = 1; 
+    descriptorWrite.dstBinding = 0;
     descriptorWrite.dstArrayElement = 0;
     descriptorWrite.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
     descriptorWrite.descriptorCount = 1;
