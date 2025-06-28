@@ -26,6 +26,7 @@ RenderSystem::~RenderSystem() {
     if (spriteDataBuffer) {
         spriteDataBuffer->unmap();
     }
+    vkDestroyPipelineLayout(device.device(), pipelineLayout, nullptr);
 }
 
 void RenderSystem::initialize() {
@@ -61,12 +62,7 @@ void RenderSystem::createPipeline(VkRenderPass renderPass) {
 }
 
 void RenderSystem::initializeSpriteData() {
-    if (sprites.empty()) {
-        cerr << "Error: No sprites to initialize.\n";
-        return;
-    }
-
-    VkDeviceSize bufferSize = sizeof(SpriteData) * (sprites.size() + spriteCPU.size());
+    VkDeviceSize bufferSize = sizeof(SpriteData) * sprites.size();
     spriteDataBuffer = make_unique<Buffer>(
         device,
         bufferSize,
@@ -119,7 +115,7 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     VkDescriptorBufferInfo bufferInfo{};
     bufferInfo.buffer = spriteDataBuffer->getBuffer();
     bufferInfo.offset = 0;
-    bufferInfo.range = sizeof(SpriteData) * (sprites.size() + spriteCPU.size());
+    bufferInfo.range = sizeof(SpriteData) * sprites.size();
 
     VkWriteDescriptorSet bufferWrite{};
     bufferWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
@@ -182,7 +178,6 @@ void RenderSystem::renderSprites(VkCommandBuffer commandBuffer) {
 }
 
 void RenderSystem::updateSprites() {
-
     program.tick();
 
     VkDeviceSize bufferSize = sizeof(SpriteData) * sprites.size();

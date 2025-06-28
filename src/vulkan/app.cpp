@@ -44,7 +44,7 @@ void App::run() {
         deltaTime = elapsed.count();
         lastTime = currentTime;
 
-        fps = 1.0f / deltaTime;
+        fps = 1 / deltaTime;
         window.setWindowName("vulkan - " + std::to_string(fps));
 
         glfwPollEvents();

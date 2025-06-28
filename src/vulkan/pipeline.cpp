@@ -2,9 +2,10 @@
 #include "global.hpp"
 #include "../main.hpp"
 
-#include <fstream>
+#include <filesystem>
 #include <stdexcept>
 #include <iostream>
+#include <fstream>
 #include <cassert>
 #include <random>
 
@@ -39,7 +40,7 @@ std::vector<char> Pipeline::readFile(const std::string& filepath) {
 void Pipeline::setTexture(int textureID) {
     spriteTextures[textureID] = std::make_unique<Texture>(
         device,
-        texturePaths[textureID],
+        texturePaths,
         descriptorSetLayout,
         descriptorPool,
         *this
@@ -111,7 +112,6 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     inputAssembly.topology = VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST;
     inputAssembly.primitiveRestartEnable = VK_FALSE;
 
-    
     VkPipelineViewportStateCreateInfo viewportState{};
     viewportState.sType = VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO;
     viewportState.viewportCount = 1;
@@ -148,7 +148,6 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     colorBlending.attachmentCount = 1;
     colorBlending.pAttachments = &colorBlendAttachment;
 
-    
     VkPipelineDepthStencilStateCreateInfo depthStencil{};
     depthStencil.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
     depthStencil.depthTestEnable = VK_FALSE;
@@ -157,7 +156,6 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     depthStencil.depthBoundsTestEnable = VK_FALSE;
     depthStencil.stencilTestEnable = VK_FALSE;
 
-    
     std::vector<VkDynamicState> dynamicStates = { VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR };
     VkPipelineDynamicStateCreateInfo dynamicState{};
     dynamicState.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
@@ -222,7 +220,7 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     pipelineInfo.pMultisampleState = &multisampling;
     pipelineInfo.pDepthStencilState = &depthStencil;
     pipelineInfo.pColorBlendState = &colorBlending;
-    pipelineInfo.pDynamicState = &dynamicState; 
+    pipelineInfo.pDynamicState = &dynamicState;
     pipelineInfo.layout = pipelineLayout;
     pipelineInfo.renderPass = renderPass;
     pipelineInfo.subpass = 0;
