@@ -4,8 +4,13 @@
 #include <cmath>
 #include <vector>
 #include <algorithm>
+#include <cstdint>
+#include <climits>
+#include <limits>
 
 using namespace std;
+
+uint32_t state = 730182364;
 
 // Interpolation
 float lerp(float a, float b, float t) { return a + (b - a) * t; }
@@ -30,6 +35,74 @@ float easeOutBounce(float t) {
     else if (t < 8 / 11.f) { return (363 / 40.f * t * t) - (99 / 10.f * t) + 17 / 5.f; }
     else if (t < 9 / 10.f) { return (4356 / 361.f * t * t) - (35442 / 1805.f * t) + 16061 / 1805.f; }
     return (54 / 5.f * t * t) - (513 / 25.f * t) + 268 / 25.f;
+}
+
+// Averages
+short averageShort(vector<short> shorts) {
+    short average;
+    for (const short a : shorts) { average += a; }
+    return { average / shorts.size() };
+}
+
+int averageInt(vector<int> ints) {
+    int average;
+    for (const int a : ints) { average += a; }
+    return { average / ints.size() };
+}
+
+long long averageLong(vector<long long> longs) {
+    long long average;
+    for (const long long a : longs) { average += a; }
+    return { average / longs.size() };
+}
+
+float averageFloat(vector<float> floats) {
+    float average;
+    for (const float a : floats) { average += a; }
+    return { average / floats.size() };
+}
+
+bool averageBool(vector<bool> bools) {
+    int averageFalse;
+    int averageTrue;
+    for (const int a : bools) { if (bools[a]) { averageTrue++; } else { averageFalse++; } }
+    if (averageTrue > averageFalse) { return true; }
+    if (averageFalse > averageTrue) { return false; }
+    return { randomBool(); }
+}
+
+// Random
+uint32_t xorshift32() {
+    state ^= state << 13;
+    state ^= state >> 17;
+    state ^= state << 5;
+    return state;
+}
+
+short randomShort(short min, short max) {
+    uint32_t rnd = xorshift32();
+    return min + (rnd % (max - min + 1));
+}
+
+int randomInt(int min, int max) {
+    uint32_t rnd = xorshift32();
+    return min + (rnd % (max - min + 1));
+}
+
+long long randomLong(long long min, long long max) {
+    uint64_t high = xorshift32();
+    uint64_t low = xorshift32();
+    uint64_t rnd = (high << 32) | low;
+    return min + (rnd % (max - min + 1));
+}
+
+float randomFloat(float min, float max) {
+    float normalized = xorshift32() / static_cast<float>(UINT32_MAX);
+    return min + (max - min) * normalized;
+}
+
+bool randomBool() {
+    return (xorshift32() & 1) != 0;
 }
 
 #endif

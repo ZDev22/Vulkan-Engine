@@ -5,15 +5,11 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
-#include <random>
 #include <string>
 
 #include "deps/glfw/GLFW/glfw3.h"
 
 short scene = 1;
-
-uint32_t state = 123456789;
-float normalized;
 
 bool compileShader(const std::string& inputFile, const std::string& outputFile, const std::string& stage) {
     std::string command = "glslc -fshader-stage=" + stage + " " + inputFile + " -o " + outputFile;
@@ -27,18 +23,6 @@ bool compile() {
     success &= compileShader("vulkan/shaders/triangle.vert", "vulkan/shaders/triangle.vert.spv", "vert");
     success &= compileShader("vulkan/shaders/triangle.frag", "vulkan/shaders/triangle.frag.spv", "frag");
     return success;
-}
-
-uint32_t xorshift32() {
-    state ^= state << 13;
-    state ^= state >> 17;
-    state ^= state << 5;
-    return state;
-}
-
-float randomNumber(float min, float max) {
-    normalized = xorshift32() / static_cast<float>(UINT32_MAX);
-    return min + (max - min) * normalized;
 }
 
 void error_callback(int error, const char* description) {

@@ -3,6 +3,4 @@
 
 extern short scene;
 
-float randomNumber(float min, float max);
-
 #endif

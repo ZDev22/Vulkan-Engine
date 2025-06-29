@@ -1,6 +1,5 @@
 ﻿#include "pipeline.hpp"
 #include "global.hpp"
-#include "../main.hpp"
 
 #include <filesystem>
 #include <stdexcept>
