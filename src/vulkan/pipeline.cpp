@@ -163,7 +163,7 @@ void Pipeline::createGraphicsPipeline(const std::string& vertFilepath, const std
     VkDescriptorSetLayoutBinding binding{};
     binding.binding = 0;
     binding.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
-    binding.descriptorCount = 1;
+    binding.descriptorCount = texturePaths.size(); // N
     binding.stageFlags = VK_SHADER_STAGE_FRAGMENT_BIT;
 
     VkDescriptorSetLayoutCreateInfo layoutInfo{};

@@ -130,7 +130,7 @@ void RenderSystem::createTextureArrayDescriptorSet() {
     VkWriteDescriptorSet imageWrite{};
     imageWrite.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
     imageWrite.dstSet = spriteDataDescriptorSet;
-    imageWrite.dstBinding = 1;
+    imageWrite.dstBinding = 0;
     imageWrite.dstArrayElement = 0;
     imageWrite.descriptorType = VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER;
     imageWrite.descriptorCount = static_cast<uint32_t>(imageInfos.size());
