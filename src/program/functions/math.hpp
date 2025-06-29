@@ -39,13 +39,13 @@ float easeOutBounce(float t) {
 
 // Averages
 short averageShort(vector<short> shorts) {
-    short average;
+    int average;
     for (const short a : shorts) { average += a; }
     return { average / shorts.size() };
 }
 
 int averageInt(vector<int> ints) {
-    int average;
+    long long average;
     for (const int a : ints) { average += a; }
     return { average / ints.size() };
 }
@@ -69,6 +69,43 @@ bool averageBool(vector<bool> bools) {
     if (averageTrue > averageFalse) { return true; }
     if (averageFalse > averageTrue) { return false; }
     return { randomBool(); }
+}
+
+short averageMinMaxShort(const vector<short>& shorts) {
+    short minVal = *min_element(shorts.begin(), shorts.end());
+    short maxVal = *max_element(shorts.begin(), shorts.end());
+    int sum;
+
+    for (const short a : shorts) { if (a != minVal && a != maxVal) { sum += a; } }
+    return static_cast<short>(sum / count);
+}
+
+int averageMinMaxInt(const vector<int>& ints) {
+    int minVal = *min_element(ints.begin(), ints.end());
+    int maxVal = *max_element(ints.begin(), ints.end());
+    long long sum = 0;
+
+    for (const int a : ints) { if (a != minVal && a != maxVal) { sum += a; } }
+    return static_cast<int>(sum / count);
+}
+
+long long averageMinMaxLong(const vector<long long>& longs) {
+    long long minVal = *min_element(longs.begin(), longs.end());
+    long long maxVal = *max_element(longs.begin(), longs.end());
+
+    long long sum = 0;
+
+    for (const long long a : longs) { if (a != minVal && a != maxVal) { sum += a; } }
+    return sum / count;
+}
+
+float averageMinMaxFloat(const vector<float>& floats) {
+    float minVal = *min_element(floats.begin(), floats.end());
+    float maxVal = *max_element(floats.begin(), floats.end());
+    float sum = 0.0f;
+
+    for (const float a : floats) { if (a != minVal && a != maxVal) { sum += a; } }
+    return sum / count;
 }
 
 // Random
