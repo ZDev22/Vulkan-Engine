@@ -39,7 +39,7 @@ public:
     bool keyHit(int key) { return updateKeyState(key) == 3; }
     bool keyReleased(int key) { return updateKeyState(key) == 1; }
 
-    void resetKeys() { std::memset(keys.data() + 122, 0, (244 - 122) * sizeof(unsigned char)); }
+    void resetKeys() { std::memset(keys.data() + 122, 0, (122)); }
 
 private:
     GLFWwindow* window;

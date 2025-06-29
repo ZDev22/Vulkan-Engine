@@ -9,14 +9,13 @@
 #include <cstring>
 #include <iostream>
 #include <unordered_map>
+#include <filesystem>
 
 Texture::Texture(Device& device, const std::string& filepath, VkDescriptorSetLayout descriptorSetLayout,
     VkDescriptorPool descriptorPool, Pipeline& pipeline)
     : device(device), pipeline(pipeline), imageLayout(VK_IMAGE_LAYOUT_UNDEFINED),
     image(VK_NULL_HANDLE), imageMemory(VK_NULL_HANDLE), imageView(VK_NULL_HANDLE),
     sampler(VK_NULL_HANDLE), descriptorSet(VK_NULL_HANDLE), isArray(false), arrayLayers(1) {
-
-    int texWidth, texHeight, texChannels;
 
     stbi_uc* pixels = stbi_load(filepath.c_str(), &texWidth, &texHeight, &texChannels, STBI_rgb_alpha);
     if (!pixels) {
@@ -29,8 +28,6 @@ Texture::Texture(Device& device, const std::string& filepath, VkDescriptorSetLay
     VkDeviceSize imageSize = texWidth * texHeight * 4;
     imageFormat = VK_FORMAT_R8G8B8A8_SRGB;
 
-    VkBuffer stagingBuffer;
-    VkDeviceMemory stagingBufferMemory;
     device.createBuffer(imageSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
         VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
         stagingBuffer, stagingBufferMemory);
@@ -132,7 +129,7 @@ Texture::~Texture() {
 }
 
 void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
-    VkBuffer stagingBuffer = VK_NULL_HANDLE;
+    stagingBuffer = VK_NULL_HANDLE;
     VkDeviceMemory stagingBufferMemory = VK_NULL_HANDLE;
     bool stagingBufferCreated = false;
 
@@ -345,7 +342,7 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
             vkDestroyImageView(device.device(), imageView, nullptr);
         }
         if (image != VK_NULL_HANDLE) {
-            vkDestroyImage(device.image, nullptr);
+            vkDestroyImage(device.device(), image, nullptr);
         }
         if (imageMemory != VK_NULL_HANDLE) {
             vkFreeMemory(device.device(), imageMemory, nullptr);
@@ -356,8 +353,6 @@ void Texture::createTextureArray(const std::vector<std::string>& filepaths) {
     VkDeviceSize imageSize = texWidth * texHeight * 4 * arrayLayers;
     imageFormat = VK_FORMAT_R8G8B8A8_SRGB;
 
-    VkBuffer stagingBuffer;
-    VkDeviceMemory stagingBufferMemory;
     device.createBuffer(imageSize, VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
         VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
         stagingBuffer, stagingBufferMemory);
