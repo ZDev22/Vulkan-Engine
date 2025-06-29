@@ -65,7 +65,7 @@ float averageFloat(vector<float>& floats) {
 bool averageBool(vector<bool>& bools) {
     int averageFalse;
     int averageTrue;
-    
+
     for (const int a : bools) { if (bools[a]) { averageTrue++; } else { averageFalse++; } }
     if (averageTrue > averageFalse) { return true; }
     if (averageFalse > averageTrue) { return false; }
@@ -132,30 +132,10 @@ uint32_t xorshift32() {
     return state;
 }
 
-short randomShort(short min, short max) {
-    uint32_t rnd = xorshift32();
-    return min + (rnd % (max - min + 1));
-}
-
-int randomInt(int min, int max) {
-    uint32_t rnd = xorshift32();
-    return min + (rnd % (max - min + 1));
-}
-
-long long randomLong(long long min, long long max) {
-    uint64_t high = xorshift32();
-    uint64_t low = xorshift32();
-    uint64_t rnd = (high << 32) | low;
-    return min + (rnd % (max - min + 1));
-}
-
-float randomFloat(float min, float max) {
-    float normalized = xorshift32() / static_cast<float>(UINT32_MAX);
-    return min + (max - min) * normalized;
-}
-
-bool randomBool() {
-    return (xorshift32() & 1) != 0;
-}
+short randomShort(short min, short max) { return min + (xorshift32() % (max - min + 1)); }
+int randomInt(int min, int max) { return min + (xorshift32() % (max - min + 1)); }
+long long randomLong(long long min, long long max) { return min + (((xorshift32() << 32) | xorshift32()) % (max - min + 1)); }
+float randomFloat(float min, float max) { return min + (max - min) * (xorshift32() / 4,294,967,295.0f); }
+bool randomBool() { return (xorshift32() & 1) == 0; }
 
 #endif
