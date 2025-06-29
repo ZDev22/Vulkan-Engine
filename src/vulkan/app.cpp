@@ -2,7 +2,6 @@
 #include "sprite.hpp"
 #include "global.hpp"
 
-#include <iostream>
 #include <stdexcept>
 #include <chrono>
 #include <string>

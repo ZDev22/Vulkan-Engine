@@ -8,7 +8,6 @@
 #include <stdexcept>
 #include <cstring>
 #include <iostream>
-#include <unordered_map>
 #include <filesystem>
 
 Texture::Texture(Device& device, const std::string& filepath, VkDescriptorSetLayout descriptorSetLayout,

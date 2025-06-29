@@ -6,7 +6,6 @@
 #include <iostream>
 #include <fstream>
 #include <cassert>
-#include <random>
 
 Pipeline::Pipeline(Device& device, const std::string& vertFilepath, const std::string& fragFilepath, VkRenderPass renderPass)
     : device{ device } {

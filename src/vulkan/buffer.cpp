@@ -3,16 +3,7 @@
 #include <stdexcept>
 #include <cstring>
 
-Buffer::Buffer(
-    Device& device,
-    VkDeviceSize instanceSize,
-    uint32_t instanceCount,
-    VkBufferUsageFlags usageFlags,
-    VkMemoryPropertyFlags memoryPropertyFlags,
-    VkDeviceSize minOffsetAlignment)
-    : device{ device }, bufferSize{ instanceSize * instanceCount } {
-    // Align buffer size
-    VkDeviceSize alignedInstanceSize = (instanceSize + minOffsetAlignment - 1) & ~(minOffsetAlignment - 1);
+Buffer::Buffer(Device& device, VkDeviceSize instanceSize, uint32_t instanceCount, VkBufferUsageFlags usageFlags, VkMemoryPropertyFlags memoryPropertyFlags, VkDeviceSize minOffsetAlignment) : device{ device }, bufferSize{ instanceSize * instanceCount } { VkDeviceSize alignedInstanceSize = (instanceSize + minOffsetAlignment - 1) & ~(minOffsetAlignment - 1);
     bufferSize = alignedInstanceSize * instanceCount;
 
     VkBufferCreateInfo bufferInfo{};

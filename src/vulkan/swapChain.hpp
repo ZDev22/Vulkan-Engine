@@ -3,6 +3,7 @@
 #include "device.hpp"
 
 #include <memory>
+#include <limits>
 #include <string>
 #include <vector>
 

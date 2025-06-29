@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
-#include <string>
 
 #include "deps/glfw/GLFW/glfw3.h"
 

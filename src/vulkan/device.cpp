@@ -46,18 +46,12 @@ void DestroyDebugUtilsMessengerEXT(VkInstance instance,
 }
 
 Device::Device(AppWindow& window) : window{ window } {
-    cout << "[Device] Creating instance...\n";
-    createInstance();
-    cout << "[Device] Creating debug messenger...\n";
-    setupDebugMessenger();
-    cout << "[Device] Creating surface...\n";
-    createSurface();
-    cout << "[Device] Creating physical device...\n";
-    pickPhysicalDevice();
-    cout << "[Device] Creating logical device...\n";
-    createLogicalDevice();
-    cout << "[Device] Creating command pool...\n";
-    createCommandPool();
+    cout << "[Device] Creating instance...\n"; createInstance();
+    cout << "[Device] Creating debug messenger...\n"; setupDebugMessenger();
+    cout << "[Device] Creating surface...\n"; createSurface();
+    cout << "[Device] Creating physical device...\n"; pickPhysicalDevice();
+    cout << "[Device] Creating logical device...\n"; createLogicalDevice();
+    cout << "[Device] Creating command pool...\n"; createCommandPool();
     cout << "[Device] Device constructed!\n";
 }
 

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <string>
-
 #include <vulkan/vulkan.h>
 #include "../deps/glfw/GLFW/glfw3.h"
+
+#include <string>
 
 class AppWindow {
 public:
