@@ -142,12 +142,60 @@ float randomFloat(float& min, float& max) { return min + (max - min) * (xorshift
 bool randomBool() { return (xorshift32() & 1) == 0; }
 
 // Solve
-double solve(const std::string& expression) {
+float solve(const std::string& expression) {
+    typedef exprtk::symbol_table<float> symbol_table_t;
+    typedef exprtk::expression<float> expression_t;
+    typedef exprtk::parser<float> parser_t;
+
+    symbol_table_t symbol_table;
+    expression_t expr;
+    expr.register_symbol_table(symbol_table);
+
+    parser_t parser;
+    if (!parser.compile(expression, expr)) { return 0.0f; }
+    return expr.value();
+}
+
+float solveWithVariables(const std::string& expression, const std::map<std::string, float>& variables) {
+    typedef exprtk::symbol_table<float> symbol_table_t;
+    typedef exprtk::expression<float> expression_t;
+    typedef exprtk::parser<float> parser_t;
+
+    symbol_table_t symbol_table;
+
+    for (const auto& var : variables) { symbol_table.add_variable(var.first, const_cast<float&>(var.second)); }
+
+    expression_t expr;
+    expr.register_symbol_table(symbol_table);
+
+    parser_t parser;
+    if (!parser.compile(expression, expr)) { return 0.0f; }
+    return expr.value();
+}
+
+double solvePrecise(const std::string& expression) {
     typedef exprtk::symbol_table<double> symbol_table_t;
     typedef exprtk::expression<double> expression_t;
     typedef exprtk::parser<double> parser_t;
 
     symbol_table_t symbol_table;
+    expression_t expr;
+    expr.register_symbol_table(symbol_table);
+
+    parser_t parser;
+    if (!parser.compile(expression, expr)) { return 0.0; }
+    return expr.value();
+}
+
+double solveWithVariablesPrecise(const std::string& expression, const std::map<std::string, double>& variables) {
+    typedef exprtk::symbol_table<double> symbol_table_t;
+    typedef exprtk::expression<double> expression_t;
+    typedef exprtk::parser<double> parser_t;
+
+    symbol_table_t symbol_table;
+
+    for (const auto& var : variables) { symbol_table.add_variable(var.first, const_cast<double&>(var.second)); }
+
     expression_t expr;
     expr.register_symbol_table(symbol_table);
 
