@@ -4,16 +4,16 @@
 #include "exprtk.hpp"
 
 #include <cmath>
+#include <array>
 #include <vector>
-#include <algorithm>
-#include <cstdint>
-#include <climits>
 #include <limits>
 #include <string>
+#include <cstdint>
+#include <cstring>
+#include <climits>
+#include <algorithm>
 
 using namespace std;
-
-uint32_t state = 730182364;
 
 // Interpolation
 float lerp(float& a, float& b, float& t) { return a + (b - a) * t; }
@@ -66,8 +66,7 @@ float averageFloat(vector<float>& floats) {
 }
 
 bool averageBool(vector<bool>& bools) {
-    int averageFalse;
-    int averageTrue;
+    int averageFalse, averageTrue;
 
     for (const int a : bools) { if (bools[a]) { averageTrue++; } else { averageFalse++; } }
     if (averageTrue > averageFalse) { return true; }
@@ -76,8 +75,7 @@ bool averageBool(vector<bool>& bools) {
 }
 
 short averageMinMaxShort(const vector<short>& shorts) {
-    short minVal = 0;
-    short maxVal = 0;
+    short minVal = 0, maxVal = 0;
     int sum;
 
     for (const short a : shorts) {
@@ -89,8 +87,7 @@ short averageMinMaxShort(const vector<short>& shorts) {
 }
 
 int averageMinMaxInt(const vector<int>& ints) {
-    int minVal = 0;
-    int maxVal = 0;
+    int minVal = 0, maxVal = 0;
     long long sum;
 
     for (const int a : ints) {
@@ -102,9 +99,7 @@ int averageMinMaxInt(const vector<int>& ints) {
 }
 
 long long averageMinMaxLong(const vector<long long>& longs) {
-    long long minVal = 0;
-    long long maxVal = 0;
-    long long sum;
+    long long minVal = 0, maxVal = 0, sum;
 
     for (const long long a : longs) {
         if (a < minVal) { minVal = a; }
@@ -115,9 +110,7 @@ long long averageMinMaxLong(const vector<long long>& longs) {
 }
 
 float averageMinMaxFloat(const vector<float>& floats) {
-    float minVal = 0;
-    float maxVal = 0;
-    float sum;
+    float minVal = 0.f, maxVal = 0.f, sum;
 
     for (const long long a : floats) {
         if (a < minVal) { minVal = a; }
@@ -128,6 +121,7 @@ float averageMinMaxFloat(const vector<float>& floats) {
 }
 
 // Random
+uint32_t state = 730182364;
 uint32_t xorshift32() {
     state ^= state << 13;
     state ^= state >> 17;
@@ -152,7 +146,7 @@ float solve(const std::string& expression) {
     expr.register_symbol_table(symbol_table);
 
     parser_t parser;
-    if (!parser.compile(expression, expr)) { return 0.0f; }
+    if (!parser.compile(expression, expr)) { return 0.f; }
     return expr.value();
 }
 
@@ -169,7 +163,7 @@ float solveWithVariables(const std::string& expression, const std::map<std::stri
     expr.register_symbol_table(symbol_table);
 
     parser_t parser;
-    if (!parser.compile(expression, expr)) { return 0.0f; }
+    if (!parser.compile(expression, expr)) { return 0.f; }
     return expr.value();
 }
 
@@ -203,5 +197,12 @@ double solveWithVariablesPrecise(const std::string& expression, const std::map<s
     if (!parser.compile(expression, expr)) { return 0.0; }
     return expr.value();
 }
+
+// Values
+void setValuesInRangeShort(std::vector<short>& shorts, short& value, int& minIndex, int& maxIndex) { std::fill(shorts.begin() + minIndex, shorts.begin() + maxIndex, value); }
+void setValuesInRangeInt(std::vector<int>& ints, int& value, int& minIndex, int& maxIndex) { std::fill(ints.begin() + minIndex, ints.begin() + maxIndex, value); }
+void setValuesInRangeLong(std::vector<long long>& longs, long long& value, int& minIndex, int& maxIndex) { std::fill(longs.begin() + minIndex, longs.begin() + maxIndex, value); }
+void setValuesInRangeFloat(std::vector<float>& floats, float& value, int& minIndex, int& maxIndex) { std::fill(floats.begin() + minIndex, floats.begin() + maxIndex, value); }
+void setValuesInRangeBool(std::vector<bool>& bools, bool& value, int& minIndex, int& maxIndex) { std::fill(bools.begin() + minIndex, bools.begin() + maxIndex, value); }
 
 #endif
