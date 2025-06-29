@@ -1,7 +1,7 @@
 #ifndef MATH_HPP
 #define MATH_HPP
 
-#include "exprtk.hpp"
+#include "deps/exprtk.hpp"
 
 #include <cmath>
 #include <array>
