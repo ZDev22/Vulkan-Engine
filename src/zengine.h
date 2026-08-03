@@ -1139,17 +1139,15 @@ void ZEngineInit() {
     textureImageWrite.descriptorCount = 1;
     textureImageWrite.pImageInfo = &textureMoreImageInfo;
 
-    createTexture(ZENGINE_DEFAULT_TEXTURE, 1.f, 0);
+    spriteTextures[0].loaded = 0;
     imageInfos[0].imageLayout = VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL;
     imageInfos[0].imageView = spriteTextures[0].view;
     imageInfos[0].sampler = spriteTextures[0].sampler;
 
-    spriteTextures[0].loaded = 0;
     for (unsigned int i = 1; i < ZENGINE_MAX_TEXTURES; i++) {
         spriteTextures[i] = spriteTextures[0];
         imageInfos[i] = imageInfos[0];
     }
-    spriteTextures[0].loaded = 1;
 
     ZENGINE_PRINT("Initing sprites...\n");
     camera.zoom[0]     = 1.f; camera.zoom[1]     = 1.f;
