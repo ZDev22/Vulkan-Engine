@@ -130,6 +130,5 @@ cd bin
 
 # Notes:
 - RGFW.h and stb_image.h are required dependencies
-- miniaudio.h is required unless the #define ZENGINE_DISABLE_AUDIO and remove it out of zdeps.c
-- stb_image_write.h is required if you are using ztext.h and remove it out of zdeps.c
-- stb_truetype.h is required if you are using ztext.h and remove it out of zdeps.c
+- miniaudio.h is not initialized by zengine.h
+- stb_truetype.h is required if you are using ztext.h, otherwise remove it from zdeps.c
