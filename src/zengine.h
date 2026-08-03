@@ -6,7 +6,6 @@
 #define ZENGINE_SPRITE_MAPMODE_MANUAL - manually change the ZEngineSpriteRemap flag whenever you update sprite data
 #define ZENGINE_SPRITE_MATRIXMODE_MANUAL - manually call sprites[0].setRotationMatrix() for every sprite you need
 #define ZENGINE_DEPTHMODE_FIRST - makes it so the first created sprites get layered on top of new ones
-#define ZENGINE_DEFAULT_TEXTURE "assets/img/bird.png" - change the default error texture to whatever you want
 
 COMPILER FLAGS:
 -DZENGINE_DEBUG - adds debug printing for debugging.
@@ -47,10 +46,6 @@ COMPILER FLAGS:
 
     #undef ZENGINE_PRINT
     #define ZENGINE_PRINT(x, ...) printf(x, ##__VA_ARGS__)
-#endif
-
-#ifndef ZENGINE_DEFAULT_TEXTURE
-    #define ZENGINE_DEFAULT_TEXTURE "assets/img/e.png"
 #endif
 
 #endif // ZENGINE_IMPLEMENTATION
