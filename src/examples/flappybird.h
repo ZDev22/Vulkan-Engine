@@ -34,11 +34,11 @@ void tickGame() {
     if (flappyBirdStarted) {
         flappyBirdSpeedY += 3.8f * deltaTime;
         bird->position[1] += flappyBirdSpeedY * deltaTime;
-        bird->rotation -= 90.f * deltaTime;
+        rotateSprite(bird, bird->rotation - (90.f * deltaTime));
         if (!flappyBirdDead) {
             if (RGFW_isKeyPressed(RGFW_keySpace)) {
                 flappyBirdSpeedY = -1.3f;
-                bird->rotation = 60.f;
+                rotateSprite(bird, 60.f);
                 bird->textureIndex = 0;
 
                 ma_engine_play_sound(&audio, "assets/sounds/chirp.mp3", NULL);
@@ -57,7 +57,7 @@ void tickGame() {
         else if (bird->position[1] > 2.5f) {
             bird->textureIndex = 0;
             bird->position[1] = -.25f;
-            bird->rotation = 0.f;
+            rotateSprite(bird, 0.f);
             flappyBirdSpeedY = 0.f;
             flappyBirdDead = 0;
         }
@@ -75,7 +75,7 @@ void tickGame() {
             if (flappyBirdStarted && !flappyBirdDead && (zcollide_squareCollision(sprites[index].position[0], sprites[index].position[1], sprites[index].scale[0], sprites[index].scale[1], bird->position[0], bird->position[1], bird->scale[0], bird->scale[1]) || zcollide_squareCollision(sprites[index + 1].position[0], sprites[index + 1].position[1], sprites[index + 1].scale[0], sprites[index + 1].scale[1], bird->position[0], bird->position[1], bird->scale[0], bird->scale[1]))) {
                 flappyBirdDead = 1;
                 flappyBirdSpeedY = -1.5f;
-                bird->rotation = 60.f;
+                rotateSprite(bird, 60.f);
                 bird->textureIndex = 1;
 
                 ma_engine_play_sound(&audio, "assets/sounds/hit.mp3", NULL);
@@ -86,7 +86,7 @@ void tickGame() {
         if (RGFW_isKeyPressed(RGFW_keySpace)) {
             flappyBirdStarted = 1;
             flappyBirdSpeedY = -1.3f;
-            bird->rotation = 60.f;
+            rotateSprite(bird, 60.f);
         }
     }
 }

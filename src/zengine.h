@@ -4,7 +4,6 @@
 #define ZENGINE_IMPLEMENTATION - define functions INCLUDE IN MAIN.C ONLY
 #define ZENGINE_DISABLE_VSYNC - extend beyond mortal limitations and exceed maximum fps
 #define ZENGINE_SPRITE_MAPMODE_MANUAL - manually change the ZEngineSpriteRemap flag whenever you update sprite data
-#define ZENGINE_SPRITE_MATRIXMODE_MANUAL - manually call sprites[0].setRotationMatrix() for every sprite you need
 
 COMPILER FLAGS:
 -DZENGINE_DEBUG - adds debug printing for debugging.
@@ -150,7 +149,7 @@ void createSprite(float positionx, float positiony, float scalex, float scaley, 
 Sprite* createSpritePtr(float posx, float posy, float scalex, float scaley, float rotation, unsigned int textureIndex);
 void deleteSpritePtr(Sprite* sprite);
 void deleteSprite(unsigned int sprite);
-void setRotationMatrix(Sprite* sprite);
+void rotateSprite(Sprite* sprite, float rotation);
 
 /* engine funcs */
 VkShaderModule createShaderModule(const char* filepath);
@@ -654,9 +653,9 @@ void createSprite(float posx, float posy, float scalex, float scaley, float rota
     sprites[spritesSize].position[1] = posy;
     sprites[spritesSize].scale[0] = scalex;
     sprites[spritesSize].scale[1] = scaley;
-    sprites[spritesSize].rotation = rotation;
     sprites[spritesSize].textureIndex = textureIndex;
     sprites[spritesSize].depth = .999f - ((float)spritesSize * 0.00001f);
+    rotateSprite(&sprites[spritesSize], rotation);
     spritesSize++;
 }
 
@@ -678,9 +677,10 @@ void deleteSprite(unsigned int sprite) {
     }
 }
 
-void setRotationMatrix(Sprite* sprite) {
-    sprite->rotationMatrix[0] = cos(sprite->rotation * .01745329f);
-    sprite->rotationMatrix[2] = sin(sprite->rotation * .01745329f);
+void rotateSprite(Sprite* sprite, float rotation) {
+    sprite->rotation = rotation;
+    sprite->rotationMatrix[0] = cos(rotation * .01745329f);
+    sprite->rotationMatrix[2] = sin(rotation * .01745329f);
     sprite->rotationMatrix[1] = -sprite->rotationMatrix[2];
     sprite->rotationMatrix[3] = sprite->rotationMatrix[0];
 }
@@ -948,7 +948,7 @@ void ZEngineInit() {
     depthStencil.depthBoundsTestEnable = VK_FALSE;
     depthStencil.stencilTestEnable = VK_FALSE;
 
-    VkDynamicState dynamicStates[] = { VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR };
+    VkDynamicState dynamicStates[2] = { VK_DYNAMIC_STATE_VIEWPORT, VK_DYNAMIC_STATE_SCISSOR };
     VkPipelineDynamicStateCreateInfo dynamicState = {0};
     dynamicState.sType = VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO;
     dynamicState.dynamicStateCount = 2;
@@ -972,11 +972,7 @@ void ZEngineInit() {
     layoutInfo.pBindings = layoutBindings;
     ZENGINE_THROW(vkCreateDescriptorSetLayout(device_, &layoutInfo, NULL, &descriptorSetLayout));
 
-    VkDescriptorPoolSize poolSizes[2] = {
-        {VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 1},
-        {VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, ZENGINE_MAX_TEXTURES * (ZENGINE_MAX_TEXTURES + 1)}
-    };
-
+    VkDescriptorPoolSize poolSizes[2] = {{VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 1}, {VK_DESCRIPTOR_TYPE_COMBINED_IMAGE_SAMPLER, ZENGINE_MAX_TEXTURES * (ZENGINE_MAX_TEXTURES + 1)}};
     VkDescriptorPoolCreateInfo descriptorPoolInfo = {0};
     descriptorPoolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
     descriptorPoolInfo.poolSizeCount = 2;
@@ -1182,19 +1178,17 @@ void ZEngineRender() {
     VkCommandBuffer commandBuffer = commandBuffers[currentImageIndex];
     vkBeginCommandBuffer(commandBuffer, &beginInfo);
 
-    /* begine render pass */
+    /* begin render pass */
+    VkClearValue clearValues[2] = {0};
+    clearValues[1].depthStencil = (VkClearDepthStencilValue){ 1.f, 0 };
+
     VkRenderPassBeginInfo renderPassInfo = {0};
     renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
     renderPassInfo.renderPass = renderPass;
     renderPassInfo.framebuffer = swapChainFramebuffers[currentImageIndex];
     renderPassInfo.renderArea.extent = windowExtent;
-
-    VkClearValue clearValues[2] = {0};
-
-    clearValues[1].depthStencil = (VkClearDepthStencilValue){ 1.f, 0 };
     renderPassInfo.clearValueCount = 2;
     renderPassInfo.pClearValues = clearValues;
-
     vkCmdBeginRenderPass(commandBuffer, &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
     VkRect2D scissor;
@@ -1202,7 +1196,7 @@ void ZEngineRender() {
     scissor.offset.y = 0;
     scissor.extent = windowExtent;
 
-    VkViewport viewport = (VkViewport){0.f, 0.f, (float)windowExtent.width, (float)windowExtent.height, 0.f, 1.f};
+    VkViewport viewport = {0.f, 0.f, (float)windowExtent.width, (float)windowExtent.height, 0.f, 1.f};
     vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
     vkCmdSetViewport(commandBuffer, 0, 1, &viewport);
 
@@ -1213,11 +1207,6 @@ void ZEngineRender() {
 
 #ifdef ZENGINE_SPRITE_MAPMODE_MANUAL
     if (ZEngineSpriteRemap) {
-#endif
-#ifndef ZENGINE_SPRITE_MATRIXMODE_MANUAL
-        for (unsigned int i = 0; i < spritesSize; i++) {
-            setRotationMatrix(&sprites[i]);
-        }
 #endif
         memcpy(spriteDataBuffer.mapped, sprites, sizeof(Sprite) * spritesSize);
 #ifdef ZENGINE_SPRITE_MAPMODE_MANUAL
