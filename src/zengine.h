@@ -1,16 +1,15 @@
 /* licensed under GPL v3.0 see https://github.com/ZDev22/ZEngine/blob/main/LICENSE for current license
  * RGFW and stb_image MUST be initialized. See zdeps.c for an example implementation, or just use it.
 
-#define ZENGINE_IMPLEMENTATION - define functions INCLUDE IN MAIN.CPP ONLY
+#define ZENGINE_IMPLEMENTATION - define functions INCLUDE IN MAIN.C ONLY
 #define ZENGINE_DISABLE_VSYNC - extend beyond mortal limitations and exceed maximum fps
 #define ZENGINE_SPRITE_MAPMODE_MANUAL - manually change the ZEngineSpriteRemap flag whenever you update sprite data
 #define ZENGINE_SPRITE_MATRIXMODE_MANUAL - manually call sprites[0].setRotationMatrix() for every sprite you need
-#define ZENGINE_DEPTHMODE_FIRST - makes it so the first created sprites get layered on top of new ones
 
 COMPILER FLAGS:
 -DZENGINE_DEBUG - adds debug printing for debugging.
--DZENGINE_MAX_SPRITES 10000 - the maximum amount of sprite the engine can load at once (more sprites, more memory usage)
--DZENGINE_MAX_TEXTURES 50 - the maximum amount of texture the engine can load at once
+-DZENGINE_MAX_SPRITES=10000 - the maximum amount of sprite the engine can load at once (more sprites, more memory usage)
+-DZENGINE_MAX_TEXTURES=50 - the maximum amount of texture the engine can load at once
 */
 
 #ifndef ZENGINE_H
@@ -119,7 +118,6 @@ typedef struct QueueFamilyIndices {
 } QueueFamilyIndices;
 
 typedef struct Texture {
-    VkImageLayout layout;
     VkImage image;
     VkDeviceMemory memory;
     VkImageView view;
@@ -155,7 +153,6 @@ void deleteSprite(unsigned int sprite);
 void setRotationMatrix(Sprite* sprite);
 
 /* engine funcs */
-void createCommandBuffers();
 VkShaderModule createShaderModule(const char* filepath);
 QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device);
 unsigned int findMemoryType(unsigned int typeFilter, VkMemoryPropertyFlags properties);
@@ -638,21 +635,10 @@ void createImageWithInfo(const VkImageCreateInfo* imageInfo, VkMemoryPropertyFla
 }
 
 /* ZENGINE HELPER FUNCTIONS */
-void createCommandBuffers() {
-    commandBuffers = (VkCommandBuffer*)malloc(imageCount * sizeof(VkCommandBuffer));
-
-    VkCommandBufferAllocateInfo allocInfo = {0};
-    allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
-    allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
-    allocInfo.commandPool = commandPool;
-    allocInfo.commandBufferCount = imageCount;
-    vkAllocateCommandBuffers(device_, &allocInfo, commandBuffers);
-}
-
 VkShaderModule createShaderModule(const char* filepath) {
     FILE* file = fopen(filepath, "rb");
     if (!file) {
-        printf("Failed to open shader!");
+        ZENGINE_PRINT("Failed to open shader: %s\n", filepath);
         exit(1);
     }
 
@@ -663,7 +649,7 @@ VkShaderModule createShaderModule(const char* filepath) {
     void* buffer = (void*)malloc(fileSize);
     if (!buffer) {
         fclose(file);
-        printf("Failed to create shader buffer!");
+        ZENGINE_PRINT("Failed to create shader buffer!\n");
         exit(1);
     }
 
@@ -678,7 +664,7 @@ VkShaderModule createShaderModule(const char* filepath) {
     VkShaderModule shaderModule;
     if (vkCreateShaderModule(device_, &createInfo, NULL, &shaderModule) != VK_SUCCESS) {
         free(buffer);
-        ZENGINE_PRINT("Failed to create shader module!");
+        ZENGINE_PRINT("Failed to create shader module!\n");
         exit(1);
     }
 
@@ -695,11 +681,7 @@ void createSprite(float posx, float posy, float scalex, float scaley, float rota
     sprites[spritesSize].scale[1] = scaley;
     sprites[spritesSize].rotation = rotation;
     sprites[spritesSize].textureIndex = textureIndex;
-#ifdef ZENGINE_DEPTHMODE_FIRST
-    sprites[spritesSize].depth = spritesSize / ZENGINE_MAX_SPRITES;
-#else
     sprites[spritesSize].depth = .999f - ((float)spritesSize * 0.00001f);
-#endif
     spritesSize++;
 }
 
@@ -717,11 +699,7 @@ void deleteSprite(unsigned int sprite) {
     spritesSize--;
     sprites[sprite] = sprites[spritesSize];
     for (unsigned int i = sprite; i < spritesSize - 1; i++) {
-#ifdef ZENGINE_DEPTHMODE_FIRST
-        sprites[i].depth -= 1 / ZENGINE_MAX_SPRITES;
-#else
         sprites[i].depth = .999f - ((float)i * 0.00001f);
-#endif
     }
 }
 
@@ -760,7 +738,7 @@ void ZEngineInit() {
     size_t rgfWExtensionCount = 0;
     const char** rgfWExtensions = RGFW_getRequiredInstanceExtensions_Vulkan(&rgfWExtensionCount);
     if (!rgfWExtensions || rgfWExtensionCount == 0) {
-        printf("Failed to get Vulkan extensions");
+        ZENGINE_PRINT("Failed to get Vulkan extensions\n");
         exit(1);
     }
 
@@ -905,7 +883,14 @@ void ZEngineInit() {
     ZENGINE_PRINT("Creating swapChain...\n"); //---------------------------------------------------------------------------------------------------------------
     createSwapChain();
     ZENGINE_PRINT("Creating command buffers...\n");
-    createCommandBuffers();
+    commandBuffers = (VkCommandBuffer*)malloc(imageCount * sizeof(VkCommandBuffer));
+
+    VkCommandBufferAllocateInfo commandBufferInfo = {0};
+    commandBufferInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
+    commandBufferInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
+    commandBufferInfo.commandPool = commandPool;
+    commandBufferInfo.commandBufferCount = imageCount;
+    vkAllocateCommandBuffers(device_, &commandBufferInfo, commandBuffers);
 
     ZENGINE_PRINT("Initializing shaders...\n");
     VkPipelineShaderStageCreateInfo shaderStages[2] = {0};
@@ -1150,22 +1135,14 @@ void ZEngineInit() {
     camera.aspect      = (float)windowExtent.width / (float)windowExtent.height;
 
     /* load zmodel */
-    zmodel.vertices[0].pos[0] = -.5f;
-    zmodel.vertices[0].pos[1] = -.5f;
-    zmodel.vertices[0].cord[0] = 0.f;
-    zmodel.vertices[0].cord[1] = 0.f;
-    zmodel.vertices[1].pos[0] = .5f;
-    zmodel.vertices[1].pos[1] = -.5f;
-    zmodel.vertices[1].cord[0] = 1.f;
-    zmodel.vertices[1].cord[1] = 0.f;
-    zmodel.vertices[2].pos[0] = -.5f;
-    zmodel.vertices[2].pos[1] = .5f;
-    zmodel.vertices[2].cord[0] = 0.f;
-    zmodel.vertices[2].cord[1] = 1.f;
-    zmodel.vertices[3].pos[0] = .5f;
-    zmodel.vertices[3].pos[1] = .5f;
-    zmodel.vertices[3].cord[0] = 1.f;
-    zmodel.vertices[3].cord[1] = 1.f;
+    zmodel.vertices[0].pos[0] = -.5f; zmodel.vertices[0].pos[1] = -.5f;
+    zmodel.vertices[0].cord[0] = 0.f; zmodel.vertices[0].cord[1] = 0.f;
+    zmodel.vertices[1].pos[0] = .5f;  zmodel.vertices[1].pos[1] = -.5f;
+    zmodel.vertices[1].cord[0] = 1.f; zmodel.vertices[1].cord[1] = 0.f;
+    zmodel.vertices[2].pos[0] = -.5f; zmodel.vertices[2].pos[1] = .5f;
+    zmodel.vertices[2].cord[0] = 0.f; zmodel.vertices[2].cord[1] = 1.f;
+    zmodel.vertices[3].pos[0] = .5f;  zmodel.vertices[3].pos[1] = .5f;
+    zmodel.vertices[3].cord[0] = 1.f; zmodel.vertices[3].cord[1] = 1.f;
 
     createBuffer(&zmodel.vertexBuffer, sizeof(Vertex) * 4, 1, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
     map(&zmodel.vertexBuffer);
@@ -1246,10 +1223,10 @@ void ZEngineRender() {
 
     vkCmdBeginRenderPass(commandBuffer, &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
 
-    VkRect2D scissor = {
-        .offset = {0, 0},
-        .extent = windowExtent
-    };
+    VkRect2D scissor;
+    scissor.offset.x = 0;
+    scissor.offset.y = 0;
+    scissor.extent = windowExtent;
 
     VkViewport viewport = (VkViewport){0.f, 0.f, (float)windowExtent.width, (float)windowExtent.height, 0.f, 1.f};
     vkCmdSetScissor(commandBuffer, 0, 1, &scissor);
