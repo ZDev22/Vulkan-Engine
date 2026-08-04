@@ -145,7 +145,7 @@ void ZEngineInit();
 void ZEngineRender();
 void ZEngineDeinit();
 
-/* sprite funcs */
+/* sprite API */
 void createSprite(float positionx, float positiony, float scalex, float scaley, float rotation, unsigned int textureIndex);
 Sprite* createSpritePtr(float posx, float posy, float scalex, float scaley, float rotation, unsigned int textureIndex);
 void deleteSpritePtr(Sprite* sprite);
@@ -539,12 +539,8 @@ void createTextureExt(const unsigned char* data, unsigned int index, unsigned in
     vkUpdateDescriptorSets(device_, 1, &textureImageWrite, 0, NULL);
 }
 
-/* BUFFER FUNCS */
+/* ZENIGNE HELPER FUNCTIONS */
 void createBuffer(Buffer* buffer, VkDeviceSize instanceSize, unsigned int instanceCount, VkBufferUsageFlags usageFlags, VkMemoryPropertyFlags memoryPropertyFlags) {
-    /* HOW TO INIT YOUR BUFFER:
-        buffer = (Buffer*)calloc(1, sizeof(Buffer));
-    */
-
     buffer->bufferSize = instanceSize * instanceCount;
     buffer->mapped = NULL;
 
@@ -567,26 +563,6 @@ void createBuffer(Buffer* buffer, VkDeviceSize instanceSize, unsigned int instan
     ZENGINE_THROW(vkBindBufferMemory(device_, buffer->buffer, buffer->memory, 0));
 }
 
-void deleteBuffer(Buffer* buffer) {
-    vkDestroyBuffer(device_, buffer->buffer, NULL);
-    vkFreeMemory(device_, buffer->memory, NULL);
-    buffer->buffer = VK_NULL_HANDLE;
-    buffer->memory = VK_NULL_HANDLE;
-}
-
-void map(Buffer* buffer) {
-    if (buffer->mapped == NULL) {
-        ZENGINE_THROW(vkMapMemory(device_, buffer->memory, 0, buffer->bufferSize, 0, &buffer->mapped));
-    }
-}
-void unmap(Buffer* buffer) {
-    if (buffer->mapped != NULL) {
-        vkUnmapMemory(device_, buffer->memory);
-        buffer->mapped = NULL;
-    }
-}
-
-/* ZENIGNE HELPER FUNCTIONS */
 QueueFamilyIndices findQueueFamilies(VkPhysicalDevice device) {
     QueueFamilyIndices indices;
     unsigned int queueFamilyCount = 0;
@@ -634,7 +610,6 @@ void createImageWithInfo(const VkImageCreateInfo* imageInfo, VkMemoryPropertyFla
     vkBindImageMemory(device_, *image, *imageMemory, 0);
 }
 
-/* ZENGINE HELPER FUNCTIONS */
 VkShaderModule createShaderModule(const char* filepath) {
     FILE* file = fopen(filepath, "rb");
     if (!file) {
@@ -1145,14 +1120,13 @@ void ZEngineInit() {
     zmodel.vertices[3].cord[0] = 1.f; zmodel.vertices[3].cord[1] = 1.f;
 
     createBuffer(&zmodel.vertexBuffer, sizeof(Vertex) * 4, 1, VK_BUFFER_USAGE_VERTEX_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
-    map(&zmodel.vertexBuffer);
+    vkMapMemory(device_, zmodel.vertexBuffer.memory, 0, zmodel.vertexBuffer.bufferSize, 0, &zmodel.vertexBuffer.mapped);
     memcpy(zmodel.vertexBuffer.mapped, (const void*)zmodel.vertices, (unsigned int)(sizeof(Vertex) * 4));
-    unmap(&zmodel.vertexBuffer);
+    vkUnmapMemory(device_, zmodel.vertexBuffer.memory);
 
     if (uniformBuffer) { createBuffer(&spriteDataBuffer, sizeof(Sprite) * ZENGINE_MAX_SPRITES, 1, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT); }
     else { createBuffer(&spriteDataBuffer, sizeof(Sprite) * ZENGINE_MAX_SPRITES, 1, VK_BUFFER_USAGE_STORAGE_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT); }
-
-    map(&spriteDataBuffer);
+    vkMapMemory(device_, spriteDataBuffer.memory, 0, spriteDataBuffer.bufferSize, 0, &spriteDataBuffer.mapped);
 
     /* allocate info */
     VkDescriptorBufferInfo bufferInfo = {0};
@@ -1308,18 +1282,22 @@ void ZEngineDeinit() {
     vkDestroySampler(device_, spriteTextures[0].sampler, NULL);
     vkFreeCommandBuffers(device_, commandPool, 1, &textureCommandBuffer);
 
-    ZENGINE_PRINT("Unmaping sprite data buffer\n"); unmap(&spriteDataBuffer);
-    ZENGINE_PRINT("Freeing sprite data buffer\n"); deleteBuffer(&spriteDataBuffer);
+    ZENGINE_PRINT("Unmaping sprite data buffer\n"); vkUnmapMemory(device_, spriteDataBuffer.memory);
+    ZENGINE_PRINT("Freeing sprite data buffer\n");
+    vkDestroyBuffer(device_, spriteDataBuffer.buffer, NULL);
+    vkFreeMemory(device_, spriteDataBuffer.memory, NULL);
+    spriteDataBuffer.buffer = VK_NULL_HANDLE;
+    spriteDataBuffer.memory = VK_NULL_HANDLE;
     ZENGINE_PRINT("Freeing swapchain\n"); deleteSwapChain();
     free(swapChainSupport.formats);
     free(swapChainSupport.presentModes);
 
     ZENGINE_PRINT("Freeing descriptor set layout\n"); vkDestroyDescriptorSetLayout(device_, descriptorSetLayout, NULL);
-    ZENGINE_PRINT("Freeing descriptor pool\n"); vkDestroyDescriptorPool(device_, descriptorPool, NULL);
-    ZENGINE_PRINT("Freeing command pool\n"); vkDestroyCommandPool(device_, commandPool, NULL);
-    ZENGINE_PRINT("Destroying device\n"); vkDestroyDevice(device_, NULL);
-    ZENGINE_PRINT("Freeing window surface\n"); vkDestroySurfaceKHR(instance, surface_, NULL);
-    ZENGINE_PRINT("Destroying instance\n"); vkDestroyInstance(instance, NULL);
+    ZENGINE_PRINT("Freeing descriptor pool\n");       vkDestroyDescriptorPool(device_, descriptorPool, NULL);
+    ZENGINE_PRINT("Freeing command pool\n");          vkDestroyCommandPool(device_, commandPool, NULL);
+    ZENGINE_PRINT("Destroying device\n");             vkDestroyDevice(device_, NULL);
+    ZENGINE_PRINT("Freeing window surface\n");        vkDestroySurfaceKHR(instance, surface_, NULL);
+    ZENGINE_PRINT("Destroying instance\n");           vkDestroyInstance(instance, NULL);
 }
 
 #undef ZENGINE_IMPLEMENTATION
