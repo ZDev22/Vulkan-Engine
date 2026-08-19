@@ -13,6 +13,9 @@ _Bool flappyBirdStarted = 0;
 int flappyBirdScore = 0;
 
 Sprite* bird;
+Sprite* pipes[10];
+Sprite* ztext[100];
+unsigned char ztextSize = 0;
 
 ma_engine audio;
 
@@ -23,11 +26,10 @@ void initGame() {
 
     createTexture("assets/img/flappyBird.png", .5f, 0);
     createTexture("assets/img/pipe.png", 1.f, 1);
+    createText("ZDev", 150, 64, 64, 0, 3);
 
-    createSprite(-.7f, 0.f, .1f, .1f, 0.f, 0);
-    bird = &sprites[spritesSize - 1];
-
-    for (unsigned char i = 0; i < 10; i++) { createSprite(-.7f, -.3f, .1f, .1f, 0.f, 1); }
+    bird = createSprite(-.7f, 0.f, .1f, .1f, 0.f, 0);
+    for (unsigned char i = 0; i < 10; i++) { pipes[i] = createSprite(-.7f, -.3f, .1f, .1f, 0.f, 1); }
 }
 
 void tickGame() {
@@ -42,10 +44,8 @@ void tickGame() {
                 bird->textureIndex = 0;
 
                 ma_engine_play_sound(&audio, "assets/sounds/chirp.mp3", NULL);
-                createSprite(0.f, 0.f, .5f, .2f, 0.f, 3);
-                createText("ZDev", 150, 64, 64, 0, 3);
-                camera.zoom[0] -= .007f;
-                camera.zoom[1] -= .007f;
+                ztext[ztextSize] = createSprite(0.f, 0.f, .5f, .2f, 0.f, 3);
+                ztextSize++;
             }
 
             if (bird->position[1] > 1.f || bird->position[1] < -1.f) {

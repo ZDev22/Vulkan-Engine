@@ -131,6 +131,7 @@ extern double deltaTime;
 extern struct Texture spriteTextures[ZENGINE_MAX_TEXTURES];
 extern struct Sprite sprites[ZENGINE_MAX_SPRITES];
 extern unsigned int spritesSize;
+extern unsigned int availibleSpriteSize;
 extern struct Model zmodel;
 extern Camera camera;
 extern _Bool framebufferResized;
@@ -145,10 +146,9 @@ void ZEngineRender();
 void ZEngineDeinit();
 
 /* sprite API */
-void createSprite(float positionx, float positiony, float scalex, float scaley, float rotation, unsigned int textureIndex);
-Sprite* createSpritePtr(float posx, float posy, float scalex, float scaley, float rotation, unsigned int textureIndex);
-void deleteSpritePtr(Sprite* sprite);
-void deleteSprite(unsigned int sprite);
+Sprite* createSprite(float positionx, float positiony, float scalex, float scaley, float rotation, unsigned int textureIndex);
+void deleteSprite(Sprite* sprite);
+void deleteAllSprites(void);
 void rotateSprite(Sprite* sprite, float rotation);
 
 /* engine funcs */
@@ -199,7 +199,9 @@ VkExtent2D windowExtent;
 
 /* sprite vars */
 struct Sprite sprites[ZENGINE_MAX_SPRITES] = {0};
+unsigned int availibleSprites[ZENGINE_MAX_SPRITES];
 unsigned int spritesSize = 0;
+unsigned int availibleSpriteSize = 0;
 
 /* device vars */
 VkInstance instance;
@@ -646,35 +648,43 @@ VkShaderModule createShaderModule(const char* filepath) {
     return shaderModule;
 }
 
-void createSprite(float posx, float posy, float scalex, float scaley, float rotation, unsigned int textureIndex) {
-    if (spritesSize >= ZENGINE_MAX_SPRITES) { return; }
+Sprite* createSprite(float positionx, float positiony, float scalex, float scaley, float rotation, unsigned int textureIndex) {
+    if (availibleSpriteSize == 0) {
+        if (spritesSize == ZENGINE_MAX_SPRITES) { return NULL; }
 
-    sprites[spritesSize].position[0] = posx;
-    sprites[spritesSize].position[1] = posy;
-    sprites[spritesSize].scale[0] = scalex;
-    sprites[spritesSize].scale[1] = scaley;
-    sprites[spritesSize].textureIndex = textureIndex;
-    sprites[spritesSize].depth = .999f - ((float)spritesSize * 0.00001f);
-    rotateSprite(&sprites[spritesSize], rotation);
-    spritesSize++;
-}
+        sprites[spritesSize].position[0] = positionx;
+        sprites[spritesSize].position[1] = positiony;
+        sprites[spritesSize].scale[0] = scalex;
+        sprites[spritesSize].scale[1] = scaley;
+        sprites[spritesSize].textureIndex = textureIndex;
+        sprites[spritesSize].depth = .999f - ((float)spritesSize * 0.00001f);
+        rotateSprite(&sprites[spritesSize], rotation);
+        spritesSize++;
 
-Sprite* createSpritePtr(float posx, float posy, float scalex, float scaley, float rotation, unsigned int textureIndex) {
-    if (spritesSize >= ZENGINE_MAX_SPRITES) { return NULL; }
-    createSprite(posx, posy, scalex, scaley, rotation, textureIndex);
-    return &sprites[spritesSize - 1];
-}
-
-void deleteSpritePtr(Sprite* sprite) {
-    deleteSprite(sprite - sprites);
-}
-
-void deleteSprite(unsigned int sprite) {
-    spritesSize--;
-    sprites[sprite] = sprites[spritesSize];
-    for (unsigned int i = sprite; i < spritesSize - 1; i++) {
-        sprites[i].depth = .999f - ((float)i * 0.00001f);
+        return &sprites[spritesSize - 1];
     }
+    else {
+        availibleSpriteSize--;
+        sprites[availibleSprites[availibleSpriteSize]].position[0] = positionx;
+        sprites[availibleSprites[availibleSpriteSize]].position[1] = positiony;
+        sprites[availibleSprites[availibleSpriteSize]].scale[0] = scalex;
+        sprites[availibleSprites[availibleSpriteSize]].scale[1] = scaley;
+        sprites[availibleSprites[availibleSpriteSize]].textureIndex = textureIndex;
+        rotateSprite(&sprites[availibleSprites[availibleSpriteSize]], rotation);
+        return &sprites[availibleSprites[availibleSpriteSize]];
+    }
+}
+
+void deleteSprite(Sprite* sprite) {
+    availibleSprites[availibleSpriteSize] = (unsigned int)(sprite - sprites);
+    availibleSpriteSize++;
+    sprite->scale[0] = 0.f;
+    sprite->scale[1] = 0.f;
+}
+
+void deleteAllSprites(void) {
+    spritesSize = 0;
+    availibleSpriteSize = 0;
 }
 
 void rotateSprite(Sprite* sprite, float rotation) {
