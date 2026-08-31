@@ -492,6 +492,13 @@ void createTexture(const char* filepath, float opacity, unsigned int index) {
 }
 
 void createTextureExt(const unsigned char* data, unsigned int index, unsigned int width, unsigned int height, VkDeviceSize imageSize, VkFormat format) {
+#ifdef ZENGINE_DEBUG
+    if (index > ZENGINE_MAX_TEXTURES - 1) {
+        ZENGINE_PRINT("The texture you are trying to load exceeds the texture limit! Please make sure -DZENGINE_MAX_TEXTURES is higher than the loaded index!");
+        exit(1);
+    }
+#endif
+
     deleteTexture(index);
     spriteTextures[index].loaded = 1;
 
